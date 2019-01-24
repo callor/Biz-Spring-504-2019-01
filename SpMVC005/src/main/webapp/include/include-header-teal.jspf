@@ -1,0 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<header class="w3-panel ch-panel w3-teal w3-center">
+		<h3>도서정보 검색</h3>
+</header>

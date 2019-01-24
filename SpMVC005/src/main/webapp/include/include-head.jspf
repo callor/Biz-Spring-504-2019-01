@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<meta charset="UTF-8">
+<meta name="viewport" 
+	content="width=device-width, initial-scale=1" >
+<title>도서 정보 검색</title>
+<link rel="stylesheet" 
+	href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+
+	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	body {
+		max-width:80%;
+		margin:10px auto;
+	}
+	.ch-panel {
+		margin-bottom: 0px;
+	}
+
+</style>	
+    
