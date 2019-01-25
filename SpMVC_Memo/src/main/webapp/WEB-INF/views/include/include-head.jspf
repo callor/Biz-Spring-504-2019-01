@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<meta charset="UTF-8">
+<meta name="viewport" 
+	content="width=device-width, initial-scale=1">
+<title>주소록 관리</title>
+<style>
+	header {
+		background-color : #00aba9;
+		color : #fff;
+		text-align: center;
+		font-size:20px;
+		padding : 5px;
+	}
+	
+	footer {
+		background-color : #00aba9;
+		color : #fff;
+		text-align: center;
+		padding : 5px;
+	}
+	
+	table {
+		border-spacing: 0;
+		width:100%;
+		display:table;
+		border : 1px solid #ccc;
+	}
+	
+	tr {
+		border : 1px solid #ddd;
+	}
+	
+	td, th {
+		border : 1px solid #ddd;
+	}
+	
+	#button-div {
+		font-size:0;
+		border : 1px solid lightgray;
+		
+		width : 212px; /* 밖깥쪽 요소보다 작게 */
+		margin : 0 auto; /* block요소를 어떤 다른 요소 내부에서 */
+						 /* 가로방향 중앙에 배치하고 할때 */
+	
+	}
+	
+	#button-div button {
+		width : 100px;
+		margin : 3px;
+	}
+	
+	fieldset {
+			width:500px;
+			margin:0 auto;
+		}
+		
+		legend  {
+			font-size:12pt;
+			font-weight: bold;
+			color:#3e65ff;
+		}
+		
+		label {
+			dislplay:block;
+			width:100px;
+			float:left;
+			padding:8px;
+			text-align:right;
+			font-weight: bold;
+			color:#009688;
+			font-size:10pt;
+		}
+		
+		input,select {
+			margin:3px;
+			padding:8px;
+			border : 1px solid #ccc;
+		}
+		
+		select {
+			font-size:12pt;
+			font-weight: bold;
+			color:blue;
+		}
+		
+</style>
