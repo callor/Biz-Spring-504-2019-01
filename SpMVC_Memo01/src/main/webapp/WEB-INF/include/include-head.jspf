@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<meta charset="UTF-8">
+<meta name="viewport" 
+	content="width=device-width,initial-scale=1">
+<title>Insert title here</title>
+<link rel="stylesheet" 
+		href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" 
+			rel="stylesheet">		
+<style>
+* {
+	box-sizing: border-box;
+	-webkit-box-sizing : border-box;
+	-moz-box-sizing : border:box;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+@font-face {
+  font-family: 'LotteMartHappy';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+}
+
+body {
+	max-width:90%;
+	margin:10px auto;
+}
+
+header {
+
+	color : white;
+	padding:0.1em;
+	text-align: center;
+	margin-bottom:0px;
+	background:linear-gradient(to bottom,#b4b8f6,#0000FF);
+
+}
+
+header h3 {
+	font-family: 'LotteMartHappy',sans-serif;
+	font-size:30px;
+}
+
+</style>		
