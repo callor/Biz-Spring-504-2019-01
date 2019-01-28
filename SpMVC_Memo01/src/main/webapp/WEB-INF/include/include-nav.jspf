@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <nav class="w3-bar w3-black">
-	<a href="/" class="w3-bar-item w3-button">홈</a>
+	<a href="memo" class="w3-bar-item w3-button">홈</a>
 	<a href="memo_write" class="w3-bar-item w3-button">메모작성</a>
 	<a href="#" class="w3-bar-item w3-button">로그인</a>
 	<a href="#" class="w3-bar-item w3-button">회원가입</a>

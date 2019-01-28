@@ -2,6 +2,7 @@ package com.biz.memo01.model;
 
 public class MemoVO {
 	
+	private long id;
 	private String m_auth;
 	private String m_date;
 	private String m_subject;
@@ -14,13 +15,32 @@ public class MemoVO {
 	}
 
 
-	public MemoVO(String m_auth, String m_date, String m_subject, String m_text) {
+	
+	
+	public MemoVO(long id, String m_auth, String m_date, String m_subject, String m_text) {
 		super();
+		this.id = id;
 		this.m_auth = m_auth;
 		this.m_date = m_date;
 		this.m_subject = m_subject;
 		this.m_text = m_text;
 	}
+
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 
 
 	public String getM_auth() {
@@ -70,13 +90,15 @@ public class MemoVO {
 
 
 
+
 	@Override
 	public String toString() {
-		return "MemoVO [m_auth=" + m_auth + ", m_date=" + m_date + ", m_subject=" + m_subject + ", m_text=" + m_text
-				+ "]";
+		return "MemoVO [id=" + id + ", m_auth=" + m_auth + ", m_date=" + m_date + ", m_subject=" + m_subject
+				+ ", m_text=" + m_text + "]";
 	}
-	
-	
+
+
+
 	
 
 }

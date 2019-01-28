@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biz.memo01.model.MemoDao">
+	<insert id="insert" parameterType="com.biz.memo01.model.MemoVO">
+		INSERT INTO tbl_memo (id,m_auth,m_date,m_subject,m_text)
+		VALUES(SEQ_MEMO.NEXTVAL,#{m_auth},#{m_date},#{m_subject},#{m_text} )
+	</insert>
+</mapper>	
