@@ -61,7 +61,8 @@ public class MemoController {
 	@RequestMapping(value="memo_write", method = RequestMethod.POST)
 	public String memo_write(@ModelAttribute MemoVO vo) {
 		
-		memoService.insert(vo);
+		memoService.memo_write(vo);
+		// memoService.insert(vo);
 		// System.out.println(vo);
 		// Mapper Method에서 문자열을 return 하면
 		// /WEB-INF/views 폴더에 있는 jsp 파일을 읽어서 

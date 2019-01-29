@@ -41,6 +41,9 @@ $(function(){
 <%@ include file="/WEB-INF/include/include-nav.jspf" %>
 <section>
 	<form action="memo_write" id="memo_form" method="POST">
+		
+		<input type="hidden" id="id" name="id" value="${MEMO.id}">
+		
 		<label for="m_auth">작성자</label>
 		<input  type="text" 
 				id="m_auth" 

@@ -45,5 +45,24 @@ public class MemoService {
 	public int delete(Long id) {
 		return memoMapper.delete(id);
 	}
+
+	public void memo_write(MemoVO vo) {
+
+		// vo에는 form에서 보내온 데이터가 담겨 있다.
+		// vo member 변수중에서
+		// 없는 값이 있다. == id가 없는 상태
+		
+		// 새로 메모를 작성하기 했을 경우 id 값이 아마도 0 일것이다.
+		// 메모를 수정하기로 했을 경우는 id 값이 0 이 이외 일것이다.
+		
+		if(vo.getId()>0) {
+			memoMapper.update(vo);
+		} else {
+			memoMapper.insert(vo);
+		}
+		
+		
+		
+	}
 	
 }
