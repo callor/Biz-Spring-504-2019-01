@@ -7,7 +7,10 @@
 <link rel="stylesheet" 
 		href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" 
-			rel="stylesheet">		
+			rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+					
 <style>
 * {
 	box-sizing: border-box;

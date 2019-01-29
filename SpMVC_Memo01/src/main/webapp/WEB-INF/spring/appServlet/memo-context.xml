@@ -22,15 +22,17 @@
 		<property name="dataSource" ref="dataSource" />
 		
 	</bean>
-	<bean id="memoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" 
-				value="com.biz.memo01.model.MemoDao"/>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	</bean>
-	
+
 	<bean id="sqlSession" 
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="memoMapper" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" 
+				value="com.biz.memo01.model.MemoDao"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 
 
