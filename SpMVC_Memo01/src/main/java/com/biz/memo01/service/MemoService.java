@@ -41,5 +41,9 @@ public class MemoService {
 		MemoVO vo = memoMapper.findById(id);
 		return vo;
 	}
+
+	public int delete(Long id) {
+		return memoMapper.delete(id);
+	}
 	
 }

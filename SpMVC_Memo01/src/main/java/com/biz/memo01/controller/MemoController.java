@@ -1,5 +1,8 @@
 package com.biz.memo01.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +30,32 @@ public class MemoController {
 	}
 	
 	@RequestMapping("memo_view")
-	public String memo_view(String id) {
+	public String memo_view(String id,Model model) {
 		
 		MemoVO vo = memoService.findById(Long.valueOf(id));
+		model.addAttribute("MEMO", vo);
 		return "memo_view";
 	
 	}
 	
 	@RequestMapping(value="memo_write", method = RequestMethod.GET)
-	public String memo_write() {
-		return "memo_write";
+	public String memo_write(Model model) {
+		
+		// 1.7 이하버전
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String today = sf.format(date);
+		
+		// 1.8 이상에서
+		LocalDate localDate = LocalDate.now();
+		today = localDate.toString();
+	
+		MemoVO vo = new MemoVO();
+		vo.setM_date(today);
+		
+		model.addAttribute("MEMO",vo);
+		return "memo_write_form";
+	
 	}
 
 	@RequestMapping(value="memo_write", method = RequestMethod.POST)
@@ -53,6 +72,24 @@ public class MemoController {
 		// 강제로 req 주소를 변경한다.
 		return "redirect:memo";
 		// returm "memo" ;
+	}
+	
+	
+	@RequestMapping("memo_update")
+	public String memo_update(String id,Model model) {
+		MemoVO vo = memoService.findById(Long.valueOf(id));
+		
+		model.addAttribute("MEMO", vo);
+		return "memo_write_form" ;
+		
+	}
+	
+	@RequestMapping("memo_delete")
+	public String memo_delete(String id) {
+		
+		int ret = memoService.delete(Long.valueOf(id));
+		return "redirect:memo" ;
+		
 	}
 
 	

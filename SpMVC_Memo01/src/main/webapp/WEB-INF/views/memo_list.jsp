@@ -12,7 +12,7 @@ $(function(){
 	
 	$(".memoRow").click(function(){
 		var memo_id = $(this).attr("data-memo-id")
-		alert("클릭한 메모의 PK = " + memo_id)
+		// alert("클릭한 메모의 PK = " + memo_id)
 		location.href="/memo01/memo_view?id=" + memo_id
 		
 	})
@@ -20,6 +20,9 @@ $(function(){
 })
 
 </script>
+<style>
+	td {cursor:pointer;}
+</style>
 
 
 </head>
@@ -30,6 +33,7 @@ $(function(){
 	<table class="w3-table-all">
 		<tr>
 			<th>NO</th>
+			<th>작성일자</th>
 			<th>작성자</th>
 			<th>제목</th>
 		</tr>
@@ -39,10 +43,11 @@ $(function(){
 			</c:when>
 			<c:otherwise>
 				<c:forEach var="memo" items="${memoList}" varStatus="row">
-					<tr class="w3-hover-light-gray memoRow" 
+					<tr class="w3-hover-gray memoRow" 
 						data-memo-id="${memo.id}" >
 						
-						<td>${row.index}, ${row.count}</td>
+						<td>${row.count}</td>
+						<td>${memo.m_date}</td>
 						<td>${memo.m_auth}</td>
 						<td>${memo.m_subject}</td>
 					
