@@ -8,12 +8,20 @@
 <%@ include file="/WEB-INF/include/include-head.jspf" %>
 <script>
 $(function(){
+	
+	// memoROW 로 등록된 class가 클릭 되면...
 	$(".memoROW").click(function(){
+		
+		// 클릭된 this(tr)에 숨어있는 data-memo-id 값을 추출해서
+		// id 변수에 담아라
 		var id = $(this).attr("data-memo-id")
-		alert(id + " 번 메모를 선택 했네요")
+		
+		// id의 값은 DB에서 추출한 레코드의 PK 값이 된다.
+		// alert(id + " 번 메모를 선택 했네요")
+		location.href ="${pageContext.request.contextPath}/memo_view?MSG=&id=" + id
 		
 	})
-	
+
 })
 </script>
 </head>

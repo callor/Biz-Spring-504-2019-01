@@ -44,4 +44,29 @@ public class MemoService {
 	
 	}
 
+	public MemoVO getMemo(long id) {
+		
+		MemoVO vo = memoMapper.findById(id);
+		return vo;
+	
+	}
+
+	public int delete(long id) {
+		// TODO Auto-generated method stub
+		int ret = memoMapper.delete(id);
+		return ret;
+	}
+
+	public int writeDB(MemoVO vo) {
+		
+		long id = vo.getId();
+		int ret = 0;
+		if(id > 0) ret = memoMapper.update(vo);
+		else ret = memoMapper.insert(vo);
+
+		return ret;
+	}
+
+
+
 }

@@ -2,6 +2,7 @@ package com.biz.memo02.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,23 @@ public class MemoController {
 		return "home";
 	}
 	
+	@RequestMapping("memo_view")
+	public String memo_view(@Param("id") long id,
+				String MSG, 
+				Model model) {
+		
+		// 매개변수로 전달받은 id를 사용해서
+		// 데이터를 읽어 오고
+		// memo_view와 렌더링 처리
+//		System.out.print(id);
+		MemoVO vo = memoService.getMemo(id);
+		
+		model.addAttribute("MSG",MSG);
+		model.addAttribute("MEMO", vo);
+		return "memo_view" ;
+	
+	}
+	
 	
 	// 폼을 열때 사용할 reqPath
 	// 메뉴에서 메모작성을 클릭하면 호출될 reqPath
@@ -55,11 +73,11 @@ public class MemoController {
 		
 		String retMsg = "" ;
 		String resPath = "" ;
-//		int ret = memoService.insertDB(vo);
-		int ret = -1 ;
+		// int ret = memoService.insertDB(vo);
+		int ret = memoService.writeDB(vo);
 		
 		if(ret > 0) { // 정상적으로 insert 완료
-			resPath = "redirect:/";
+			resPath = "redirect:memo_home";
 		} else {
 			retMsg = "데이터 추가 오류";
 			resPath = "memo_write";
@@ -70,6 +88,34 @@ public class MemoController {
 	
 	}
 
+	@RequestMapping(value="memo_update", method=RequestMethod.GET)
+	public String memo_update(@Param("id") long id, Model model) {
+		
+		MemoVO vo = memoService.getMemo(id);
+		model.addAttribute("MEMO",vo);
+		return "memo_write";
+	
+	}
+	
+	
+	@RequestMapping("memo_delete")
+	public String memo_delete(@Param("id") long id, Model model) {
+		
+		int ret = memoService.delete(id);
+		String resPath = "";
+		String resMsg = "";
+		
+		if(ret > 0) {
+			resPath = "redirect:memo_home";
+		} else {
+			resPath = "redirect:memo_view";
+			resMsg = "DEL-ERR";
+		}
+		model.addAttribute("id",id);
+		model.addAttribute("MSG", resMsg);
+		return resPath ;
+		
+	}
 	
 	
 }

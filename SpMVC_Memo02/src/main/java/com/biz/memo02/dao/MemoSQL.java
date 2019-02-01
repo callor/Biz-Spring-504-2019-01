@@ -3,7 +3,7 @@ package com.biz.memo02.dao;
 public class MemoSQL {
 	
 	public static final String MEMO_SELECT_ALL
-	= " SELECT * FROM tbl_memo ";
+	= " SELECT * FROM tbl_memo ORDER BY id ";
 
 	public static final String MEMO_FIND_BY_ID
 	= " SELECT * FROM tbl_memo WHERE id = #{id} ";
