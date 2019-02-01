@@ -1,0 +1,68 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+body {
+	max-width:90%;
+	margin:10px auto;
+	border:1px solid #ccc;
+}
+
+header {
+	background: linear-gradient(to bottom, #b4b8f6, #0000ff);
+	color : white;
+	text-align: center;
+	margin-bottom:0px;  /* nav와 빈틈을 없애기 위해서 */
+	font-size:15px;
+	font-weight:bold;
+	padding:1em; /* font-size와 같은 비율로 padding 설정 */
+	
+}
+
+nav {
+	width:100%; /* body 사이즈 내에서 100% */
+	background-color: green;
+	display: inline-block;
+}
+
+/* nav tag 내에 포함되어 있는 a tag의 style */
+nav a {
+	display: block; /* a tag는 inline tag 인데 block tag로 변환 */
+	
+	/* width 는 display가 block, inline-block 일경우만 작동 */
+	width: auto; /* 글자수에 따라 크기를 조절 */
+
+	/* a tag 들을 한줄에 표시 하라 */	
+	float:left;
+	
+	/* box의 태두리를 없애기 위해서 */
+	border:none;
+	outline:none;
+	
+	/* box와 글자와의 간격을 띄우기 */	
+	padding:8px 16px; /* top과 bottom : 8px, left와 right : 16px */
+	
+	/* a tag의 글자에 밑이 보이지 않도록 설정 */
+	text-decoration: none; 
+	
+	color:white;
+
+}
+
+/* nav 각 항목(a tag)에 마우스가 올라 갔을때 효과 부여 */
+nav a:hover {
+	background-color: lightgray;
+	color:black;
+}
+
+
+footer {
+	background-color: blue;
+	color:white;
+	padding:0.5em;
+	text-align: center;
+	font-size:10px;
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- 
+		mybatis를 통해서 오라클 DB에 접속하고 어떤일들을 수행할때
+		도와줄 클래스들을 설정
+	 -->
+	 <!-- dataSource 생성 : DB Connection Pool : 연결도우미 -->
+	<bean id="dataSource" 
+			class="org.apache.commons.dbcp2.BasicDataSource">
+		
+		<property name="driverClassName" 
+			value="oracle.jdbc.driver.OracleDriver"/>
+				
+		<property name="url" 
+			value="jdbc:oracle:thin:@localhost:1521:xe"/>
+			
+		<property name="username" value="mybts"/>
+		<property name="password" value="1234"/>	
+	
+	</bean>
+	
+	<!-- 
+		dataSource를 활용해서 
+		DB 연결, SQL 생성, Data 가져오기, DB 종료, Commit 등을
+		도와줄 클래스를 생성
+		sqSessionFactory라고 한다.
+	 -->
+	 <bean id="sqlSessionFactory" 
+	 	class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	
+	 	<!-- 여기에  dataSource를 주입 -->	
+	 	<property name="dataSource" ref="dataSource"/>
+	 </bean>
+
+	<!-- 
+		MemoDao에 설정된 SQL 문을 사용해서
+		데이터의 CRUD를 도와줄 클래스를 생성
+		sqlSession(Templete)이라고 한다.
+	 -->
+	 <bean id="sqlSession" 
+	 		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>	 
+	 </bean>
+	 
+	 <!-- 
+	 	mapper를 등록
+	 	sqlSession과 Dao 인터페이스를 연결해서
+	 	직접 Dao 인터페이스로 부터 데이터 접속을 하기 위한 방법
+	  -->
+	<bean id="memoMapper" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" 
+				value="com.biz.memo02.dao.MemoDao"/>
+		<property name="sqlSessionTemplate" 
+				ref="sqlSession"/>
+	</bean>
+
+
+</beans>
+

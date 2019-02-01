@@ -13,20 +13,17 @@
 </head>
 <body>
 <h3>도서정보</h3>
-<table>
-	<tr>
-	<c:forEach var="bookVO" items="${BOOKS}" varStatus="i">
-		
-			<td>
-				${bookVO.b_title}<br/> 
-			${bookVO.b_comp}<br/> 
-			${bookVO.b_auth}<br/> 
-			${bookVO.b_price}
-			</td>
-			<c:if test="${i.count % 4 eq 0}" ></tr><tr></c:if>
-	
-	</c:forEach>
-	</tr>
-</table>
+<p>도서명 : ${BOOK.b_title} 
+<p>출판사명 : ${BOOK.b_comp}
+<p>저자명 : ${BOOK.b_auth}
+<p>가격 : ${BOOK.b_price}
+
+<c:forEach var="bookVO" items="${BOOKS}">
+	<p>${bookVO.b_title} 
+		: ${bookVO.b_comp} 
+		: ${bookVO.b_auth} 
+		: ${bookVO.b_price}
+</c:forEach>
+
 </body>
 </html>
