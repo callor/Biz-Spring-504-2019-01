@@ -5,20 +5,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" 
-	content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<title>메모장</title>
-
-<!-- 본문에 포함된 css 내용을 별도 파일로 분리 -->
-<link rel="stylesheet" 
-	href=<c:url value="/css/memo_main.css" /> >
+<%@ include file="/WEB-INF/include/include-head.jspf" %>
+<script>
+$(function(){
+	$(".memoROW").click(function(){
+		var id = $(this).attr("data-memo-id")
+		alert(id + " 번 메모를 선택 했네요")
+		
+	})
 	
+})
+</script>
 </head>
+
 <body>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 <section>
-
+	<table>
+		<tr>
+			<th>NO</th>
+			<th>작성일</th>
+			<th>작성자</th>
+			<th>제목</th>
+		</tr>
+		<c:choose>
+			<c:when test="${empty MEMOS}">
+				<tr>
+					<td colspan="4">메모가 없습니다</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${MEMOS}" var="memoVO" varStatus="i">
+				<tr class="memoROW" data-memo-id="${memoVO.id}">
+					<td>${i.count}</td>
+					<td>${memoVO.m_date}</td>
+					<td>${memoVO.m_auth}</td>
+					<td>${memoVO.m_subject}</td>
+				</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</table>
 </section>
 <footer>
 	<address>CopyRight &copy; callor@callor.com</address>

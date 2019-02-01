@@ -1,5 +1,7 @@
 package com.biz.memo02.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,15 @@ public class MemoController {
 	}
 	*/
 	
+	@RequestMapping("memo_home")
+	public String memo_list(Model model) {
+		
+		List<MemoVO> memoList = memoService.selectAll();
+		model.addAttribute("MEMOS",memoList);
+		
+		return "home";
+	}
+	
 	
 	// 폼을 열때 사용할 reqPath
 	// 메뉴에서 메모작성을 클릭하면 호출될 reqPath
@@ -44,7 +55,8 @@ public class MemoController {
 		
 		String retMsg = "" ;
 		String resPath = "" ;
-		int ret = memoService.insertDB(vo);
+//		int ret = memoService.insertDB(vo);
+		int ret = -1 ;
 		
 		if(ret > 0) { // 정상적으로 insert 완료
 			resPath = "redirect:/";

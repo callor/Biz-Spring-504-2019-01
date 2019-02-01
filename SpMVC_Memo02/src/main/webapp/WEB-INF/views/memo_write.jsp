@@ -6,17 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" 
-	content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<title>메모장</title>
-
-<!-- 본문에 포함된 css 내용을 별도 파일로 분리 -->
-<link rel="stylesheet" 
-	href=<c:url value="/css/memo_main.css" /> >
+<%@ include file="/WEB-INF/include/include-head.jspf" %>	
 <link rel="stylesheet" 
 	href=<c:url value="/css/memo_input_style.css" /> >
-
 </head>
 <body>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
@@ -28,7 +20,6 @@
 </style>
 <section>
 	<form action=<c:url value="/memo"/> method="POST">
-		<p id="message"><b>${MESSAGE}</b>
 		<label for="m_auth">작성자</label>
 		<input type="text" id="m_auth" name="m_auth"><br/>
 		
@@ -45,16 +36,11 @@
 		<label></label>
 		<button>메모저장</button>
 	</form>
-
+	<p id="message"><b>${MESSAGE}</b>
 </section>
 <footer>
 	<address>CopyRight &copy; callor@callor.com</address>
 </footer>
 
-
- <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </body>
 </html>

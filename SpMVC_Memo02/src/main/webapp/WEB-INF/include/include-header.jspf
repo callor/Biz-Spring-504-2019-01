@@ -4,7 +4,7 @@
 	<h>나의 메모장</h>
 </header>
 <nav>
-	<a href="#">Home</a>
+	<a href="${pageContext.request.contextPath}/">Home</a>
 	<a href="${pageContext.request.contextPath }/memo">메모작성</a>
 	<a href="#">로그인</a>
 	<a href="#">회원가입</a>

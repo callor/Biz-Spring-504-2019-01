@@ -1,5 +1,7 @@
 package com.biz.memo02.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,13 @@ public class MemoService {
 		// 그 리턴값을 Controller 에게 다시 리턴한다
 		int ret = memoMapper.insert(vo);
 		return ret;
+	}
+
+	public List<MemoVO> selectAll() {
+
+		List<MemoVO> memoList = memoMapper.selectAll();
+		return memoList;
+	
 	}
 
 }
