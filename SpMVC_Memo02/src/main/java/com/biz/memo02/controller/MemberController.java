@@ -24,6 +24,13 @@ public class MemberController {
 		
 		model.addAttribute("BODY","MEMBER_JOIN");
 		
+		
+		MemberVO vo = new MemberVO();
+		vo.setM_city("JEJU");
+		vo.setM_hobby(new String[]{"MOUNT","MOVIE"});
+		model.addAttribute("memberVO",vo);
+		
+		
 		return "home" ;
 	
 	}

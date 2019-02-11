@@ -8,9 +8,24 @@ import java.util.TreeMap;
 
 import org.springframework.stereotype.Service;
 
+import com.biz.memo02.vo.CodeVO;
+
 @Service	
 public class MemberService {
 
+	
+	public List<CodeVO> getCities() {
+		List<CodeVO> cities = new ArrayList<CodeVO>();
+		
+		cities.add(new CodeVO("광주광역시","GWANGJU"));
+		cities.add(new CodeVO("서울특별시","SEOUL"));
+		cities.add(new CodeVO("부산광역시","BUSAN"));
+		cities.add(new CodeVO("제주특별자치도","JEJU"));
+		cities.add(new CodeVO("인천광역시","INCHUN"));
+		cities.add(new CodeVO("대전광역시","DAEJUN"));
+		
+		return cities;
+	}
 	
 	/*
 	 * Map<Key,Value> 
@@ -18,7 +33,7 @@ public class MemberService {
 	 * 값을 추가할때는 : map.put(key,value)
 	 * 값을 읽을때는 : map.key 형태로 값을 읽는다.
 	 */
-	public Map<String,String> getCities() {
+	public Map<String,String> getCitiesMap() {
 		/*
 		 * HashMap은 put 한 순서대로 나열
 		 * TreeMap은 key를 기준으로 오름차순 정렬
@@ -51,7 +66,17 @@ public class MemberService {
 		
 	}
 	
-	public Map<String,String> getHobbies() {
+	public List<CodeVO> getHobbies() {
+		List<CodeVO> hobbies = new ArrayList();
+		hobbies.add(new CodeVO("독서","BOOK"));
+		hobbies.add(new CodeVO("등산","MOUNT"));
+		hobbies.add(new CodeVO("음악감상","MUSIC"));
+		hobbies.add(new CodeVO("영화보기","MOVIE"));
+		hobbies.add(new CodeVO("게임하기","GAME"));
+		return hobbies;
+	}
+	
+	public Map<String,String> getHobbiesMap() {
 		Map<String,String> hobbies = new HashMap<String,String>();
 		hobbies.put("BOOK","독서");
 		hobbies.put("MOUNT","등산");

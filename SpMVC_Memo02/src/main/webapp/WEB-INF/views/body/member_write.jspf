@@ -1,51 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
 <link rel="stylesheet" 
-	href=<c:url value="/css/member_input_style.css" /> >
+	href=<c:url value="/css/member_input_style1.css" /> >
 <section>
-	<form action=<c:url value="/member"/> method="POST">
-
-		<label for="m_userid">아이디</label>
-		<input type="text" id="m_userid" name="m_userid"><br/>
-
-		<label for="m_password">비밀번호</label>
-		<input type="password" id="m_password" name="m_password"><br/>
-
-		<label for="m_re_password">비밀번호 확인</label>
-		<input type="password" id="m_re_password" name="m_re_password"><br/>
-
-		<label for="m_name">이름</label>
-		<input type="text" id="m_name" name="m_name"><br/>
-
-		<label for="m_tel">전화번호</label>
-		<input type="tel" id="m_tel" name="m_tel"><br/>
-
-		<label for="m_city">시/도</label>
-		<select id="m_city" name="m_city">
-			<c:forEach items="${CITIES}" var="city">
-			<%/*
-				controller에서 MEMBER라는 객체에 값을 받아 왔다고 가정하고
-				MEMBER 객체의 m_city에 저장된 값으로 Select를 선택하게 한다.
-			
-			*/%>
-				<option 
-					<c:if test="${MEMBER.m_city eq city.value}">selected</c:if> 
-						value="${city.value}">${city.key}</option>
-			</c:forEach>
-		</select><br/>
+	<%/*
+		form taglib 는 Spring의 확장된 form 작성 커멘트이다
+		for:form 은 기본 method로 POST 로 설정된다
 		
-		<label for="m_addr">주소</label>
-		<input type="text" id="m_addr" name="m_addr"><br/>
+		form:form의 modelAttribute는
+			form 내부에 path로 지정된 변수들이
+			설정된 vo를 명시해 준다.
+	
+			modelAttribut를 명시 하므로 해서
+			나중의 확장기능을 사용하는데
+			매우 편리하게 응용할 수 있다.
+	
+	*/ %>
 
-		<label for="m_hobby">취미</label>
-		<c:forEach items="${HOBBIES}" var="hobby">
-			<input type="checkbox" 
-					name="m_hobby" value="${hobby.key}">${hobby.value}
-		</c:forEach>
+	<form:form action="member" 
+		modelAttribute="memberVO">
+
+		<form:label path="m_userid" 
+			class="m_label">아이디</form:label>
+		<form:input path="m_userid" 
+			id="m_userid"
+			class="m_box" 
+			placeholder="아이디를 입력하세요"/>
+		
+		<form:label path="m_password" 
+			class="m_label">비밀번호</form:label>
+		<form:password path="m_password" 
+			id="m_password"
+			class="m_box"
+			placeholder="비밀번호를 입력하세요"/>
+
+		<form:label path="m_password" 
+			class="m_label">비밀번호확인</form:label>
+		<form:password path="m_re_password" 
+			id="m_re_password"
+			class="m_box"
+			placeholder="비밀번호를 한번 더 입력하세요"/>
+
+		<form:label path="m_name" 
+			class="m_label">이름</form:label>
+		<form:input path="m_name" 
+			id="m_name"
+			class="m_box"
+			placeholder="이름을 입력하세요"/>
+
+		<form:label path="m_tel" 
+			class="m_label">전화번호</form:label>
+		<form:input path="m_tel" 
+			id="m_tel"
+			class="m_box"
+			placeholder="전화번호를 입력하세요"/>
+
+		<form:label path="m_city" class="m_label">시/도</form:label>
+		<form:select path="m_city" class="m_box">
+			<form:options items="${CITIES}" 
+				itemLabel="label" 
+				itemValue="value"/>
+		</form:select>
+		
+		<form:label path="m_addr" class="m_label">주소</form:label>
+		<form:input path="m_addr" id="m_addr" class="m_box" />
+
+		<form:label path="m_addr" class="m_label">취미</form:label>
+		<div class="m_hobby_div">
+			<form:checkboxes path="m_hobby" items="${HOBBIES}" 
+					itemLabel="label" itemValue="value" />
+		</div>
 	
 		<hr />
 		<label></label>
-		<button>회원가입</button>
-	</form>
+		<form:button>회원가입</form:button>
+	</form:form>
+	
 </section>

@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+label.m_label {
+	
+	display: block;
+	width:130px;
+	float:left;
+	
+	font-weight: bold;
+	color : #99a052;
+	font-size: 11pt;
+
+	padding:8px;
+	text-align: right;
+
+	
+}
+
+/* input tag와 textarea tag에 공통된 스타일을 지정하라 */
+.m_box {
+
+	/* label과 나란히 input box를 배치하기 위해서 */
+	display: inline-block;
+	width:80%;
+	margin:3px;
+	padding:8px;
+	border : 1px solid #ccc;
+}
+
+select {
+	
+	font-size:12pt;
+	color:blue;
+	
+}
+
+.m_hobby_div {
+	
+	margin:3px;
+	padding:5px;
+	display: inline-block;
+	width:80%;
+	border:1px solid #ccc;
+	text-align: left;
+}
+
+input[type="checkbox"] {
+	position:relative;
+	/* top:1.5px; */
+}
+
+.m_hobby_div label {
+	display: inline;
+	padding:8px;
+	text-align: right;
+	font-weight: normal;
+	color:black;
+	position: relative;
+	/* top:-1.5px; */
+}
+
+button {
+	margin-bottom: 10px;
+	width:120px;
+	background: blue;
+	color:white;
+	font-weight: bold;
+	padding:0.5em;
+	border: none;
+}
+
+button:hover {
+	background-color: green;
+	color:yellow;
+}
+
+
+
+
