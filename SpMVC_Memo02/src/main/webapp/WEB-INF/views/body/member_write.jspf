@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<link rel="stylesheet" 
+	href=<c:url value="/css/member_input_style.css" /> >
+<section>
+	<form action=<c:url value="/member"/> method="POST">
+
+		<label for="m_userid">아이디</label>
+		<input type="text" id="m_userid" name="m_userid"><br/>
+
+		<label for="m_password">비밀번호</label>
+		<input type="password" id="m_password" name="m_password"><br/>
+
+		<label for="m_re_password">비밀번호 확인</label>
+		<input type="password" id="m_re_password" name="m_re_password"><br/>
+
+		<label for="m_name">이름</label>
+		<input type="text" id="m_name" name="m_name"><br/>
+
+		<label for="m_tel">전화번호</label>
+		<input type="tel" id="m_tel" name="m_tel"><br/>
+
+		<label for="m_city">시/도</label>
+		<select id="m_city" name="m_city">
+			<c:forEach items="${CITIES}" var="city">
+			<%/*
+				controller에서 MEMBER라는 객체에 값을 받아 왔다고 가정하고
+				MEMBER 객체의 m_city에 저장된 값으로 Select를 선택하게 한다.
+			
+			*/%>
+				<option 
+					<c:if test="${MEMBER.m_city eq city.value}">selected</c:if> 
+						value="${city.value}">${city.key}</option>
+			</c:forEach>
+		</select><br/>
+		
+		<label for="m_addr">주소</label>
+		<input type="text" id="m_addr" name="m_addr"><br/>
+
+		<label for="m_hobby">취미</label>
+		<c:forEach items="${HOBBIES}" var="hobby">
+			<input type="checkbox" 
+					name="m_hobby" value="${hobby.key}">${hobby.value}
+		</c:forEach>
+	
+		<hr />
+		<label></label>
+		<button>회원가입</button>
+	</form>
+</section>
