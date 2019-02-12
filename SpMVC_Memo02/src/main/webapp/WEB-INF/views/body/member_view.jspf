@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<h3>회원가입을 축하합니다.</h3>    
+<h4>아이디 : ${MEMBER.m_userid}</h4>
+<h4>비밀번호  ${MEMBER.m_password}</h4>
+<h4>이름 : ${MEMBER.m_name}</h4>
+<h4>전화번호 : ${MEMBER.m_tel}</h4>
+<h4>시/도 : ${MEMBER.m_city}</h4>
+<h4>주소 : ${MEMBER.m_addr}</h4>

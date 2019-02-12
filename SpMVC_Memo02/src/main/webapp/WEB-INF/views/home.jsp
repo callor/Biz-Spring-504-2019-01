@@ -24,7 +24,9 @@
 	<c:if test="${BODY == 'MEMBER_JOIN' }" >
 		<%@ include file="/WEB-INF/views/body/member_write.jspf" %>
 	</c:if>
-
+	<c:if test="${BODY == 'MEMBER-VIEW'}">
+		<%@ include file="/WEB-INF/views/body/member_view.jspf" %>
+	</c:if>
 
 </section>
 <footer>

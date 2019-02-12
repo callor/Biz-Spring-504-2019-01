@@ -19,8 +19,7 @@
 	
 	*/ %>
 
-	<form:form action="member" 
-		modelAttribute="memberVO">
+	<form:form action="member" modelAttribute="memberVO">
 
 		<form:label path="m_userid" 
 			class="m_label">아이디</form:label>

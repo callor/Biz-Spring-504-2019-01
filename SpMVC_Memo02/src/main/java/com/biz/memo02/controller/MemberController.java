@@ -26,10 +26,13 @@ public class MemberController {
 		
 		
 		MemberVO vo = new MemberVO();
+		
+		// 회원정보 수정할때
+		// DB에서 읽은 값을 form에 setting하는 예제를 만들어 보기
 		vo.setM_city("JEJU");
 		vo.setM_hobby(new String[]{"MOUNT","MOVIE"});
-		model.addAttribute("memberVO",vo);
 		
+		model.addAttribute("memberVO",vo);
 		
 		return "home" ;
 	
@@ -46,8 +49,14 @@ public class MemberController {
 	@RequestMapping(value="member",method=RequestMethod.POST)
 	public String member(Model model, 
 			@ModelAttribute MemberVO memberVO ) {
-		System.out.println(memberVO);
+
+		mService.insert(memberVO);
+		
+		model.addAttribute("BODY","MEMBER-VIEW");
+		model.addAttribute("MEMBER", memberVO);
+		
 		return "home";
+	
 	}
 	
 }

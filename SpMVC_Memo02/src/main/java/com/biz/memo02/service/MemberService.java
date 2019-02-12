@@ -6,13 +6,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.biz.memo02.dao.MemberDao;
 import com.biz.memo02.vo.CodeVO;
+import com.biz.memo02.vo.MemberVO;
 
 @Service	
 public class MemberService {
 
+	@Autowired
+	MemberDao memberDao;
 	
 	public List<CodeVO> getCities() {
 		List<CodeVO> cities = new ArrayList<CodeVO>();
@@ -94,5 +99,10 @@ public class MemberService {
 		hobbies.add("영화감상");
 		hobbies.add("게임");
 		return hobbies;
+	}
+
+	public int insert(MemberVO memberVO) {
+		int ret = memberDao.insert(memberVO);
+		return ret;
 	}
 }
