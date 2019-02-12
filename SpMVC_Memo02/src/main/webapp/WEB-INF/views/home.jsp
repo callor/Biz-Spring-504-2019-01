@@ -28,6 +28,7 @@
 		<%@ include file="/WEB-INF/views/body/member_view.jspf" %>
 	</c:if>
 
+
 </section>
 <footer>
 	<address>CopyRight &copy; callor@callor.com</address>
