@@ -23,7 +23,7 @@ public interface MemberDao {
 	// 아이디와 비번을 매개변수로 받아서
 	// 로그인 정보를 조회하는 method
 	@Select(MemberSQL.MEMBER_USER_CHECK)
-	public MemberVO userCheck(String m_userid, String m_password);
+	public MemberVO userCheck(MemberVO vo);
 		
 	@Insert(MemberSQL.MEMBER_INSERT)
 	public int insert(MemberVO vo);

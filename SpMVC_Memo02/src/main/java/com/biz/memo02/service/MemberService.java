@@ -105,4 +105,9 @@ public class MemberService {
 		int ret = memberDao.insert(memberVO);
 		return ret;
 	}
+
+	public MemberVO userCheck(MemberVO vo) {
+		vo = memberDao.userCheck(vo);
+		return vo;
+	}
 }

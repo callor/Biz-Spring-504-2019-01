@@ -15,8 +15,16 @@
 	%>
 	<a href="${pageContext.request.contextPath}/">Home</a>
 	<a href="${rootPath}/memo">메모작성</a>
-	<a href="#">로그인</a>
-	<a href="${rootPath}/member">회원가입</a>
+	
+	<c:if test="${empty LOGIN}" >
+		<a href="#" id="login">로그인</a>
+		<a href="${rootPath}/member">회원가입</a>
+	</c:if>
+
+	<c:if test="${not empty LOGIN}">
+		<a>${LOGIN.m_name}님 환영합니다</a>
+		<a href="${rootPath}/logout">로그아웃</a>
+	</c:if>
 	<a href="#">About</a>
 	
 </nav>

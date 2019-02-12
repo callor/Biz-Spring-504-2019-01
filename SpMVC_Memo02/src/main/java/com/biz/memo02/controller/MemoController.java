@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.biz.memo02.service.MemoService;
+import com.biz.memo02.vo.MemberVO;
 import com.biz.memo02.vo.MemoVO;
 
 @Controller
@@ -36,6 +37,7 @@ public class MemoController {
 		
 		model.addAttribute("MEMOS",memoList);
 		model.addAttribute("BODY","LIST");
+		model.addAttribute("memberVO",new MemberVO());
 		return "home";
 	}
 	
