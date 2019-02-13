@@ -50,6 +50,10 @@
 		background-color: rgba(60,100,160,0.9)
 	}
 	
+	footer address {
+	
+	}
+	
 	#main-container {
 		display: flex;
 		flex-flow : row wrap;
