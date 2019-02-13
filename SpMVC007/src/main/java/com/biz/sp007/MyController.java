@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-// Å¬·¡½º ÀÌ¸§¿¡ @Controller AnnotationÀ» ¼³Á¤ÇÏ¸é
-// ÇÁ·ÎÁ§Æ®¸¦ ´Ù½Ã ½ÇÇà ÇØ ÁÖ¸é
-// tomcatÀÌ ÇØ´ç Å¬·¡½º¸¦ Controller·Î ÀÎ½ÄÀ» ÇÏ°í
-// req¸¦ Ã³¸®ÇÒ ÁØºñ°¡ µÇ¾î ÀÖ´Ù°í ÆÇ´ÜÀ»ÇÑ´Ù.
+// í´ë˜ìŠ¤ ì´ë¦„ì— @Controller Annotationì„ ì„¤ì •í•˜ë©´
+// í”„ë¡œì íŠ¸ë¥¼ ë‹¤ì‹œ ì‹¤í–‰ í•´ ì£¼ë©´
+// tomcatì´ í•´ë‹¹ í´ë˜ìŠ¤ë¥¼ Controllerë¡œ ì¸ì‹ì„ í•˜ê³ 
+// reqë¥¼ ì²˜ë¦¬í•  ì¤€ë¹„ê°€ ë˜ì–´ ìˆë‹¤ê³  íŒë‹¨ì„í•œë‹¤.
 
 @Controller
 public class MyController {
@@ -21,14 +21,14 @@ public class MyController {
 	}
 	
 	/*
-	 *  jspÆÄÀÏÀÇ form¿¡ input boxµéÀ» ³ª¿­ÇÏ°í
-	 *  °¢ input boxµé¿¡ name ¼Ó¼ºÀ» ¼³Á¤ÇØÁÖ°í
-	 *  ºê¶ó¿ìÀú¿¡¼­ box¿¡ ¹®ÀÚ¿­À» ÀÔ·ÂÇÑ ÈÄ Àü¼ÛÀ» ÇÏ¸é
+	 *  jspíŒŒì¼ì˜ formì— input boxë“¤ì„ ë‚˜ì—´í•˜ê³ 
+	 *  ê° input boxë“¤ì— name ì†ì„±ì„ ì„¤ì •í•´ì£¼ê³ 
+	 *  ë¸Œë¼ìš°ì €ì—ì„œ boxì— ë¬¸ìì—´ì„ ì…ë ¥í•œ í›„ ì „ì†¡ì„ í•˜ë©´
 	 *  
-	 *  ±× °ªµéÀÌ ¼­¹ö·Î ¸ğµÎ °°ÀÌ Àü¼ÛÀÌ µÇ°í
-	 *  ControllerÀÇ method¿¡ ¸Å°³º¯¼öµéÀ» °°Àº ÀÌ¸§À¸·Î ¼³Á¤ÇØÁÖ¸é
+	 *  ê·¸ ê°’ë“¤ì´ ì„œë²„ë¡œ ëª¨ë‘ ê°™ì´ ì „ì†¡ì´ ë˜ê³ 
+	 *  Controllerì˜ methodì— ë§¤ê°œë³€ìˆ˜ë“¤ì„ ê°™ì€ ì´ë¦„ìœ¼ë¡œ ì„¤ì •í•´ì£¼ë©´
 	 *  
-	 *   form¿¡ Àü¼ÛÇÑ µ¥ÀÌÅÍ¸¦ ¹ŞÀ» ¼ö ÀÖ´Ù
+	 *   formì— ì „ì†¡í•œ ë°ì´í„°ë¥¼ ë°›ì„ ìˆ˜ ìˆë‹¤
 	 */
 	@RequestMapping(value="calc",method=RequestMethod.POST)
 	public String calc1(Model model,

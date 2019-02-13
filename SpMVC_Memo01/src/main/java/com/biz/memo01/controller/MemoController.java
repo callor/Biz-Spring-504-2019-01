@@ -41,12 +41,12 @@ public class MemoController {
 	@RequestMapping(value="memo_write", method = RequestMethod.GET)
 	public String memo_write(Model model) {
 		
-		// 1.7 ÀÌÇÏ¹öÀü
+		// 1.7 ì´í•˜ë²„ì „
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String today = sf.format(date);
 		
-		// 1.8 ÀÌ»ó¿¡¼­
+		// 1.8 ì´ìƒì—ì„œ
 		LocalDate localDate = LocalDate.now();
 		today = localDate.toString();
 	
@@ -64,13 +64,13 @@ public class MemoController {
 		memoService.memo_write(vo);
 		// memoService.insert(vo);
 		// System.out.println(vo);
-		// Mapper Method¿¡¼­ ¹®ÀÚ¿­À» return ÇÏ¸é
-		// /WEB-INF/views Æú´õ¿¡ ÀÖ´Â jsp ÆÄÀÏÀ» ÀĞ¾î¼­ 
-		// ·»´õ¸µÀ» ÇÏµµ·Ï ±âº»°ªÀ¸·Î ¼³Á¤ µÇ¾î ÀÖ´Ù.
+		// Mapper Methodì—ì„œ ë¬¸ìì—´ì„ return í•˜ë©´
+		// /WEB-INF/views í´ë”ì— ìˆëŠ” jsp íŒŒì¼ì„ ì½ì–´ì„œ 
+		// ë Œë”ë§ì„ í•˜ë„ë¡ ê¸°ë³¸ê°’ìœ¼ë¡œ ì„¤ì • ë˜ì–´ ìˆë‹¤.
 		//
-		// ¹®ÀÚ¿­ÀÇ ½ÃÀÛÀ» redirect: À¸·Î ÇÏ¸é
-		// springÀº views¸¦ responseÇÏ´Â ´ë½Å¿¡
-		// °­Á¦·Î req ÁÖ¼Ò¸¦ º¯°æÇÑ´Ù.
+		// ë¬¸ìì—´ì˜ ì‹œì‘ì„ redirect: ìœ¼ë¡œ í•˜ë©´
+		// springì€ viewsë¥¼ responseí•˜ëŠ” ëŒ€ì‹ ì—
+		// ê°•ì œë¡œ req ì£¼ì†Œë¥¼ ë³€ê²½í•œë‹¤.
 		return "redirect:memo";
 		// returm "memo" ;
 	}

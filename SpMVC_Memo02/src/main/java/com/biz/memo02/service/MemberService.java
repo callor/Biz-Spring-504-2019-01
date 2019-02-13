@@ -22,38 +22,38 @@ public class MemberService {
 	public List<CodeVO> getCities() {
 		List<CodeVO> cities = new ArrayList<CodeVO>();
 		
-		cities.add(new CodeVO("±¤ÁÖ±¤¿ª½Ã","GWANGJU"));
-		cities.add(new CodeVO("¼­¿ïÆ¯º°½Ã","SEOUL"));
-		cities.add(new CodeVO("ºÎ»ê±¤¿ª½Ã","BUSAN"));
-		cities.add(new CodeVO("Á¦ÁÖÆ¯º°ÀÚÄ¡µµ","JEJU"));
-		cities.add(new CodeVO("ÀÎÃµ±¤¿ª½Ã","INCHUN"));
-		cities.add(new CodeVO("´ëÀü±¤¿ª½Ã","DAEJUN"));
+		cities.add(new CodeVO("ê´‘ì£¼ê´‘ì—­ì‹œ","GWANGJU"));
+		cities.add(new CodeVO("ì„œìš¸íŠ¹ë³„ì‹œ","SEOUL"));
+		cities.add(new CodeVO("ë¶€ì‚°ê´‘ì—­ì‹œ","BUSAN"));
+		cities.add(new CodeVO("ì œì£¼íŠ¹ë³„ìì¹˜ë„","JEJU"));
+		cities.add(new CodeVO("ì¸ì²œê´‘ì—­ì‹œ","INCHUN"));
+		cities.add(new CodeVO("ëŒ€ì „ê´‘ì—­ì‹œ","DAEJUN"));
 		
 		return cities;
 	}
 	
 	/*
 	 * Map<Key,Value> 
-	 * Å°¿Í °ªÀÇ ½ÖÀ¸·Î ±¸¼ºµÈ ÀÚ·á±¸Á¶
-	 * °ªÀ» Ãß°¡ÇÒ¶§´Â : map.put(key,value)
-	 * °ªÀ» ÀĞÀ»¶§´Â : map.key ÇüÅÂ·Î °ªÀ» ÀĞ´Â´Ù.
+	 * í‚¤ì™€ ê°’ì˜ ìŒìœ¼ë¡œ êµ¬ì„±ëœ ìë£Œêµ¬ì¡°
+	 * ê°’ì„ ì¶”ê°€í• ë•ŒëŠ” : map.put(key,value)
+	 * ê°’ì„ ì½ì„ë•ŒëŠ” : map.key í˜•íƒœë¡œ ê°’ì„ ì½ëŠ”ë‹¤.
 	 */
 	public Map<String,String> getCitiesMap() {
 		/*
-		 * HashMapÀº put ÇÑ ¼ø¼­´ë·Î ³ª¿­
-		 * TreeMapÀº key¸¦ ±âÁØÀ¸·Î ¿À¸§Â÷¼ø Á¤·Ä
+		 * HashMapì€ put í•œ ìˆœì„œëŒ€ë¡œ ë‚˜ì—´
+		 * TreeMapì€ keyë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
 		 * 
-		 * MapÀº keyÀÇ Áßº¹À» Çã¿ëÇÏÁö ¾Ê´Â´Ù.
+		 * Mapì€ keyì˜ ì¤‘ë³µì„ í—ˆìš©í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		 */
 		Map<String,String> cities = new HashMap<String,String>();
 		cities = new TreeMap<String,String>();
 		
-		cities.put("¼­¿ïÆ¯º°½Ã","SEOUL");
-		cities.put("±¤ÁÖ±¤¿ª½Ã","GWANGJU");
-		cities.put("ÀÎÃµ±¤¿ª½Ã","INCHUN");
-		cities.put("´ëÀü±¤¿ª½Ã","DAEJUN");
-		cities.put("ºÎ»ê±¤¿ª½Ã","BUSAN");
-		cities.put("Á¦ÁÖÆ¯º°ÀÚÄ¡µµ","JEJU");
+		cities.put("ì„œìš¸íŠ¹ë³„ì‹œ","SEOUL");
+		cities.put("ê´‘ì£¼ê´‘ì—­ì‹œ","GWANGJU");
+		cities.put("ì¸ì²œê´‘ì—­ì‹œ","INCHUN");
+		cities.put("ëŒ€ì „ê´‘ì—­ì‹œ","DAEJUN");
+		cities.put("ë¶€ì‚°ê´‘ì—­ì‹œ","BUSAN");
+		cities.put("ì œì£¼íŠ¹ë³„ìì¹˜ë„","JEJU");
 		
 		return cities;
 	}
@@ -61,43 +61,43 @@ public class MemberService {
 	public List<String> getCitiesList() {
 		
 		List<String> cities = new ArrayList<String>();
-		cities.add("±¤ÁÖ¿ª½Ã");
-		cities.add("¼­¿ïÆ¯º°½Ã");
-		cities.add("¿ï»ê±¤¿ª½Ã");
-		cities.add("ºÎ»ê±¤¿ª½Ã");
-		cities.add("ÀÎÃµ±¤¿ª½Ã");
-		cities.add("Á¦ÁÖÆ¯º°ÀÚÄ¡µµ");
+		cities.add("ê´‘ì£¼ì—­ì‹œ");
+		cities.add("ì„œìš¸íŠ¹ë³„ì‹œ");
+		cities.add("ìš¸ì‚°ê´‘ì—­ì‹œ");
+		cities.add("ë¶€ì‚°ê´‘ì—­ì‹œ");
+		cities.add("ì¸ì²œê´‘ì—­ì‹œ");
+		cities.add("ì œì£¼íŠ¹ë³„ìì¹˜ë„");
 		return cities;
 		
 	}
 	
 	public List<CodeVO> getHobbies() {
 		List<CodeVO> hobbies = new ArrayList();
-		hobbies.add(new CodeVO("µ¶¼­","BOOK"));
-		hobbies.add(new CodeVO("µî»ê","MOUNT"));
-		hobbies.add(new CodeVO("À½¾Ç°¨»ó","MUSIC"));
-		hobbies.add(new CodeVO("¿µÈ­º¸±â","MOVIE"));
-		hobbies.add(new CodeVO("°ÔÀÓÇÏ±â","GAME"));
+		hobbies.add(new CodeVO("ë…ì„œ","BOOK"));
+		hobbies.add(new CodeVO("ë“±ì‚°","MOUNT"));
+		hobbies.add(new CodeVO("ìŒì•…ê°ìƒ","MUSIC"));
+		hobbies.add(new CodeVO("ì˜í™”ë³´ê¸°","MOVIE"));
+		hobbies.add(new CodeVO("ê²Œì„í•˜ê¸°","GAME"));
 		return hobbies;
 	}
 	
 	public Map<String,String> getHobbiesMap() {
 		Map<String,String> hobbies = new HashMap<String,String>();
-		hobbies.put("BOOK","µ¶¼­");
-		hobbies.put("MOUNT","µî»ê");
-		hobbies.put("MUSIC","À½¾Ç°¨»ó");
-		hobbies.put("GAME","°ÔÀÓ");
-		hobbies.put("MOVIE","¿µÈ­°¨»ó");
+		hobbies.put("BOOK","ë…ì„œ");
+		hobbies.put("MOUNT","ë“±ì‚°");
+		hobbies.put("MUSIC","ìŒì•…ê°ìƒ");
+		hobbies.put("GAME","ê²Œì„");
+		hobbies.put("MOVIE","ì˜í™”ê°ìƒ");
 		return hobbies;
 	}
 	
 	public List<String> getHobbiesList() {
 		List<String> hobbies = new ArrayList<String>();
-		hobbies.add("µ¶¼­");
-		hobbies.add("µî»ê");
-		hobbies.add("À½¾Ç°¨»ó");
-		hobbies.add("¿µÈ­°¨»ó");
-		hobbies.add("°ÔÀÓ");
+		hobbies.add("ë…ì„œ");
+		hobbies.add("ë“±ì‚°");
+		hobbies.add("ìŒì•…ê°ìƒ");
+		hobbies.add("ì˜í™”ê°ìƒ");
+		hobbies.add("ê²Œì„");
 		return hobbies;
 	}
 

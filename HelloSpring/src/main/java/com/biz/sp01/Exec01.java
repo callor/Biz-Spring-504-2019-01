@@ -10,39 +10,39 @@ public class Exec01 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		¹®Ç×VO[] ¹®Ç× = new ¹®Ç×VO[4];
+		ë¬¸í•­VO[] ë¬¸í•­ = new ë¬¸í•­VO[4];
 		for(int i = 0 ; i < 4 ; i++) {
-			¹®Ç×[i] = new ¹®Ç×VO();
+			ë¬¸í•­[i] = new ë¬¸í•­VO();
 		}
 
-		¹®Ç×[0].¹®Ç× = "´ëÇÑ¹Î±¹";
-		¹®Ç×[0].Á¤´ä = 1;
+		ë¬¸í•­[0].ë¬¸í•­ = "ëŒ€í•œë¯¼êµ­";
+		ë¬¸í•­[0].ì •ë‹µ = 1;
 		
-		¹®Ç×[1].¹®Ç× = "¹Ì±¹";
-		¹®Ç×[1].Á¤´ä = -1;
+		ë¬¸í•­[1].ë¬¸í•­ = "ë¯¸êµ­";
+		ë¬¸í•­[1].ì •ë‹µ = -1;
 
-		¹®Ç×[2].¹®Ç× = "¼Ò·Ã";
-		¹®Ç×[2].Á¤´ä = -1;
+		ë¬¸í•­[2].ë¬¸í•­ = "ì†Œë ¨";
+		ë¬¸í•­[2].ì •ë‹µ = -1;
 
-		¹®Ç×[3].¹®Ç× = "¿µ±¹";
-		¹®Ç×[3].Á¤´ä = -1;
+		ë¬¸í•­[3].ë¬¸í•­ = "ì˜êµ­";
+		ë¬¸í•­[3].ì •ë‹µ = -1;
 		
-		Collections.shuffle(Arrays.asList(¹®Ç×));
+		Collections.shuffle(Arrays.asList(ë¬¸í•­));
 		
-		System.out.println("´ÙÀ½Áß ¼­¿ïÀÌ ¼öµµÀÎ ³ª¶ó´Â");
+		System.out.println("ë‹¤ìŒì¤‘ ì„œìš¸ì´ ìˆ˜ë„ì¸ ë‚˜ë¼ëŠ”");
 		for(int i = 0 ; i < 4 ; i++) {
-			System.out.println((i+1) + ¹®Ç×[i].¹®Ç×);
+			System.out.println((i+1) + ë¬¸í•­[i].ë¬¸í•­);
 		}
 		Scanner scan = new Scanner(System.in);
-		System.out.print("¼±ÅÃ >>");
+		System.out.print("ì„ íƒ >>");
 		String strN = scan.nextLine();
 		
 		int intN = Integer.valueOf(strN);
 		
-		if(¹®Ç×[intN - 1].Á¤´ä == 1) {
-			System.out.println("Âü ÀßÇß¾î¿ä");
+		if(ë¬¸í•­[intN - 1].ì •ë‹µ == 1) {
+			System.out.println("ì°¸ ì˜í–ˆì–´ìš”");
 		} else {
-			System.out.println("±×°Íµµ ¸ğ¸£´Ï");
+			System.out.println("ê·¸ê²ƒë„ ëª¨ë¥´ë‹ˆ");
 		}
 		
 		

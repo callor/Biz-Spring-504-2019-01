@@ -13,7 +13,7 @@ public class BookService {
 	public BookVO changeAuth(BookVO vo) {
 
 		String strAuth = vo.getB_auth();
-		strAuth += " >> ÀÌ¸ù·æ";
+		strAuth += " >> ì´ëª½ë£¡";
 		return vo;
 	
 	}

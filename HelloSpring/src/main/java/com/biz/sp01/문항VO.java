@@ -1,6 +1,6 @@
 package com.biz.sp01;
 
-public class ¹®Ç×VO {
-		String ¹®Ç×;
-		int Á¤´ä;
+public class ë¬¸í•­VO {
+		String ë¬¸í•­;
+		int ì •ë‹µ;
 }

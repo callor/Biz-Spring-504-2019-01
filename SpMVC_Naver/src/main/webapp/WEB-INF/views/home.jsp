@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-widhth, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>네이버는 내친구</title>
 <style>
 	html,body {
@@ -53,12 +53,13 @@
 	#main-container {
 		display: flex;
 		flex-flow : row wrap;
-		height: 100%;
+		flex: 1 0 auto;
 	}
 	
 	#search {
 		margin:10px;
 	}
+	
 </style>
 </head>
 <body>

@@ -29,8 +29,8 @@ public class MemberController {
 		
 		MemberVO vo = new MemberVO();
 		
-		// È¸¿øÁ¤º¸ ¼öÁ¤ÇÒ¶§
-		// DB¿¡¼­ ÀĞÀº °ªÀ» form¿¡ settingÇÏ´Â ¿¹Á¦¸¦ ¸¸µé¾î º¸±â
+		// íšŒì›ì •ë³´ ìˆ˜ì •í• ë•Œ
+		// DBì—ì„œ ì½ì€ ê°’ì„ formì— settingí•˜ëŠ” ì˜ˆì œë¥¼ ë§Œë“¤ì–´ ë³´ê¸°
 		vo.setM_city("JEJU");
 		vo.setM_hobby(new String[]{"MOUNT","MOVIE"});
 		
@@ -41,12 +41,12 @@ public class MemberController {
 	}
 	
 	/*
-	 * @ModelAttribute AnnotationÀº formÀ¸·Î ºÎÅÍ Àü¼ÛµÇ¾î¿Â
-	 * µ¥ÀÌÅÍµéÀ» VO¿¡ ÀÚµ¿À¸·Î mapping ½ÃÅ°´Â command AnnotationÀÌ´Ù
+	 * @ModelAttribute Annotationì€ formìœ¼ë¡œ ë¶€í„° ì „ì†¡ë˜ì–´ì˜¨
+	 * ë°ì´í„°ë“¤ì„ VOì— ìë™ìœ¼ë¡œ mapping ì‹œí‚¤ëŠ” command Annotationì´ë‹¤
 	 * 
-	 * ÀÌ AnnotationÀº ¹İµå½Ã VO ¾Õ¿¡ À§Ä¡ ½ÃÄÑ¾ß ÇÑ´Ù.
+	 * ì´ Annotationì€ ë°˜ë“œì‹œ VO ì•ì— ìœ„ì¹˜ ì‹œì¼œì•¼ í•œë‹¤.
 	 * 
-	 * Àı´ë Model ¾Õ¿¡ ³õÀ¸¸é ¾ÈµÈ´Ù.
+	 * ì ˆëŒ€ Model ì•ì— ë†“ìœ¼ë©´ ì•ˆëœë‹¤.
 	 */
 	@RequestMapping(value="member",method=RequestMethod.POST)
 	public String member(Model model, 
@@ -72,24 +72,24 @@ public class MemberController {
 			Model model, HttpSession session) {
 		
 		/*
-		 * ¼­ºñ½ºÀÇ userCheck¿¡°Ô vo¸¦ Àü´ŞÇÏ°í
-		 * DaoÀÇ userChek¸¦ »ç¿ëÇØ¼­ id¿Í password¸¦ Á¶È¸ÇÏ°í
-		 * °á°ú¸¦ return ¹Ş¾Æ¼­ vo¿¡ ´ã¾Ò´Ù.
+		 * ì„œë¹„ìŠ¤ì˜ userCheckì—ê²Œ voë¥¼ ì „ë‹¬í•˜ê³ 
+		 * Daoì˜ userChekë¥¼ ì‚¬ìš©í•´ì„œ idì™€ passwordë¥¼ ì¡°íšŒí•˜ê³ 
+		 * ê²°ê³¼ë¥¼ return ë°›ì•„ì„œ voì— ë‹´ì•˜ë‹¤.
 		 * 
-		 * ¸¸¾à id¿Í password°¡ ÀÏÄ¡ÇÏ¸é
-		 * vo´Â member µ¥ÀÌÅÍ¸¦ °®°í ÀÖÀ» °ÍÀÌ°í
-		 * ±×·¸Áö ¾ÊÀ¸¸é null°ªÀ» °®°Ô µÈ´Ù.
+		 * ë§Œì•½ idì™€ passwordê°€ ì¼ì¹˜í•˜ë©´
+		 * voëŠ” member ë°ì´í„°ë¥¼ ê°–ê³  ìˆì„ ê²ƒì´ê³ 
+		 * ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ nullê°’ì„ ê°–ê²Œ ëœë‹¤.
 		 * 
-		 *  Áï,vo°¡ nullÀÌ¸é login ½ÇÆĞ
-		 *  ¾Æ¸é ·Î±×ÀÎ ¼º°øÀÌ µÈ´Ù.
+		 *  ì¦‰,voê°€ nullì´ë©´ login ì‹¤íŒ¨
+		 *  ì•„ë©´ ë¡œê·¸ì¸ ì„±ê³µì´ ëœë‹¤.
 		 * 
 		 */
 		String ret = "";
 		MemberVO vo = mService.userCheck(memberVO);
 		if(vo == null) {
-			ret = "·Î±×ÀÎ ½ÇÆĞ";
+			ret = "ë¡œê·¸ì¸ ì‹¤íŒ¨";
 		} else {
-			ret = "·Î±×ÀÎ ¼º°ø";
+			ret = "ë¡œê·¸ì¸ ì„±ê³µ";
 			session.setAttribute("LOGIN", vo);
 		}
 		

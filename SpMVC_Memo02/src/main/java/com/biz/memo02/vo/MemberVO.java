@@ -8,7 +8,7 @@ import lombok.ToString;
 
 /*
  * 
- * È¸¿ø°¡ÀÔÀ» À§ÇÑ VO¸¦ »ý¼º
+ * íšŒì›ê°€ìž…ì„ ìœ„í•œ VOë¥¼ ìƒì„±
  * 
  */
 @NoArgsConstructor

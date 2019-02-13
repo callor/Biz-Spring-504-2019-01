@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-// @Data ´ë½Å °³º°ÀûÀ¸·Î ÇÊ¿äÇÑ ºÎºĞ¸¸ »ç¿ëÇÏ´Â ¹æ¹ı
+// @Data ëŒ€ì‹  ê°œë³„ì ìœ¼ë¡œ í•„ìš”í•œ ë¶€ë¶„ë§Œ ì‚¬ìš©í•˜ëŠ” ë°©ë²•
 @Getter
 @Setter
 @ToString

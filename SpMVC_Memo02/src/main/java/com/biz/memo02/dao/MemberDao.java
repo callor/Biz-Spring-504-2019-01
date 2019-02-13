@@ -20,8 +20,8 @@ public interface MemberDao {
 	@Select(" SELECT * FROM tbl_member WHERE m_userid = #{m_userid} ")
 	public MemberVO findByUserId(String m_userid);
 	
-	// ¾ÆÀÌµğ¿Í ºñ¹øÀ» ¸Å°³º¯¼ö·Î ¹Ş¾Æ¼­
-	// ·Î±×ÀÎ Á¤º¸¸¦ Á¶È¸ÇÏ´Â method
+	// ì•„ì´ë””ì™€ ë¹„ë²ˆì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ì„œ
+	// ë¡œê·¸ì¸ ì •ë³´ë¥¼ ì¡°íšŒí•˜ëŠ” method
 	@Select(MemberSQL.MEMBER_USER_CHECK)
 	public MemberVO userCheck(MemberVO vo);
 		

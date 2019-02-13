@@ -1,9 +1,9 @@
 package com.biz.naver.config;
 
 /*
- * ³×ÀÌ¹ö ¿ÀÇÂ API »ç¿ëµî·ÏÀ» ½ÇÇàÇÑ ÈÄ
- * º»ÀÎÀÇ CLIENT ID¿Í CLIENT SECRET¸¦ ÀÛ¼ºÇÑ ÈÄ
- * NaverClient ·Î ÆÄÀÏ ÀÌ¸§À» º¯°æÇÑ ÈÄ ÇÁ·ÎÁ§Æ®¸¦ ½ÇÇàÇÏ¼¼¿ä
+ * ë„¤ì´ë²„ ì˜¤í”ˆ API ì‚¬ìš©ë“±ë¡ì„ ì‹¤í–‰í•œ í›„
+ * ë³¸ì¸ì˜ CLIENT IDì™€ CLIENT SECRETë¥¼ ì‘ì„±í•œ í›„
+ * NaverClient ë¡œ íŒŒì¼ ì´ë¦„ì„ ë³€ê²½í•œ í›„ í”„ë¡œì íŠ¸ë¥¼ ì‹¤í–‰í•˜ì„¸ìš”
  */
 public class NaverClientSample {
 	public static final String ID = "YOUR CLIENT ID";

@@ -17,10 +17,10 @@ public class MemoService {
 	@Autowired
 	MemoDao memoMapper;
 	
-	// MemoDaoÀÇ selectAll() ¸Ş¼­µå¸¦ È£ÃâÇØ¼­
-	// SELECT SQLÀ» ½ÇÇàÇÑ ´ÙÀ½
-	// °á°ú¸¦ memoList¿¡ ¹Ş°í
-	// ¾Æ¹«·± °¡°ø ¾øÀÌ Controller·Î return
+	// MemoDaoì˜ selectAll() ë©”ì„œë“œë¥¼ í˜¸ì¶œí•´ì„œ
+	// SELECT SQLì„ ì‹¤í–‰í•œ ë‹¤ìŒ
+	// ê²°ê³¼ë¥¼ memoListì— ë°›ê³ 
+	// ì•„ë¬´ëŸ° ê°€ê³µ ì—†ì´ Controllerë¡œ return
 	public List<MemoVO> selectAll() {
 		List<MemoVO> memoList = memoMapper.selectAll();
 		return memoList;
@@ -48,12 +48,12 @@ public class MemoService {
 
 	public void memo_write(MemoVO vo) {
 
-		// vo¿¡´Â form¿¡¼­ º¸³»¿Â µ¥ÀÌÅÍ°¡ ´ã°Ü ÀÖ´Ù.
-		// vo member º¯¼öÁß¿¡¼­
-		// ¾ø´Â °ªÀÌ ÀÖ´Ù. == id°¡ ¾ø´Â »óÅÂ
+		// voì—ëŠ” formì—ì„œ ë³´ë‚´ì˜¨ ë°ì´í„°ê°€ ë‹´ê²¨ ìˆë‹¤.
+		// vo member ë³€ìˆ˜ì¤‘ì—ì„œ
+		// ì—†ëŠ” ê°’ì´ ìˆë‹¤. == idê°€ ì—†ëŠ” ìƒíƒœ
 		
-		// »õ·Î ¸Ş¸ğ¸¦ ÀÛ¼ºÇÏ±â ÇßÀ» °æ¿ì id °ªÀÌ ¾Æ¸¶µµ 0 ÀÏ°ÍÀÌ´Ù.
-		// ¸Ş¸ğ¸¦ ¼öÁ¤ÇÏ±â·Î ÇßÀ» °æ¿ì´Â id °ªÀÌ 0 ÀÌ ÀÌ¿Ü ÀÏ°ÍÀÌ´Ù.
+		// ìƒˆë¡œ ë©”ëª¨ë¥¼ ì‘ì„±í•˜ê¸° í–ˆì„ ê²½ìš° id ê°’ì´ ì•„ë§ˆë„ 0 ì¼ê²ƒì´ë‹¤.
+		// ë©”ëª¨ë¥¼ ìˆ˜ì •í•˜ê¸°ë¡œ í–ˆì„ ê²½ìš°ëŠ” id ê°’ì´ 0 ì´ ì´ì™¸ ì¼ê²ƒì´ë‹¤.
 		
 		if(vo.getId()>0) {
 			memoMapper.update(vo);

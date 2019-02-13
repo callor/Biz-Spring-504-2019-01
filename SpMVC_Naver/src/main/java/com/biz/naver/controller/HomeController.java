@@ -1,4 +1,4 @@
-package com.biz.naver;
+package com.biz.naver.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * home contor ÆíÁý
+ * home contor íŽ¸ì§‘
  * 
  * Handles requests for the application home page.
  */

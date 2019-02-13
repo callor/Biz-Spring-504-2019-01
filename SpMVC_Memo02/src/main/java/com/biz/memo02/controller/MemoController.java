@@ -17,10 +17,10 @@ import com.biz.memo02.vo.MemoVO;
 @Controller
 public class MemoController {
 	
-	// Áö±İºÎÅÍ memoService¸¦ »ç¿ëÇÒ¼ö ÀÖµµ·Ï
-	// ÃÊ±âÈ­ ÀÛ¾÷À» ¼öÇàÇØ µÎ¾î¶ó
+	// ì§€ê¸ˆë¶€í„° memoServiceë¥¼ ì‚¬ìš©í• ìˆ˜ ìˆë„ë¡
+	// ì´ˆê¸°í™” ì‘ì—…ì„ ìˆ˜í–‰í•´ ë‘ì–´ë¼
 	@Autowired
-	// Service Å¬·¡½º¸¦ »ç¿ëÇÏ±â À§ÇØ¼­ ¼±¾ğ
+	// Service í´ë˜ìŠ¤ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œ ì„ ì–¸
 	MemoService memoService;
 		
 	/*
@@ -46,9 +46,9 @@ public class MemoController {
 				String MSG, 
 				Model model) {
 		
-		// ¸Å°³º¯¼ö·Î Àü´Ş¹ŞÀº id¸¦ »ç¿ëÇØ¼­
-		// µ¥ÀÌÅÍ¸¦ ÀĞ¾î ¿À°í
-		// memo_view¿Í ·»´õ¸µ Ã³¸®
+		// ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì€ idë¥¼ ì‚¬ìš©í•´ì„œ
+		// ë°ì´í„°ë¥¼ ì½ì–´ ì˜¤ê³ 
+		// memo_viewì™€ ë Œë”ë§ ì²˜ë¦¬
 //		System.out.print(id);
 		MemoVO vo = memoService.getMemo(id);
 		
@@ -61,8 +61,8 @@ public class MemoController {
 	}
 	
 	
-	// ÆûÀ» ¿­¶§ »ç¿ëÇÒ reqPath
-	// ¸Ş´º¿¡¼­ ¸Ş¸ğÀÛ¼ºÀ» Å¬¸¯ÇÏ¸é È£ÃâµÉ reqPath
+	// í¼ì„ ì—´ë•Œ ì‚¬ìš©í•  reqPath
+	// ë©”ë‰´ì—ì„œ ë©”ëª¨ì‘ì„±ì„ í´ë¦­í•˜ë©´ í˜¸ì¶œë  reqPath
 	@RequestMapping(value="memo",method=RequestMethod.GET)
 	public String memo(Model model) {
 		
@@ -70,23 +70,23 @@ public class MemoController {
 		return "home";
 	}
 
-	// ÆûÀ¸·Î ºÎÅÍ µ¥ÀÌÅÍ¸¦ Àü´Ş ¹ŞÀ»¶§ »ç¿ëÇÒ reqPath
+	// í¼ìœ¼ë¡œ ë¶€í„° ë°ì´í„°ë¥¼ ì „ë‹¬ ë°›ì„ë•Œ ì‚¬ìš©í•  reqPath
 	@RequestMapping(value="memo",method=RequestMethod.POST)
 	public String memo(@ModelAttribute MemoVO vo, Model model) {
 		
-		// formÀ¸·Î ºÎÅÍ ¹ŞÀº µ¥ÀÌÅÍ¸¦
-		// Service¿¡°Ô Àü´ŞÇÏ¿© ¾î¶² °¡°ø(¿¬»ê)À» ¼öÇàÇÑ ÈÄ
-		// DB¿¡ ÀúÀåÇÏµµ·Ï ½ÇÇà
+		// formìœ¼ë¡œ ë¶€í„° ë°›ì€ ë°ì´í„°ë¥¼
+		// Serviceì—ê²Œ ì „ë‹¬í•˜ì—¬ ì–´ë–¤ ê°€ê³µ(ì—°ì‚°)ì„ ìˆ˜í–‰í•œ í›„
+		// DBì— ì €ì¥í•˜ë„ë¡ ì‹¤í–‰
 		
 		String retMsg = "" ;
 		String resPath = "" ;
 		// int ret = memoService.insertDB(vo);
 		int ret = memoService.writeDB(vo);
 		
-		if(ret > 0) { // Á¤»óÀûÀ¸·Î insert ¿Ï·á
+		if(ret > 0) { // ì •ìƒì ìœ¼ë¡œ insert ì™„ë£Œ
 			resPath = "redirect:memo_home";
 		} else {
-			retMsg = "µ¥ÀÌÅÍ Ãß°¡ ¿À·ù";
+			retMsg = "ë°ì´í„° ì¶”ê°€ ì˜¤ë¥˜";
 			resPath = "home";
 		}
 		

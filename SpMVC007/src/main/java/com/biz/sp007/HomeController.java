@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	// RequestMapping¿¡ ´Ü¼øÈ÷ ¹®ÀÚ¿­¸¸ settingÇÏ¸é
-	// req(¿äÃ»)ÇÏ´Â ¹æ½ÄÀÌ GETÀÌ°Å³ª POST ÀÌ°Å³ª
-	// »ó°ü¾øÀÌ ÀÛµ¿µÇ¾î¶ó ÇÏ´Â ¼³Á´
+	// RequestMappingì— ë‹¨ìˆœíˆ ë¬¸ìì—´ë§Œ settingí•˜ë©´
+	// req(ìš”ì²­)í•˜ëŠ” ë°©ì‹ì´ GETì´ê±°ë‚˜ POST ì´ê±°ë‚˜
+	// ìƒê´€ì—†ì´ ì‘ë™ë˜ì–´ë¼ í•˜ëŠ” ì„¤ì¡
 	@RequestMapping("home")
 	public String home(Locale locale, Model model) {
 		return "home";
 	}
 	
-	// method=...GET ÀÌ¶ó°í settingÀ» ÇÏ¸é
-	// reqÇÏ´Â ¹æ½ÄÀÌ GET ÀÏ°æ¿ì¿¡¸¸
-	// ÀÛµ¿µÇ¾î¶ó ÇÏ´Â ¼³Á¤
-	// req°¡ GET ÀÎ°æ¿ì : 
-	//		ºê¶ó¿ìÀúÀÇ ÁÖ¼ÒÃ¢¿¡ Á÷Á¢ÀÔ·ÂÀ» ÇÏ°í
-	//		Enter¸¦ ´­·¶À» °æ¿ì°¡ ÇØ´ç
+	// method=...GET ì´ë¼ê³  settingì„ í•˜ë©´
+	// reqí•˜ëŠ” ë°©ì‹ì´ GET ì¼ê²½ìš°ì—ë§Œ
+	// ì‘ë™ë˜ì–´ë¼ í•˜ëŠ” ì„¤ì •
+	// reqê°€ GET ì¸ê²½ìš° : 
+	//		ë¸Œë¼ìš°ì €ì˜ ì£¼ì†Œì°½ì— ì§ì ‘ì…ë ¥ì„ í•˜ê³ 
+	//		Enterë¥¼ ëˆŒë €ì„ ê²½ìš°ê°€ í•´ë‹¹
 	//
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String calc() {

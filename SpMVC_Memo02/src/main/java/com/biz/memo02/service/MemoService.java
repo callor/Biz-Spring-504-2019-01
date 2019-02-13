@@ -16,23 +16,23 @@ public class MemoService {
 	
 	/*
 	 * TDD(Test Driven Developer)
-	 * 	1. MemoService Å¬·¡½ºÀÇ ¾î¶² ¸Þ¼­µå¸¦ È£ÃâÇØ¼­ »ç¿ëÇÒ °÷¿¡¼­
-	 * 		¸ÕÀú method »ç¿ë(È£Ãâ) ÄÚµå¸¦ ÀÛ¼º
-	 *  2. ´ç¿¬È÷ ¹®¹ý ¿À·ù°¡ ³¯ °ÍÀÌ¹Ç·Î
-	 *  3. ÀÌÅ¬¸³½ºÀÇ µµ¿òÀ» ¹Þ¾Æ¼­
-	 *  4. create method¸¦ ½ÇÇàÇÑ´Ù.
-	 *  5. ÀÌÅ¬¸³½º´Â MemoService Å¬·¡½º¿¡ ÀÚµ¿À¸·Î ¸Å°³º¯¼ö¿Í
-	 *  	¸®ÅÏ°ª ±îÁö ¼³Á¤ÇÏ¿©
-	 *  	¸Þ¼­µå¸¦ ÀÛ¼º ÇØ ÁØ´Ù.
+	 * 	1. MemoService í´ëž˜ìŠ¤ì˜ ì–´ë–¤ ë©”ì„œë“œë¥¼ í˜¸ì¶œí•´ì„œ ì‚¬ìš©í•  ê³³ì—ì„œ
+	 * 		ë¨¼ì € method ì‚¬ìš©(í˜¸ì¶œ) ì½”ë“œë¥¼ ìž‘ì„±
+	 *  2. ë‹¹ì—°ížˆ ë¬¸ë²• ì˜¤ë¥˜ê°€ ë‚  ê²ƒì´ë¯€ë¡œ
+	 *  3. ì´í´ë¦½ìŠ¤ì˜ ë„ì›€ì„ ë°›ì•„ì„œ
+	 *  4. create methodë¥¼ ì‹¤í–‰í•œë‹¤.
+	 *  5. ì´í´ë¦½ìŠ¤ëŠ” MemoService í´ëž˜ìŠ¤ì— ìžë™ìœ¼ë¡œ ë§¤ê°œë³€ìˆ˜ì™€
+	 *  	ë¦¬í„´ê°’ ê¹Œì§€ ì„¤ì •í•˜ì—¬
+	 *  	ë©”ì„œë“œë¥¼ ìž‘ì„± í•´ ì¤€ë‹¤.
 	 * 
 	 */
 	public int insertDB(MemoVO vo) {
-		// ¸Å°³º¯¼ö·Î ¹ÞÀº vo¸¦ ÀÏ´Ü ¾Æ¹«·± °¡°ø ¾øÀÌ
-		// MemoDao¸¦ ÅëÇØ¼­ DB¿¡ ÀúÀåÀ» ½ÇÇàÇÏÀÚ.
+		// ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ voë¥¼ ì¼ë‹¨ ì•„ë¬´ëŸ° ê°€ê³µ ì—†ì´
+		// MemoDaoë¥¼ í†µí•´ì„œ DBì— ì €ìž¥ì„ ì‹¤í–‰í•˜ìž.
 
-		// MemoDaoÀÇ insert°¡ Á¤»óÀûÀ¸·Î ½ÇÇàµÇ¸é
-		// 0 º¸´Ù Å« °ªÀÌ ¸®ÅÏ µÉ °ÍÀÌ°í
-		// ±× ¸®ÅÏ°ªÀ» Controller ¿¡°Ô ´Ù½Ã ¸®ÅÏÇÑ´Ù
+		// MemoDaoì˜ insertê°€ ì •ìƒì ìœ¼ë¡œ ì‹¤í–‰ë˜ë©´
+		// 0 ë³´ë‹¤ í° ê°’ì´ ë¦¬í„´ ë  ê²ƒì´ê³ 
+		// ê·¸ ë¦¬í„´ê°’ì„ Controller ì—ê²Œ ë‹¤ì‹œ ë¦¬í„´í•œë‹¤
 		int ret = memoMapper.insert(vo);
 		return ret;
 	}
