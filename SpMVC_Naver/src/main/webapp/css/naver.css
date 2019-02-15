@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/* 901 이상 */
+@media (min-width:901px) {
+	.na-col.s1 {
+		width:30%;
+	}
+}
+
+/* 601px 이상 900 이하*/
+@media (min-width:601px) and (max-width:900px) {
+	.na-col.m1 {
+		width:45%;
+	}
+}
+
+/* 600px 이햐 */ 
+@media (max-width:600px) {
+	.na-col.c1 {
+		width:95%;
+	}	
+}

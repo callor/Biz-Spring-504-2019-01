@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- logback이 사용할 정보를 설정 -->
+
+<configuration>
+	<appender name="consoleAppender" 
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder> 
+			<charset>UTF-8</charset>
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n		
+			</Pattern>
+		</encoder>
+	</appender>
+	<!-- 
+		level 등급
+			error
+			warn
+			info
+			debug
+			trace
+	 -->
+	 <!-- logger name 부분만 본인 프로젝트의 packge base로 변경하고 -->
+	 <!-- 그래도 파일을 복사해서 사용하면 된다. -->
+	<logger name="com.biz.naver" 
+			level="debug" additivity="false">
+		<appender-ref ref="consoleAppender" />			
+	</logger>
+	
+	<root level="warn">
+		<appender-ref ref="consoleAppender" />
+	</root>
+</configuration>
