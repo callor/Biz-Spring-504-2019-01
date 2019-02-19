@@ -7,9 +7,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class CalcController {
 	
+	@RequestMapping(value="calc-ajax",method=RequestMethod.GET)
+	public String calc_form( ) {
+		return "calc-ajax";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="add-ajax",method=RequestMethod.POST)
+	public String add_ajax(
+			@RequestParam int intNum1,
+			@RequestParam int intNum2
+			) {
+		
+		System.out.println("intNum1 : " + intNum1);
+		System.out.println("intNum2 : " + intNum2);
+		
+		return "" + (intNum1 + intNum2);
+	}
+
 	@ResponseBody
 	@RequestMapping(value="add",method=RequestMethod.GET)
 	public String add() {
@@ -18,6 +39,8 @@ public class CalcController {
 		int intSum = intNum1 + intNum2;
 		return "" + intSum ;
 	}
+	
+
 	
 	@ResponseBody
 	@RequestMapping(value="add1",method=RequestMethod.GET,
