@@ -1,0 +1,101 @@
+@charset "UTF-8";
+* {
+	
+	box-sizing: bordr-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	height: 100%;
+}
+
+.main-header {
+
+	flex:0 1 auto;
+	background:linear-gradient(to left ,#00AF00, #00F000);
+	height: 80px;
+	text-align: center;
+	color:white;
+	margin:0;
+
+}
+
+.content-container {
+	
+	flex:1;
+	
+	position: absolute; /* 위치를 고정하라 */
+	top: 80px;
+	left:0;
+	bottom:30px;
+	right:0;
+	
+	display: flex;
+}
+
+.sidebar {
+	width:140px;
+	background-color: #666;
+	padding : 4px 20px;
+	color:white;
+}
+
+.main {
+	flex : 1;
+	display: flex;
+	flex-direction:column;
+	background-color: #ddd;
+	
+}
+
+.page-header {
+	background-color: #004141;
+	color:white;
+	font-size:0.8em;
+	padding : 6px 20px;
+}
+
+.content {
+	flex : 1;
+	display: flex;
+}
+
+.column {
+	padding:20px;
+	border : 1px solid blue;
+}
+
+.column.sub1 {
+	flex:3;
+}
+
+.column.sub2 {
+	flex:1;
+}
+
+footer {
+	flex : 0 1 30px;
+	height:30px;
+	
+	background-color: #0000ff;
+	text-align: center;
+	padding: 0.3em;
+	color:white;
+	font-size: 12px;
+	
+	align-items: center;
+	justify-content: center;
+	
+}
+
+
+ 
