@@ -11,13 +11,13 @@ import com.biz.ajax01.model.DeptVO;
 
 public interface DeptMapper {
 
-	@Select("SELECT * FROM tbl_dept")
+	@Select("SELECT * FROM tbl_dept ORDER BY d_code")
 	public List<DeptVO> selectAll();
 	
 	@Select("SELECT * FROM tbl_dept WHERE d_code = #{d_code}")
 	public DeptVO findByDCode(String d_code);
 	
-	@Select("SELECT * FROM tbl_dept WHERE d_name = #{d_name}")
+	@Select("SELECT * FROM tbl_dept WHERE d_name = #{d_name} ORDER BY d_name")
 	public List<DeptVO> findByDName(String d_name);
 	
 	@InsertProvider(type=DeptSQLBuilder.class,

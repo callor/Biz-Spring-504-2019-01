@@ -17,5 +17,10 @@ public class DeptService {
 	public List<DeptVO> getDeptList() {
 		return dMapper.selectAll();
 	}
+
+	public DeptVO getDept(String d_code) {
+		DeptVO deptVO = dMapper.findByDCode(d_code);	
+		return deptVO;
+	}
 	
 }

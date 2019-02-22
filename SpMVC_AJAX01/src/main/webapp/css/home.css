@@ -1,10 +1,8 @@
 @charset "UTF-8";
 * {
-	
 	box-sizing: bordr-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
-	
 }
 
 html {
@@ -14,7 +12,10 @@ html {
 body {
 	display: flex;
 	flex-direction: column;
+
 	margin: 0;
+	padding: 0;
+	
 	height: 100%;
 }
 
@@ -36,14 +37,14 @@ body {
 	position: absolute; /* 위치를 고정하라 */
 	top: 80px;
 	left:0;
-	bottom:30px;
+	bottom:30px; /* footer 영역을 비워두고 */
 	right:0;
 	
 	display: flex;
 }
 
 .sidebar {
-	width:140px;
+	width:240px;
 	background-color: #666;
 	padding : 4px 20px;
 	color:white;
@@ -53,6 +54,7 @@ body {
 	flex : 1;
 	display: flex;
 	flex-direction:column;
+	
 	background-color: #ddd;
 	
 }
@@ -72,10 +74,12 @@ body {
 .column {
 	padding:20px;
 	border : 1px solid blue;
+	height: auto;
 }
 
 .column.sub1 {
 	flex:3;
+	overflow: auto;
 }
 
 .column.sub2 {
@@ -84,18 +88,19 @@ body {
 
 footer {
 	flex : 0 1 30px;
-	height:30px;
+	height:30px; /* 내용이 본문 영역을 침범하는 것을 방지 */
 	
 	background-color: #0000ff;
 	text-align: center;
 	padding: 0.3em;
 	color:white;
 	font-size: 12px;
-	
+
+	display:flex;
+	/* 내부의 address 를 중심에 놓기 위해 */	
 	align-items: center;
 	justify-content: center;
-	
-}
 
+}
 
  

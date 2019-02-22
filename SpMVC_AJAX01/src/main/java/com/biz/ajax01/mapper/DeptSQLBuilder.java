@@ -11,7 +11,9 @@ public class DeptSQLBuilder {
 		// C# LINQ
 		SQL sql = new SQL()
 				.SELECT("*")
-				.FROM("tbl_dept");
+				.FROM("tbl_dept")
+				.ORDER_BY("d_code");
+		
 		return sql.toString();
 	}
 	
