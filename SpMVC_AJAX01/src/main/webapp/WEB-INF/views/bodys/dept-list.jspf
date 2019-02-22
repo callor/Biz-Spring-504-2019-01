@@ -42,8 +42,59 @@ th:first-child, td:first-child {
 <script>
 $(function(){
 	
+	var deptList = Array() // 자바스크립트 배열 선언
+	/*
+	
+		js 배열은 동적배열
+		초기에 배열을 생성한후 자유롭게 
+		데이터들을 추가 삭제가 가능 
+		1. 배열을 생성 : var arr = Array()
+		2. 배열을 추가 : arr.push("값")
+	
+	*/
+	
+	$(".d-tr").click(function(){
+		let dcode = $(this).attr("data-d-code")
+		
+		deptList.push(dcode)
+		
+		var s1 = ""
+		for(let i = 0 ; i < deptList.length ; i++) {
+			s1 += deptList[i] + "<br>"
+		}
+		$("#d-list").html(s1)
+	})
+	
+	
+	$("#btn-send").click(function(){
+
+		/*
+			ajax로 배열을 보낼때
+			data : {arr:arrList} 라고 보내면
+			변수이름을 arr[] 으로 바꾸어서 전송을 한다.
+			
+			traditional = true 해주면
+			변수이름을 arr로 그대로 보내라 하는 설정
+			
+		*/
+		$.ajaxSettings.traditional = true;
+		$.ajax({
+			url : "${rootPath}/dept.array",
+			method:"POST",
+			traditional:true, // 배열을 보낼때 반드시 설정
+			data:{deptList:deptList},
+			success:function(result){
+				alert(result)
+			},
+			error : function(){
+				alert("서버와 통신 오류!!")
+			}
+		})
+	})
+	
+	
 	// $(".d-tr").click()
-	$(".d-tr").on("click",function(){
+	$(".d-tr1").on("click",function(){
 		let dcode = $(this).attr("data-d-code")
 		
 		// 거래처 list의 항목을 클릭하면

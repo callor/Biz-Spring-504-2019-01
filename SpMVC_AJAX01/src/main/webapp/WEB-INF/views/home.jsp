@@ -29,6 +29,8 @@
 				<p>거래처 코드 : <span id="d-code"></span><br/> 
 				거래처명 : <span id="d-name"></span><br/>
 				대표자명 : <span id="d-ceo"></span>
+				<p><button id="btn-send">전송</button>
+				<p id="d-list"></p>
 				</div>			
 			</div>		
 		</article>
