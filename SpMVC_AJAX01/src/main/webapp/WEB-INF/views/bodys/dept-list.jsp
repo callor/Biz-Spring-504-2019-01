@@ -54,35 +54,29 @@ $(function(){
 	*/
 	
 	$(".d-tr").click(function(){
+
 		let dcode = $(this).attr("data-d-code")
+		let dname = $(this).attr("data-d-name")
+		let dceo = $(this).attr("data-d-ceo")
 		
-		deptList.push(dcode)
+		$("#d_code").val(dcode)
+		$("#d_name").val(dname)
+		$("#d_ceo").val(dceo)
 		
-		var s1 = ""
-		for(let i = 0 ; i < deptList.length ; i++) {
-			s1 += deptList[i] + "<br>"
-		}
-		$("#d-list").html(s1)
 	})
 	
 	
 	$("#btn-send").click(function(){
-
-		/*
-			ajax로 배열을 보낼때
-			data : {arr:arrList} 라고 보내면
-			변수이름을 arr[] 으로 바꾸어서 전송을 한다.
-			
-			traditional = true 해주면
-			변수이름을 arr로 그대로 보내라 하는 설정
-			
-		*/
 		$.ajaxSettings.traditional = true;
 		$.ajax({
-			url : "${rootPath}/dept.array",
+			url : "${rootPath}/dept.json.array",
+
 			method:"POST",
 			traditional:true, // 배열을 보낼때 반드시 설정
-			data:{deptList:deptList},
+			// dataType:"JSON", // 서버에서 받을때 JSON으로 받아라
+			contentType:"application/json", // 서버로 보낼때 JSON으로 보내라
+			data:JSON.stringify(deptList), // 데이터를 JSON 형식으로 서버로 보내라
+
 			success:function(result){
 				alert(result)
 			},
@@ -91,43 +85,6 @@ $(function(){
 			}
 		})
 	})
-	
-	
-	// $(".d-tr").click()
-	$(".d-tr1").on("click",function(){
-		let dcode = $(this).attr("data-d-code")
-		
-		// 거래처 list의 항목을 클릭하면
-		// d_code 값을 추출하고
-		// d_code 값을 서버로 Ajax로 전송한 후
-		// 거래처 정보를 조회해서
-		// 가져온다.
-		
-		$.ajax({
-			url:"${rootPath}/dept.JSON",
-			data:{d_code:dcode},
-			method:"POST",
-			dataType:"JSON", // 혹시 jq 버전 등의 이유로 json을 수신하지 못할경우 
-			success:function(dept){
-				
-				$("#d-code").text(dept.d_code)
-				$("#d-name").text(dept.d_name)
-				$("#d-ceo").text(dept.d_ceo)
-				
-				/*
-				alert(dept.d_code + "\n"
-						+ dept.d_name + "\n"
-						+ dept.d_ceo + "\n"
-				)
-				*/
-			},
-			error:function(xhr,err,data){
-				alert("서버와 통신 오류!!")
-			}
-		})
-		// alert("클릭한 거래처는 : " + dcode)
-	})
-
 })
 
 </script>
@@ -147,7 +104,10 @@ $(function(){
 			<c:forEach items="${DEPTLIST}" 
 						var="dVO" varStatus="i">
 			<!-- for 시작 -->
-			<tr class="d-tr" data-d-code="${dVO.d_code}">
+			<tr class="d-tr" 
+				data-d-code="${dVO.d_code}"
+				data-d-name="${dVO.d_name}"
+				data-d-ceo="${dVO.d_ceo}" >
 				<td>${i.count}</td>
 				<td>${dVO.d_code}</td>
 				<td>${dVO.d_name}</td>
