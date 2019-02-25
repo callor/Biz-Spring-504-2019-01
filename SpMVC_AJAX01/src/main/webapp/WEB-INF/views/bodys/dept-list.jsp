@@ -38,6 +38,19 @@ th:first-child, td:first-child {
 	padding-left:16px;
 }
 
+#d-list {
+	flex:1;
+	display: flex;
+	flex-direction: column;
+}
+
+.d-box {
+	flex : 1;
+	width:200px;
+	border-bottom: 1px solid green;
+	margin:5px auto;
+}
+
 </style>
 <script>
 $(function(){
@@ -59,12 +72,19 @@ $(function(){
 		let dname = $(this).attr("data-d-name")
 		let dceo = $(this).attr("data-d-ceo")
 		
-		$("#d_code").val(dcode)
-		$("#d_name").val(dname)
-		$("#d_ceo").val(dceo)
+		// input box에 값을 채워 넣는 코드
+		$("#d_code").val( dcode )
+		$("#d_name").val( dname )
+		$("#d_ceo").val( dceo )
 		
+		$("#d-list").append(
+			$("<div/>",{
+				id:dcode,
+				'class':'d-box',
+				html:dcode + ":" + dname + ":" + dceo
+			})		
+		)
 	})
-	
 	
 	$("#btn-send").click(function(){
 		$.ajaxSettings.traditional = true;

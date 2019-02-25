@@ -83,8 +83,10 @@ public class DeptRESTController {
 	public String dept_save(@ModelAttribute DeptVO deptVO) {
 	
 		int ret = dService.save(deptVO);
+		
 		if(ret > 0) return "데이터 저장 OK";
 		else return "데이터 저장 실패!!!";
+	
 	
 	}
 

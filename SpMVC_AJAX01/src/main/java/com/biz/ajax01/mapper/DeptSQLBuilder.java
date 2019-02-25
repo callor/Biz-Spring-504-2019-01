@@ -25,10 +25,10 @@ public class DeptSQLBuilder {
 		
 			sql.INSERT_INTO("tbl_dept");
 			sql.INTO_COLUMNS("d_code");
-			sql.INTO_VALUES("#{d_code}");
+			sql.INTO_VALUES("#{d_code,jdbcType=VARCHAR}");
 				
-			sql.VALUES("d_name","#{d_name");
-			sql.VALUES("d_ceo","#{d_ceo}");
+			sql.VALUES("d_name","#{d_name,jdbcType=NVARCHAR}");
+			sql.VALUES("d_ceo","#{d_ceo,jdbcType=NVARCHAR}");
 
 		return sql.toString();
 		
@@ -37,10 +37,10 @@ public class DeptSQLBuilder {
 	public String getUpdateSQL() {
 		SQL sql = new SQL()
 				.UPDATE("tbl_dept")
-				.SET("d_code = #{d_code}")
-				.SET("d_name = #{d_name}")
-				.SET("d_ceo = #{d_ceo}")
-				.WHERE("d_code = #{d_code}");
+				.SET("d_code = #{d_code,jdbcType=VARCHAR}")
+				.SET("d_name = #{d_name,jdbcType=NVARCHAR}")
+				.SET("d_ceo = #{d_ceo,jdbcType=NVARCHAR}")
+				.WHERE("d_code = #{d_code,jdbcType=NVARCHAR}");
 		
 		return sql.toString();
 	}
