@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- dataSource 설정 DB 연결하는 Connection을 설정 -->
+	<!-- dataSource bean을 등록 -->
+	<bean id="ds" 
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" 
+				value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="mybts" />
+		<property name="password" value="1234" />
+	</bean>
+
+	<!-- sqlSessionFacoty 에게 Inject(주입) -->
+	<bean id="sqlSessionFactory" 
+			class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<property name="configLocation" 
+			value="/WEB-INF/spring/appServlet/member-config.xml"></property>
+		<property name="mapperLocations" 
+			value="/WEB-INF/spring/mapper/*-mapper.xml" />
+		
+	</bean>
+	
+	<!-- 
+		spring아 네가 대신해서 DB CUD 과정에서 필요할때
+		transaction을 수행 해다오
+	 -->
+	<tx:jta-transaction-manager />
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds" />
+	</bean>
+
+	<!-- MyBatis 2.x 부터 사용가능한 방식 -->
+	<!-- 
+		mapper를 Annotation방식이 아닌 
+		xml 방식을 사용하기 위해 선언하는
+		bean
+	 -->	
+	<bean id="sqlSessionTemp" 
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<mybatis-spring:scan 
+		base-package="com.biz.member.mapper"/>
+
+</beans>

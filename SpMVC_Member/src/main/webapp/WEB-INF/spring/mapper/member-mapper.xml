@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+	namespace="com.biz.member.mapper.MemberDao">
+	
+	<select id="selectAll" 
+			resultType="memberVO">
+		SELECT * FROM tbl_member
+	</select>
+	
+	<select id="findById"
+			resultType="memberVO">
+		SELECT * FROM tbl_member WHERE m_userid = #{m_userid}		
+	</select>
+
+	<insert id="insert" 
+			parameterType="memberVO">
+		INSERT INTO 
+		tbl_member(
+				m_userid,
+				m_password,
+				m_name,
+				m_tel
+		)
+		VALUES(
+			#{m_userid},
+			#{m_password},
+			#{m_name},
+			#{m_tel}
+		)
+	</insert>
+	<update id="update" 
+		parameterType="memberVO">
+		UPDATE tbl_member
+		SET m_password = #{m_password},
+			m_name = #{m_name},
+			m_tel = #{m_tel}
+		WHERE m_userid = #{m_userid}	
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM tbl_member
+		WHERE m_userid = #{m_userid}
+	</delete>
+</mapper>
