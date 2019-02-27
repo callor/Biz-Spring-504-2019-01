@@ -12,6 +12,10 @@
 			resultType="memberVO">
 		SELECT * FROM tbl_member WHERE m_userid = #{m_userid}		
 	</select>
+	
+	<select id="loginCheck" resultType="memberVO">
+		SELECT * FROM tbl_member WHERE m_userid = #{m_userid}
+	</select>
 
 	<insert id="insert" 
 			parameterType="memberVO">
