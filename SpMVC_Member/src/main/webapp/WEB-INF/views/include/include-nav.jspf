@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<style>
+	ul {
+		list-style-type: none; /* list의 머릿글 모양 제거 */
+		margin:0;
+		padding:0;
+		display: flex;
+	}
+	
+	li {
+		flex : 0 1 auto;
+		border:none;
+	}
+	
+	li a {
+		display: block;
+		padding : 14px 16px;
+	}
+	
+	li:drop-down {
+		display: block;
+	}
+	
+	.drop-content {
+		display: none;
+		/* box 구조의 tag를 어떤 임의의 위치에 고정하고자 할때 사용하는 속송 */
+		/* position :static >> 아무것도 지정하지 않았을때 */
+		/* position : relative >> 상대적 위치 
+			이전에 지정된 box를 기준으로 top, left, right, bottom 값을 주어
+			box의 위치를 옮기는 구조
+		*/
+		/* position : fixed; 절대적위치에 고정하고 할때 */
+		/* position : absolute 
+			자신과 가장 가까운 위치에 있는 어떤 tag를 기준으로
+			위치를 고정
+		*/
+		position: absolute;
+		/*
+			drop-down
+			btn-drop 박스를 기준으로 위치를 고정하라
+		*/
+		
+		background-color: green;
+		min-width:160px;
+		/* 모니터의 수직방향(z축을 기준)방향으로 이동시켜라 */
+		/* 지정되지 않으면 값이 0으로 자동 설정되고
+		0 이상이면 다른 tag보다 앞으로 이동하는 효과 */
+		z-order:3;
+	}
+	
+	/* css3에서 도입된 animation을 설정하는 미디어 쿼리 */
+	@keyframes showDrop {
+		from {opacity : 0; }
+		to {opacity : 1; }
+	}
+	
+	.drop-down:hover  .drop-content{
+		display: block;
+		animation : showDrop 1s ease-in-out both;
+	}
+
+	.drop-content a {
+		border-top:1px solid white;
+		color:yellow;
+	}
+
+</style>   
+<nav>
+	<ul>
+		<li><a href="<c:url value='/' />" >Home</a></li>
+		<li><a href="<c:url value='/login' />" >로그인</a></li>
+		<li><a href="<c:url value='/join' />" >회원가입</a></li>
+		<%// javascript:void(0) : a tag를 클릭했을때 페이지 전환 금지 %>
+		<li class="drop-down">
+			<a href="javascript:void(0)" class="btn-drop">관리자</a>
+			<div class="drop-content">
+				<a href="#">회원 정보 보기</a>
+				<a href="#">시스템 정보 보기</a>			
+			</div>
+		</li>
+	</ul>
+</nav>

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+	* {
+		box-sizing: border-box;
+		
+	}
+	body {
+		width:100%;
+		padding:0;
+		margin:0;
+	}
+	header {
+		background:linear-gradient(to left ,#00AF00, #00F000);
+		height: 70px;
+		text-align: center;
+		color:white;
+		margin:0;	
+		
+		/* 
+		tag내에 box형의 tag가 있을때
+		내부의 tag를 상하좌우 중앙정렬할때
+		*/
+		
+		display:flex;
+		/* 내부의 address 를 중심에 놓기 위해 */	
+		align-items: center;
+		justify-content: center;
+
+	}
+	
+	nav {
+		background-color: blue;
+		padding:0px
+	
+	}
+	
+	nav a {
+	
+		display: inline-block;
+		width:auto;
+		
+		text-decoration: none;
+		padding:.8em;
+		margin:0px;
+		color:white;
+	
+	}
+	
+	nav a:hover {
+		background-color: #ccc;
+		color:black;
+		font-weight: bold;
+	}
+	
+	.main-container {
+		border:1px solid blue;
+		padding:5px;
+	
+	}
+	
+	footer {
+		background-color: #0000ff;
+		text-align: center;
+		padding: 0.3em;
+		color:white;
+		font-size: 12px;
+	
+		display:flex;
+		/* 내부의 address 를 중심에 놓기 위해 */	
+		align-items: center;
+		justify-content: center;
+	}
