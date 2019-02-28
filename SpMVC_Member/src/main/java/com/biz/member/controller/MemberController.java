@@ -20,6 +20,7 @@ import com.biz.member.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 @Controller
 public class MemberController {
@@ -79,6 +80,9 @@ public class MemberController {
 		return ret;
 	}
 	
+	@RequestMapping(value="test",
+			produces= {"text/plan;charset=utf8"},
+			consumes="application/json")
 	public ModelAndView login() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member-home");
@@ -86,65 +90,4 @@ public class MemberController {
 		return mv ;
 	}
 
-	@RequestMapping(value="login",method=RequestMethod.GET)
-	public String login(Model model, String LOGIN) {
-		
-		model.addAttribute("BODY","LOGIN-FORM");
-		model.addAttribute("LOGIN",LOGIN);
-		return "member-home" ;
-	}
-	
-	/*
-	 * 로그인, 로그아웃을 처리할 method에는 
-	 * HttpSessio 클래스를 매개변수로 설정 해 두어야 한다.
-	 */
-	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String login(HttpSession session, 
-				@ModelAttribute MemberVO memberVO,
-				Model model) {
-
-		// memberVO에는 로그인 폼에서 
-		// 입력한 id와 비밀번호만 담겨 있을 것이다.
-		String userid = memberVO.getM_userid();
-		String password = memberVO.getM_password();
-		
-		System.out.println(userid);
-		System.out.println();
-		
-		// userid로 DB 조회를 해서 사용자 정보를 추출
-		List<MemberVO> mList = mService.loginCheck(userid);
-
-		// BCryptPasswordEncoder bcrypt 
-		// = new BCryptPasswordEncoder(16);
-		
-		// mList에는 userid에 해당하는 사용자(들)이 포함되 있다.
-		boolean login_ok = false;
-		if(mList != null) {
-			for(MemberVO vo : mList) {
-				
-				// vo.m_passsword에 담겨있는 비밀번호는 Bcrypt 암호문이다
-				// 이 암호문을 로그인 폼에서 입력한 비밀번호와
-				// == 이나 equels() 으로는 비교할 수 없다.
-				// 그래서 BCrypt... 클래에 있는 암호 비교 method를 통해서 
-				// 값을 비교해 해야 한다.
-//				if(vo.getM_password() == password) {
-				System.out.println("p1:" + vo.getM_password());
-				//						   평문	    DB저장된 암호문
-				if(passwordEncoder.matches(password,vo.getM_password())) {				
-					login_ok = true;
-					break;
-				}
-			}
-		}
-	
-		String ret = "redirect:/";
-		// 여기에서 login_ok 값 ?
-		if(!login_ok) {
-			// login에 실패했다는 가정을하고
-			// LOGIN이라는 속성에 FAIL 이라는 문자열을 싣는다.
-			model.addAttribute("LOGIN","FAIL");
-			ret = "redirect:login";
-		}
-		return ret ; // 다시 login GET로 보내기
-	}
 }

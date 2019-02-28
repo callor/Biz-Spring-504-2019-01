@@ -68,10 +68,16 @@ $(function(){
 		$("form").submit()
 	})
 	
-	// 컨트롤러에서 보낸 LOGIN 변수에 에 문자열 FAIL이 담겨 있으면
-	if("${LOGIN}" == "FAIL") {
+	// 컨트롤러에서 보낸 LOGIN_MSG 변수에 에 문자열 FAIL이 담겨 있으면
+	if("${LOGIN_MSG}" == "FAIL") {
 		$(".error-box").css("display","inline-block")
-		$("#error-msg").html("<b><font color=red> 로그인 실패!! </font></b>")
+		$("#error-msg").html("<b><font color=red>"
+				+ "로그인 실패!! </font></b>")
+	}
+	if("${LOGIN_MSG}" ==  "ADMIN-FAIL") {
+		$(".error-box").css("display","inline-block")
+		$("#error-msg").html("<b><font color=red>" 
+				+ "관리자로 로그인하세요</font></b>")
 	}
 	
 })

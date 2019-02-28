@@ -27,6 +27,11 @@
 		<%@ include file="/WEB-INF/views/bodys/login-form.jspf" %>
 	</c:if>
 	
+	<p>${LOGIN.m_userid}<br>
+		${LOGIN.m_password}<br>
+		${LOGIN.m_name}<br>
+		${LOGIN.m_tel}<br>
+	
 </section>
 <footer>
 	<address>CopyRight &copy; callor@callor.com</address>
