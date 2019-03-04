@@ -12,11 +12,14 @@
 
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/include-nav.jspf" %>
+
 <nav>
 	<ul>
 		<li><a href="#">Home</a></li>
 		<li><a href="<c:url value='/menu1' /> ">메뉴시스템1</a></li>
 		<li><a href="<c:url value='/menu2' /> ">DROP Menu</a></li>
+		<li><a href="<c:url value='/menu3' /> ">DB Menu</a></li>
 		<li><a href="#">로그인</a></li>
 		<li><a href="#">회원가입</a></li>
 	</ul>

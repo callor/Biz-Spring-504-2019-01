@@ -1,6 +1,7 @@
 package com.biz.menu.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import lombok.ToString;
  * vo 클래스 
  */
 
+@Builder
 @Setter
 @Getter
 @NoArgsConstructor
