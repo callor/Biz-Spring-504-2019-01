@@ -29,3 +29,29 @@ li {
 	flex :0 1 auto;
 	border:none;
 }
+
+.dropbtn {
+	display: block;
+	color:white;
+	text-align: left;
+	padding:14px 16px;
+}
+
+li.dropdown {
+	display: block;
+}
+
+.dropdown-content{
+	display: none;
+	position: absolute;
+	min-width:160px;
+	background-color:green;
+	color:white;
+	z-order:10;
+}
+
+.dropdown:hover .dropdown-content{
+	display: block;
+}
+
+

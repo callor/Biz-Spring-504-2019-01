@@ -22,5 +22,12 @@ public class MenuController {
 		return "menu1" ;
 	}
 	
+	
+	@RequestMapping(value="menu2",method=RequestMethod.GET)
+	public String menu2(Model model	) {
+		
+		model.addAttribute("MENUS",mService.getDropMenu());
+		return "menu2" ;
+	}
 
 }
