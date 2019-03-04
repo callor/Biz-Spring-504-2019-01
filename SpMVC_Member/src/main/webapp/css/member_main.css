@@ -14,6 +14,7 @@
 		text-align: center;
 		color:white;
 		margin:0;	
+		text-shadow: 2px 2px black;
 		
 		/* 
 		tag내에 box형의 tag가 있을때
@@ -48,7 +49,7 @@
 	nav a:hover {
 		background-color: #ccc;
 		color:black;
-		font-weight: bold;
+		font-weight:bold;
 	}
 	
 	.main-container {

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+nav {
+	background-color: blue;
+	padding:0px;
+	border:none;
+}
+nav a{
+	display: inline-block;
+	width:auto;
+	text-decoration: none;
+	padding:0.8em;
+	margin:0px;
+	color:white;
+}
+
+nav a:hover {
+	background-color: #ccc;
+	color:black;
+}
+
+ul {
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+	display: flex;
+}
+
+li {
+	flex :0 1 auto;
+	border:none;
+}
