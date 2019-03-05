@@ -66,12 +66,25 @@
 		color:yellow;
 	}
 
-</style>   
+</style>
+
+<script>
+$(function(){
+
+	$("#a-login").click(function(){
+	
+		window.open("<c:url value='/login_pop' />","newwin","width=500px, hegight=500px")
+		
+	})
+	
+})
+
+</script>   
 <nav>
 	<ul>
 		<li><a href="<c:url value='/' />" >Home</a></li>
 		<c:if test="${empty LOGIN}">
-			<li><a href="<c:url value='/login' />" >로그인</a></li>
+			<li><a href="javascript:void(0)" id="a-login" >로그인</a></li>
 			<li><a href="<c:url value='/join' />" >회원가입</a></li>
 			<%// javascript:void(0) : a tag를 클릭했을때 페이지 전환 금지 %>
 			<li class="drop-down">

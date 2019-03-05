@@ -33,6 +33,56 @@ public class LoginController {
 		return "member-home" ;
 		
 	}
+
+	@RequestMapping(value="login_pop",method=RequestMethod.GET)
+	public String login_pop(Model model, String LOGIN_MSG) {
+		
+		model.addAttribute("BODY","LOGIN-FORM");
+		model.addAttribute("LOGIN_MSG",LOGIN_MSG);
+		return "bodys/login-form" ;
+		
+	}
+
+	
+
+	
+	@RequestMapping(value="login_ok",method=RequestMethod.POST)
+	public String login_ok(@ModelAttribute MemberVO memberVO,
+				Model model,
+				// login과 관련된 req에는 반드시 설정해야 하는 매개변수)
+				HttpSession session) {
+
+		// memberVO에는 로그인 폼에서 
+		// 입력한 id와 비밀번호만 담겨 있을 것이다.
+		String userid = memberVO.getM_userid();
+		String password = memberVO.getM_password();
+		
+		System.out.println(userid);
+		System.out.println();
+		
+		// userid로 DB 조회를 해서 사용자 정보를 추출
+		List<MemberVO> mList = mService.loginCheck(userid);
+
+		// BCryptPasswordEncoder bcrypt 
+		// = new BCryptPasswordEncoder(16);
+		
+		// mList에는 userid에 해당하는 사용자(들)이 포함되 있다.
+		boolean login_ok = true;
+		
+		memberVO.setM_role("ADMIN");
+		memberVO.setM_role("USER");
+
+		session.setAttribute("LOGIN", memberVO);
+	
+		return "redirect:login_ok";
+	}
+	
+	@RequestMapping(value="login_ok",method=RequestMethod.GET)
+	public String login_ok() {
+		
+		return "bodys/login-ok";
+		
+	}
 	
 	/*
 	 * 로그인, 로그아웃을 처리할 method에는 
@@ -89,7 +139,8 @@ public class LoginController {
 			}
 		}
 	
-		String ret = "redirect:/";
+//		String ret = "redirect:/";
+		String ret = "redirect:login_ok";
 
 		// 여기에서 login_ok 값 ?
 		// 정상적으로 login 정보가 확인되면 login_ok 값이 true일 것이다

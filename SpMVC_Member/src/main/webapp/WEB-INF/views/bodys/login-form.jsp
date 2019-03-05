@@ -102,7 +102,7 @@ $(function(){
 })
 
 </script>	
-<form action="<c:url value='/login' />" 
+<form action="<c:url value='/login_ok' />" 
 		method="POST"
 		 autocomplete="off">
 
