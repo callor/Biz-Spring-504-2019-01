@@ -9,4 +9,6 @@ public interface MemoDao {
 	public void insert();
 	public void update();
 	
+	public void delte();
+	
 }

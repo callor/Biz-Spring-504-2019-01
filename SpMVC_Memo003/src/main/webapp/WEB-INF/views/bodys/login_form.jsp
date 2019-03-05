@@ -68,9 +68,19 @@
 	}
 	
 </style>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(function(){
+	
+	$(document).beforeunload(function() { 
+	    alert("close") 
+	    opener.parent.reload()
+	})
+
+	$(window).unload(function() { 
+	    alert("unload") 
+	})
+	
 	$("#btn-login").click(function(){
 		let m_userid = $("#m_userid").val()
 		let m_password = $("#m_password").val()
@@ -98,6 +108,8 @@ $(function(){
 		$("#error-msg").html("<b><font color=red>" 
 				+ "관리자로 로그인하세요</font></b>")
 	}
+	
+	
 	
 })
 

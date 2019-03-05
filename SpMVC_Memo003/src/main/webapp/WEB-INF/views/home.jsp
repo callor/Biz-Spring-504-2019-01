@@ -126,7 +126,8 @@ $(function(){
 					id="a-login">로그인</a>
 			<li><a href="javascript:void(0)" 
 					id="a-join">회원가입</a>
-			<li><a href="#">About</a>
+			<li><a href="javascript:void(0)"  
+					id="a-about">About</a>
 		</ul>
 	</nav>
 </header>

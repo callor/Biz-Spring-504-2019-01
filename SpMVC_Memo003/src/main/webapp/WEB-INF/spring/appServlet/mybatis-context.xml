@@ -24,7 +24,7 @@
 	<tx:annotation-driven/>
 	<bean id="transactionManager" 
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
+		<property name="dataSource" ref="ds"/>
 	</bean>
 	
 	<mybatis-spring:scan 

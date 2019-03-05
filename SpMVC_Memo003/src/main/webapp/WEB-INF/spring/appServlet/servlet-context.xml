@@ -24,7 +24,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.biz.memo.controller" />
-	
+	<context:component-scan base-package="com.biz.memo.service" />
 	
 	
 </beans:beans>

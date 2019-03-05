@@ -20,6 +20,10 @@ $(function(){
 	
 	// 로그인 메뉴 클릭 이벤트
 	$("#a-login").click(function(){
+		
+		window.open("<c:url value='/login' />", 
+				'newWindow', 'width=500, height=500');
+		/*
 		$.ajax({
 			url : "<c:url value='/login' />",
 			method:"GET",
@@ -30,6 +34,7 @@ $(function(){
 				alert("서버와 통신 오류")
 			}
 		})
+		*/
 	})
 	
 	// 회원가입 클릭 이벤트
@@ -45,5 +50,12 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#a-about").click(function(){
+	
+		
+		
+	})
+	
 })
 </script>
