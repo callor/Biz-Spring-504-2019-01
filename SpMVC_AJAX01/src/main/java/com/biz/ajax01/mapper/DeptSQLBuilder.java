@@ -1,3 +1,4 @@
+
 package com.biz.ajax01.mapper;
 
 // 2015년 이후 mybatis에서 사용가능한 클래스
