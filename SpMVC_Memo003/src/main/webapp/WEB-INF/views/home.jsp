@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 
 * {
@@ -86,6 +87,7 @@ li a:hover {
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<%@ include file="/WEB-INF/views/include/main_menu.jspf" %>
 <script>
 $(function(){
 	
@@ -108,18 +110,7 @@ $(function(){
 		}
 	})
 	
-	$("#a-memo").click(function(){
-		$.ajax({
-			url : "<c:url value='/memo' />",
-			method:"GET",
-			success:function(result){
-				$("#body").html(result)
-			},
-			error:function() {
-				alert("서버와 통신 오류")
-			}
-		})
-	})
+
 })
 
 </script>
@@ -131,8 +122,10 @@ $(function(){
 		<ul>
 			<li><a href="javascript:void(0)" 
 					id="a-memo">메모장</a>
-			<li><a href="#">로그인</a>
-			<li><a href="#">회원가입</a>
+			<li><a href="javascript:void(0)" 
+					id="a-login">로그인</a>
+			<li><a href="javascript:void(0)" 
+					id="a-join">회원가입</a>
 			<li><a href="#">About</a>
 		</ul>
 	</nav>
