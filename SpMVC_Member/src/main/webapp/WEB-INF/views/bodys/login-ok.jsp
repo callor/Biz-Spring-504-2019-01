@@ -13,6 +13,8 @@ $(function(){
 	$("#win_close").click(function(){
 		if(confirm("닫을까요")) {
 			opener.location.reload()
+			// open.parent.reload() ERR
+			// open.parent.location.reload() ERR
 			window.close();
 		}
 	})
