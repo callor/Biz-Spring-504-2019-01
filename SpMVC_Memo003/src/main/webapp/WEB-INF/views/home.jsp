@@ -87,7 +87,7 @@ li a:hover {
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<%@ include file="/WEB-INF/views/include/main_menu.jspf" %>
+
 <script>
 $(function(){
 	
@@ -112,29 +112,19 @@ $(function(){
 	
 
 })
-
 </script>
 </head>
 <body>
-<header>
-	<nav>
-		<h1><a href="/" class="logo">LOGO</a></h1>
-		<ul>
-			<li><a href="javascript:void(0)" 
-					id="a-memo">메모장</a>
-			<li><a href="javascript:void(0)" 
-					id="a-login">로그인</a>
-			<li><a href="javascript:void(0)" 
-					id="a-join">회원가입</a>
-			<li><a href="javascript:void(0)"  
-					id="a-about">About</a>
-		</ul>
-	</nav>
-</header>
-
+<%@ include file="/WEB-INF/views/include/main_menu.jspf" %>
 <section class="main">
 	<article id="body">
 	
+	</article>
+	<article>
+		<p>${LOGIN_INFO.m_userid}
+		<p>${LOGIN_INFO.m_password}
+		<p>${LOGIN_INFO.m_name}
+		<p>${LOGIN_INFO.m_tel}
 	</article>	
 </section>
 </body>

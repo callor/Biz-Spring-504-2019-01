@@ -3,6 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+	<!-- 
+		Handler Mapping의 일종으로
+		DispatcherServlet이 
+		클라이언트의 request를 받아서
+		Controller로 제어권을 넘기기 전에
+		처리해야할 일들을 설정하는 것
+		
+		여기에서 설정한 필터는 form에서 입력된
+		Data 들 중에 한글이 포함된 Data가 있으면
+		encoding을 수행해서
+		한글이 정상적으로 Controller로 전달 되도록
+		해주는 Encoding Filter
+	 -->
 	<filter>
 		<filter-name>encKor</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -12,6 +25,7 @@
 		</init-param>
 	</filter>
 
+	<!--  프로젝트에서 사용할 수 있도록 설정 -->
 	<filter-mapping>
 		<filter-name>encKor</filter-name>
 		<url-pattern>*</url-pattern>

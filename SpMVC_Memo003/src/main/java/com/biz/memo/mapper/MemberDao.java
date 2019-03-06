@@ -9,6 +9,10 @@ import com.biz.memo.model.MemberVO;
 
 public interface MemberDao {
 
+	@Select(" SELECT * FROM tbl_member WHERE m_userid = #{m_userid}" )
+	public MemberVO id_check(String m_userid);
+	
+	
 	@InsertProvider(type=MemberSQL.class,method="member_insert_sql")
 	public int insert(MemberVO memberVO);
 	

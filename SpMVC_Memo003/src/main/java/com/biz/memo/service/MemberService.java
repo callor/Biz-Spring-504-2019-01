@@ -21,5 +21,8 @@ public class MemberService {
 	public int insert(MemberVO memberVO) {
 		return memberDao.insert(memberVO);
 	}
-	
+
+	public MemberVO id_check(String m_userid) {
+		return memberDao.id_check(m_userid);
+	}
 }
