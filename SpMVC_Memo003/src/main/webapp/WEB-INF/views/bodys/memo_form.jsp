@@ -8,7 +8,10 @@
 	
 		<input type="hidden" name="id" value=<c:out value="${MEMO.id}" default="0" />  >
 		<label for="m_auth">작성자</label>
-		<input value="${MEMO.m_auth}" type="text" id="m_auth" name="m_auth"><br/>
+		<input 
+			type="text"  value="${LOGIN_INFO.m_name}" readonly
+			id="m_auth" 
+			name="m_auth"><br/>
 		
 		<label for="m_date">작성일자</label>
 		<input value="${MEMO.m_date}" type="date" id="m_date" name="m_date"><br/>

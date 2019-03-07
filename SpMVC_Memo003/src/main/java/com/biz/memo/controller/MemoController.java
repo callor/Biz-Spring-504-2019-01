@@ -11,12 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MemoController {
 	
 	@RequestMapping(value="memo",method=RequestMethod.GET)
-	public String memo(HttpSession session,Model model) {
-		
-		if(session.getAttribute("LOGIN_INFO") == null) {
-			model.addAttribute("LOGIN_FAIL", "REQ");
-			return "bodys/login_form";
-		}
+	public String memo(Model model) {
 		return "bodys/memo_form";
 	}
 
