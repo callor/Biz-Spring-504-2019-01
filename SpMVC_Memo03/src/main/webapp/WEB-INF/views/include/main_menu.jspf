@@ -27,10 +27,14 @@ $(function(){
 		<ul>
 			<li><a href="javascript:void(0)" class="a-menu"
 					id="memo">메모장</a>
+
+			<li><a href="javascript:void(0)"  class="a-menu" 
+					id="star">별점주기</a></li>
 					
 			<c:if test="${empty LOGIN_INFO}">
 				<li><a href="javascript:void(0)"  class="a-menu" 
 					id="login">로그인</a></li>
+					
 				<li><a href="javascript:void(0)"  class="a-menu"
 					id="join">회원가입</a></li>
 			</c:if>
