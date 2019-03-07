@@ -5,9 +5,10 @@
 $(function(){
 
 	// 메모장 메뉴 클릭 이벤트
-	$("#a-memo").click(function(){
+	$(".a-menu").click(function(){
+		let id = $(this).attr("id")
 		$.ajax({
-			url : "<c:url value='/memo' />",
+			url : "<c:url value='/' />" + id,
 			method:"GET",
 			success:function(result){
 				$("#body").html(result)
@@ -16,46 +17,6 @@ $(function(){
 				alert("서버와 통신 오류")
 			}
 		})
-	})
-	
-	// 로그인 메뉴 클릭 이벤트
-	$("#a-login").click(function(){
-		
-		/*
-		window.open("<c:url value='/login' />", 
-				'newWindow', 'width=500, height=500');
-		*/
-		$.ajax({
-			url : "<c:url value='/login' />", // RequestMapping 주소
-			method:"GET",	// RequestMethod
-			success:function(result){ // result : bodys/login.jsp 파일을 받은 결과
-				$("#body").html(result)
-			},
-			error:function() {
-				alert("서버와 통신 오류")
-			}
-		})
-		
-	})
-	
-	// 회원가입 클릭 이벤트
-	$("#a-join").click(function(){
-		$.ajax({
-			url : "<c:url value='/join' />",
-			method:"GET",
-			success:function(result){
-				$("#body").html(result)
-			},
-			error:function() {
-				alert("서버와 통신 오류")
-			}
-		})
-	})
-	
-	$("#a-about").click(function(){
-	
-		
-		
 	})
 	
 })
@@ -64,20 +25,20 @@ $(function(){
 	<nav>
 		<h1><a href="/" class="logo">LOGO</a></h1>
 		<ul>
-			<li><a href="javascript:void(0)" 
-					id="a-memo">메모장</a>
+			<li><a href="javascript:void(0)" class="a-menu"
+					id="memo">메모장</a>
 					
 			<c:if test="${empty LOGIN_INFO}">
-				<li><a href="javascript:void(0)" 
-					id="a-login">로그인</a></li>
-				<li><a href="javascript:void(0)" 
-					id="a-join">회원가입</a></li>
+				<li><a href="javascript:void(0)"  class="a-menu" 
+					id="login">로그인</a></li>
+				<li><a href="javascript:void(0)"  class="a-menu"
+					id="join">회원가입</a></li>
 			</c:if>
 			<c:if test="${not empty LOGIN_INFO}">
 				<li><a href="<c:url value='/logout' />" 
 					id="a-logout">로그아웃</a></li>
-				<li><a href="javascript:void(0)" 
-					id="a-mypage">MyPage</a></li>
+				<li><a href="javascript:void(0)"  class="a-menu"
+					id="mypage">MyPage</a></li>
 			</c:if>
 <style>
 	li div a {
@@ -107,11 +68,11 @@ $(function(){
 				<a href="javascript:void(0)" 
 					class="dropbtn" id="a-about">About</a>
 				<div class="dropdown-content">
-					<a href="<c:url value='/ad-1' />" id="ad-1">Drop1</a>
-					<a href="<c:url value='/ad-2' />" id="ad-2">Drop2</a>
-					<a href="<c:url value='/ad-3' />" id="ad-3">Drop3</a>
-					<a href="<c:url value='/ad-4' />" id="ad-4">Drop4</a>
-					<a href="<c:url value='/ad-5' />" id="ad-5">Drop5</a>				
+					<a href="javascript:void(0)" id="ad-1" class="a-menu">Drop1</a>
+					<a href="javascript:void(0)" id="ad-2" class="a-menu">Drop2</a>
+					<a href="javascript:void(0)" id="ad-3" class="a-menu">Drop3</a>
+					<a href="javascript:void(0)" id="ad-4" class="a-menu">Drop4</a>
+					<a href="javascript:void(0)" id="ad-5" class="a-menu">Drop5</a>				
 				</div>
 			</li>
 			
