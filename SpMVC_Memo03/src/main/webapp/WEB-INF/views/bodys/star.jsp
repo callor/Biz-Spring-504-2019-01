@@ -50,6 +50,8 @@ $(function(){
 </div>
 <p>점수주기 : 
 <input type="range" id="stars" min="0" max="10">
+<p><input type="date">
+
 
 </body>
 </html>
