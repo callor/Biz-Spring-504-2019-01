@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.biz.memo.mapper.MemoDao;
 import com.biz.memo.model.MemoVO;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MemoService {
 
@@ -35,9 +38,10 @@ public class MemoService {
 		if(memoVO.getId() > 0) {
 			ret = dao.update(memoVO);
 		} else {
+			log.debug("Before Insert MemoID : " + memoVO.getId());
 			ret = dao.insert(memoVO);
+			log.debug("After Insert MemoID : " + memoVO.getId());
 		}
-		
 		return 0;
 	}
 

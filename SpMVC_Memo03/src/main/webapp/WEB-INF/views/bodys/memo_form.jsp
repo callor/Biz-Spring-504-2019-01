@@ -16,7 +16,7 @@
 		<label for="m_auth">USERID</label>
 		<input 
 			type="text"  
-			value="${LOGIN_INFO.m_userid}" readonly
+			value="${LOGIN_INFO.m_userid}" 
 			id="m_auth" 
 			name="m_auth"><br/>
 
@@ -40,6 +40,5 @@
 		<hr />
 		<label></label>
 		<button>메모저장</button>
-		<p id="test">
 	</form>
 </section>
