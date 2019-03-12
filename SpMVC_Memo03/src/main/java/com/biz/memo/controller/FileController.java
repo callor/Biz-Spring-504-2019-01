@@ -32,7 +32,9 @@ public class FileController {
 	MemoService mService;
 	
 	@ResponseBody
-	@RequestMapping(value="memo_file",method=RequestMethod.POST)
+	@RequestMapping(value="memo_file",
+					method=RequestMethod.POST,
+					produces="text/html;charset=utf8")
 	public String fileUp(@ModelAttribute MemoVO memoVO,
 			@RequestParam("m_file") MultipartFile file){
 

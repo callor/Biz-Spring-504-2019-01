@@ -77,6 +77,7 @@ $(function(){
 		<th>작성자</th>
 		<th>작성일자</th>
 		<th>제목</th>
+		<th>첨부파일</th>
 	</tr>
 	<c:choose>
 		<c:when test="${empty MEMOS}">
@@ -89,6 +90,14 @@ $(function(){
 					<td>${memo.m_auth}</td>
 					<td>${memo.m_date}</td>
 					<td>${memo.m_subject}</td>
+					<td>
+						<c:if test="${not empty memo.files}" >
+							<c:forEach items="${memo.files}" 
+									var="file" varStatus="f">
+								<img src="<c:url value='/files/${file.save_file_name}' /> ">							
+							</c:forEach>						
+						</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
