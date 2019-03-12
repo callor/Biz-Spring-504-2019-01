@@ -7,12 +7,12 @@ public class MemoSQL {
 	public String memo_insert_sql() {
 		
 		SQL sql = new SQL()
-				.INSERT_INTO("tbl_memo")
-				.INTO_COLUMNS("id").INTO_VALUES("#{id}")
-				.INTO_COLUMNS("m_auth").INTO_VALUES("#{m_auth}")
-				.INTO_COLUMNS("m_date").INTO_VALUES("#{m_date}")
-				.INTO_COLUMNS("m_subject").INTO_VALUES("#{m_subject}")
-				.INTO_COLUMNS("m_text").INTO_VALUES("#{m_text}");
+		.INSERT_INTO("tbl_memo")
+		.INTO_COLUMNS("id").INTO_VALUES("#{id}")
+		.INTO_COLUMNS("m_auth").INTO_VALUES("#{m_auth}")
+		.INTO_COLUMNS("m_date").INTO_VALUES("#{m_date}")
+		.INTO_COLUMNS("m_subject").INTO_VALUES("#{m_subject}")
+		.INTO_COLUMNS("m_text").INTO_VALUES("#{m_text}");
 		
 		return sql.toString();
 	

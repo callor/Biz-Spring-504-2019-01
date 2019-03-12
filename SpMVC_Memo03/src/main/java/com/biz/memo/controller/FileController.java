@@ -34,14 +34,14 @@ public class FileController {
 	@ResponseBody
 	@RequestMapping(value="memo_file",method=RequestMethod.POST)
 	public String fileUp(@ModelAttribute MemoVO memoVO,
-			@RequestParam MultipartFile m_file){
+			@RequestParam("m_file") MultipartFile file){
 
+		// memoVO담겨있는 메모내용을 tbl_memo table에 저장하는
+		// mService.save(memoVO);
 		
-		mService.save(memoVO);
-		
+		// /files 디렉토리(폴더)에 파일을 저장하고
 		// 파일정보를 tbl_files에 저장하기
-		
-		String saveFileName = fService.fileUpload(memoVO, m_file);
+		String saveFileName = fService.fileUpload(memoVO, file);
 		return "<img src='" 
 				+ context.getContextPath() // project context Path 
 				+ "/files/" 				// file 저장된 path

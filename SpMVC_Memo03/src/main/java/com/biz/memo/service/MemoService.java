@@ -32,6 +32,13 @@ public class MemoService {
 		return dao.findById(id);
 	}
 
+	/*
+	 * 
+	 * memoVO의 id 값을 검사해서
+	 * 0보다 크면 수정(Update)
+	 * 그렇지 않으면 추가(Insert)
+	 * 
+	 */
 	public int save(MemoVO memoVO) {
 
 		int ret = 0;

@@ -24,7 +24,6 @@
 		<input 
 			type="text"  
 			value="${LOGIN_INFO.m_name}" readonly><br/>
-
 		
 		<label for="m_date">작성일자</label>
 		<input value="${MEMO.m_date}" type="date" id="m_date" name="m_date"><br/>
