@@ -76,7 +76,7 @@ public class MemoController {
 		List<MemoVO> memoList = mService.selectAll();
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("bodys/memo_list");
+		mv.setViewName("bodys/memo_card_list");
 		mv.addObject("MEMOS", memoList);
 		return mv;
 	}

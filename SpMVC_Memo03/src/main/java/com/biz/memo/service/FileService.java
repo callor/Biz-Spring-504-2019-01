@@ -148,5 +148,9 @@ public class FileService {
 		
 		return null;
 	} // end fileUpLoad
+
+	public int delete(long id) {
+		return fDao.delete(id);
+	}
 	 
 } // end class

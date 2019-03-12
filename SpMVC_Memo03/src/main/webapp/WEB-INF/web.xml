@@ -32,4 +32,19 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+  
+  	<!-- 보안 이슈 RequestMethod 제한 -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Forbidden</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>TRACE</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>HEAD</http-method>
+        </web-resource-collection>
+        <auth-constraint />
+    </security-constraint>
+  
+
 </web-app>

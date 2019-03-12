@@ -51,6 +51,13 @@ public interface MemoDao {
 	
 	
 	@Select("SELECT * FROM tbl_memo WHERE id = #{id} ")
+	@Results({
+		@Result(property="id",column="id"), // 2
+		@Result(column="id", property="files", // 4, 7
+				javaType=List.class,
+				many=@Many(select="getFiles") // 3
+		)
+	})
 	public MemoVO findById(long id);
 	
 	/*
