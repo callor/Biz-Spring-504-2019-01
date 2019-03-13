@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biz.memo.model.MemberVO;
 import com.biz.memo.model.MemoVO;
+import com.biz.memo.service.FileService;
 import com.biz.memo.service.MemoService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +28,9 @@ public class MemoController {
 	
 	@Autowired
 	MemoService mService;
+	
+	@Autowired
+	FileService fService;
 	
 	@RequestMapping(value="memo",method=RequestMethod.GET)
 	public String memo(Model model) {
@@ -109,6 +114,22 @@ public class MemoController {
 		model.addAttribute("MEMO",vo);
 		return "bodys/memo_form" ;
 
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="memo_delete",method=RequestMethod.GET)
+	public String memo_delete(long id) {
+		
+		// 메모를 삭제할때
+		// tbl_memo table에서 데이터를 삭제하면
+		// tbl_files table의 데이터도 같이 삭제가 됩니다.
+		// 하지만 물리적으로 저장된 파일은 삭제 되지 않는다.
+		// 1. 물리적 저장 파일을 삭제하고 처리를 해주어야 한다.
+		
+		fService.fileDelete(id); // 물리적 파일 삭제
+		mService.delete(id);	 // 메모 데이터 삭제
+		
+		return "OK";
 	}
 	
 	

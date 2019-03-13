@@ -83,6 +83,6 @@ public interface MemoDao {
 	public int update(MemoVO memoVO);
 	
 	@Delete("DELETE FROM tbl_memo WHERE id=#{id}")
-	public void delte();
+	public int delete(long id);
 	
 }

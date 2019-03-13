@@ -1,6 +1,7 @@
 package com.biz.memo.service;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -200,6 +201,21 @@ public class FileService {
 		if(fileDelOk) return fDao.delete(id);
 		else return 0;
 	
+	}
+
+	public void fileDelete(long id) {
+
+		// id = tbl_files 입장에서는 parent_id 이다.
+		List<FileVO> fileList = fDao.selectById(id);
+		
+		String realPath = context.getRealPath("/files/");
+		
+		for(FileVO v : fileList) {
+			String realFile = v.getSave_file_name();
+			File file = new File(realPath, realFile);
+			if(file.exists())
+				file.delete();
+		}
 	}
 	 
 } // end class

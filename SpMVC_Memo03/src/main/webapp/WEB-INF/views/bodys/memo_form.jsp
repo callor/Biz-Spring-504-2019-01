@@ -47,6 +47,80 @@ $(function(){
 				alert("서버와 통신 오류")
 			}
 		})
+	}) // end file_delete
+	
+	$("#btn-write").click(function(){
+		
+		// ajax로 file과 memoVO를 한꺼번에 서버에 전송하기
+		// 1 js 에 내장된 FormData 클래스를 사용한다.
+		// 2. jquery가 내부적으로 form을 배열로 관리하고 있는데
+		//   현재 작성중인 form만 추출하기 위해서
+		//   배열의 0번째 라는 것을 반드시 명시를 해야한다.
+		let form = $('form')[0]
+		
+		// 2. form 문서를 FormData라는 객체 형식으로 일단
+		// 		변환을 시킨다.
+		let fData = new FormData(form)
+		// memoVO 각 요소들이 포함이 되어 있는 상태
+		// 그런데 fData에는 input type=file은 기본적으로
+		//	포함이 되지 않는다.
+		// 3. fData 객체에 임의로 input type=file 항목을
+		//	추가를 해줘야 한다.
+		// m_file 이라는 이름으로(서버의 매개변수 이름)
+		// input type=file 요소를 추가 하는 코드
+		fData.append('m_file',$("#m_file")[0].files[0])
+		
+		$.ajax({
+			url : "<c:url value='/memo_file' />",
+			method:"POST",
+			data:fData,
+			processData:false,	// 데이터 별다른 처리 하지 말고
+			contentType:false,	// contentType도 지정하지 말라,
+			success:function(result){
+				$.ajax({
+					url : "<c:url value='/memo_list2' />",
+					method:"GET",
+					success:function(result){
+						$("#body").html(result)
+					}
+				})
+			},
+			error:function(){
+				alert("서버와 통신 오류 발생")
+			}
+		})
+		
+	}) // end btn-write
+	$("#btn-delete").click(function(){
+		let id = $("#id").val()
+		if(id == '0'){
+			alert("삭제할 메모가 없습니다")
+			return false
+		}
+		
+		if(!confirm("정말 메모를 삭제 할까요")) {
+			 return false;
+		}
+		
+		$.ajax({
+			url : "<c:url value='/memo_delete' />",
+			method:"GET",
+			data:{id},
+			success:function(result){
+				$.ajax({
+					url : "<c:url value='/memo_list2' />",
+					method:"GET",
+					success:function(result){
+						$("#body").html(result)
+					}
+				})
+			},
+			error:function(){
+				alert("서버와 통신 오류 발생")
+			}
+		})
+		
+		
 	})
 })
 
@@ -89,6 +163,14 @@ $(function(){
 		-ms-transform:scale(3); /* ie */
 		-o-transform:scale(3); /* opera */
 		transform:scale(3); /* width 나 height를 3배로 확대 */
+	}
+	
+	#btn-delete{
+		background-color: red;
+	}
+	
+	#btn-delete:hover {
+		background-color: orange;
 	}
 	
 </style>	
@@ -172,7 +254,7 @@ $(function(){
 		<hr />
 
 		<label></label>
-		<button>메모저장</button>
+		<button id="btn-write" type="button">메모저장</button>
+		<button id="btn-delete" type="button">메모삭제</button>
 	</form>
-
 </section>

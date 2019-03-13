@@ -57,4 +57,7 @@ public class MemoService {
 		return dao.selectByUserId(userid);
 	}
 
+	public int delete(long id) {
+		return dao.delete(id);
+	}
 }
