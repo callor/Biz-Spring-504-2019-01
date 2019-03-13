@@ -149,8 +149,57 @@ public class FileService {
 		return null;
 	} // end fileUpLoad
 
+	/*
+	 * 첨부파일 삭제
+	 * 1. tbl_files 테이블의 id값으로 tbl_files의 레코드를 가져오기
+	 * 2. fileVO에 담기
+	 * 3. fileVO의 save_file_name 값을 가지고
+	 * 4. 실제 서버에 저장된 파일을 삭제
+	 * 5. tbl_files 테이블의 해당되는 정보를 삭제
+	 */
 	public int delete(long id) {
-		return fDao.delete(id);
+		
+		// tble_files 의 id값으로 파일정보 가져오기
+		FileVO fVO = fDao.findById(id);
+		
+		// 파일정보로 부터 실제 저장된 파일 이름을 추출
+		String realFile = fVO.getSave_file_name();
+		
+		// 파일이 저장된 서버의 실제 폴더
+		String realPath = context.getRealPath("/files/");
+		
+		// 저장된 폴더와 파일 이름을 연결하여 파일 정보 생성
+		File file = new File(realPath,realFile);
+		
+		boolean fileDelOk = false;
+		if(file.exists()) // 파일이 실제로 존재 하냐
+			fileDelOk = file.delete(); // 파일 삭제 성공하면 true, 실패하면 false
+	
+		String fileDelMsg = "";
+		
+		// 일반적인 if 문 코드
+		if(fileDelOk) fileDelMsg = "삭제성공";
+		else fileDelMsg = "삭제실패";
+		log.debug("파일삭제 OK ? : " + fileDelMsg);
+
+		// 3항연산자 코드
+		String fileDelMsg2 = fileDelOk ? "삭제성공" : "삭제실패" ;
+		fileDelMsg2 = fileDelOk == true ? "삭제성공" : "삭제실패";
+		
+		log.debug("파일삭제 OK ? : " + (fileDelOk ? "삭제성공" : "삭제실패"));
+		
+		// r 변수를 임의로 생성해서
+		// 짝인경우만 보고싶다
+		int r = (int)(Math.random() * 100) + 1;
+		if( r % 2 == 0) log.debug("짝수:" + r);
+		else log.debug("짝수 아님");
+
+		log.debug((r%2 == 0 ? "짝수" + r : "짝수아님"));
+
+		// 실제 파일이 삭제 된것을 확인 한 후 table에 파일 정보를 삭제
+		if(fileDelOk) return fDao.delete(id);
+		else return 0;
+	
 	}
 	 
 } // end class

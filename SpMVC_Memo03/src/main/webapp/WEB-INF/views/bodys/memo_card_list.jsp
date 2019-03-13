@@ -44,12 +44,12 @@ section {
 	flex : 0 0 300px;
 	height: 332px;
 	margin:20px;
-	padding-top:16px;
-	padding-bottom:16px;
 	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),
 				0 4px 20px 0 rgba(0,0,0,0.9);
 				
-	overflow: auto;
+	border-radius : 6px;				
+	/* overflow: auto; */
+	overflow:hidden; /* 혹시 box보다 내용물이 크면 잘라라 */
 	
 	display: flex;
 	flex-direction:column;
@@ -57,6 +57,11 @@ section {
 	justify-content: center;
 
 }
+
+img {
+	border : 1px solid red;
+}
+
 </style>
 </head>
 <body>
@@ -66,11 +71,13 @@ section {
 		<c:if test="${not empty memo.files}">
 			<c:forEach items="${memo.files}" var="file" >
 				<div class="my-card" data-id="${memo.id}">
-					<img width="200px" hegth="200px"
+					<img width="100%" height="60%"
 					src="<c:url value='/files/${file.save_file_name}' />" >
-					<p>${memo.m_date}</p>
-					<p>${memo.m_subject}</p>
-					<p>${memo.m_text}</p>
+					<div>
+						<h3>${memo.m_subject}</h3>
+						<p>${memo.m_date}<br/>
+							${memo.m_text}</p>
+					</div>
 				</div>
 			</c:forEach>
 		</c:if>

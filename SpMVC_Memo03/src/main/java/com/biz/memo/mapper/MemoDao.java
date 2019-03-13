@@ -17,6 +17,12 @@ import com.biz.memo.model.MemoVO;
 public interface MemoDao {
 	
 	@Select("SELECT * FROM tbl_memo")
+	/*
+	 * tbl_memo 테이블로 부터 데이터 리스트를 가져올때
+	 * memoVO의 files 맴버변수에 tbl_files 테이블로 부터
+	 * tbl_memo와 Relation(Join)된 데이터를 같이
+	 * 가져오기 위하여 설정한 Annotation
+	 */
 	@Results({
 		@Result(property="id",column="id"), // 2
 		@Result(column="id", property="files", // 4, 7

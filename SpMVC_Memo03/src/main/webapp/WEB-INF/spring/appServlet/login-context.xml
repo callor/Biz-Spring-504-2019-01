@@ -16,6 +16,7 @@
 	<!-- intercepter를 수행할 RequestMapping을 설정 -->	
 	<mvc:interceptors>
 		<mvc:interceptor>
+			<mvc:mapping path="/memo*"/>
 			<mvc:mapping path="/ad-*"/>
 			<mvc:exclude-mapping path="/ad-4"/>
 			<mvc:exclude-mapping path="/ad-5"/>

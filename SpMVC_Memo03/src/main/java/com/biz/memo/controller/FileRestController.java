@@ -52,8 +52,9 @@ public class FileRestController {
 	public String file(@RequestParam long id) {
 		
 		int ret = fService.delete(Long.valueOf(id));
-		if(ret > 0) return "삭제성공";
-		else return "삭제실패";
+		
+		if(ret > 0) return "OK";
+		else return "FAIL";
 	
 	}
 

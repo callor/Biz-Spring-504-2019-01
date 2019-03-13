@@ -23,6 +23,12 @@ public interface FileDao {
 	@Select("SELECT * FROM tbl_files WHERE parent_id = #{parent_id}")
 	public List<FileVO> selectById(long parent_id);
 	
+	/* PK 값을 기준으로 tbl_files로 부터 1개의 레코드 추출 
+	 * 
+	 */
+	@Select(" SELECT * FROM tbl_files WHERE id= #{id} ")
+	public FileVO findById(long id);
+	
 	@InsertProvider(type=FileSQL.class,method="file_insert_sql")
 	public int insert(FileVO fileVO);
 	
