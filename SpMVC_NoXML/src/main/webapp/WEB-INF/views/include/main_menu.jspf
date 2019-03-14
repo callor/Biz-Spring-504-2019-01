@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script>
+$(function(){
+
+	// 메모장 메뉴 클릭 이벤트
+	$(".a-menu").click(function(){
+		let id = $(this).attr("id")
+		$.ajax({
+			url : "<c:url value='/' />" + id,
+			method:"GET",
+			success:function(result){
+				$("#body").html(result)
+			},
+			error:function() {
+				alert("서버와 통신 오류")
+			}
+		})
+	})
+	
+})
+</script>
+<header>
+	<nav>
+		<h1><a href="/" class="logo">LOGO</a></h1>
+		<ul>
+			<li><a href="javascript:void(0)" class="a-menu"
+					id="memo_list2">메모장</a>
+
+			<li><a href="javascript:void(0)"  class="a-menu" 
+					id="star">별점주기</a></li>
+					
+			<c:if test="${empty LOGIN_INFO}">
+				<li><a href="javascript:void(0)"  class="a-menu" 
+					id="login">로그인</a></li>
+					
+				<li><a href="javascript:void(0)"  class="a-menu"
+					id="join">회원가입</a></li>
+			</c:if>
+			<c:if test="${not empty LOGIN_INFO}">
+				<li><a href="<c:url value='/logout' />" 
+					id="a-logout">로그아웃</a></li>
+				<li><a href="javascript:void(0)"  class="a-menu"
+					id="mypage">MyPage</a></li>
+			</c:if>
+<style>
+	li div a {
+		display: block; 
+		color:white;
+		text-align: left;
+		padding:14px 16px;
+		text-decoration: none;
+	}
+	
+	li.dropdown {
+		display: block;
+	}
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: green;
+		min-width: 160px;
+		z-order : 10;
+	}
+	
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+</style>
+			<li class="dropdown">
+				<a href="javascript:void(0)" 
+					class="dropbtn" id="a-about">About</a>
+				<div class="dropdown-content">
+					<a href="javascript:void(0)" id="ad-1" class="a-menu">Drop1</a>
+					<a href="javascript:void(0)" id="ad-2" class="a-menu">Drop2</a>
+					<a href="javascript:void(0)" id="ad-3" class="a-menu">Drop3</a>
+					<a href="javascript:void(0)" id="ad-4" class="a-menu">Drop4</a>
+					<a href="javascript:void(0)" id="ad-5" class="a-menu">Drop5</a>				
+				</div>
+			</li>
+			
+		</ul>
+	</nav>
+</header>
+
+
