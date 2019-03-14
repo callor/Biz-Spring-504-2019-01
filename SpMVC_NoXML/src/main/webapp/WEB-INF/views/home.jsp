@@ -144,7 +144,7 @@ $(function(){
 				if(result == 'FAIL') alert('파일 업로드 오류')
 				else {
 					let h = "<img src=" 
-						+ "<c:url value='/files_up/' />" + result + ">"
+						+ "<c:url value='/files/' />" + result + ">"
 					$("#images").html(h)
 				}
 			},
