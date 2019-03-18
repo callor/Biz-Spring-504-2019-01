@@ -79,6 +79,25 @@ public interface MemoDao {
 	@InsertProvider(type=MemoSQL.class, method="memo_insert_sql")
 	public int insert(MemoVO memoVO);
 	
+	
+	@SelectKey(statement="SELECT COUNT(*) + 1 FROM tbl_memo ",	
+					keyProperty = "id", 
+					before=true,
+					resultType = Long.class)
+	@InsertProvider(type=MemoSQL.class, method="memo_insert_sql")
+	public int insert2(MemoVO memoVO);
+
+	@SelectKey(statement="SELECT ROUND(DBMS_RANDOM.VALUE(0,999999999),0) FROM DUAL",	
+			keyProperty = "id", 
+			before=true,
+			resultType = Long.class)
+	@InsertProvider(type=MemoSQL.class, method="memo_insert_sql")
+	public int insert3(MemoVO memoVO);
+	
+	
+	
+	
+	
 	@UpdateProvider(type=MemoSQL.class,method="memo_update_sql")
 	public int update(MemoVO memoVO);
 	
