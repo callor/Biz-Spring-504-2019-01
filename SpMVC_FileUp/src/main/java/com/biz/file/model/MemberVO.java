@@ -15,6 +15,9 @@ public class MemberVO {
 	
 	private String m_userid;
 	private String m_password;
+	
+	private String m_re_password;
+	
 	private String m_name;
 	private String m_tel;
 

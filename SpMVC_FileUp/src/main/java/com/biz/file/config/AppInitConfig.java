@@ -1,5 +1,8 @@
 package com.biz.file.config;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /*
@@ -7,6 +10,17 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  */
 public class AppInitConfig 
 			extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Filter[] getServletFilters() {
+		
+		CharacterEncodingFilter filter
+		= new CharacterEncodingFilter();
+		
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);
+		return new Filter[] { filter } ;
+	}
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {

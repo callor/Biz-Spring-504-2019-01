@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
 	fieldset{
 		width:70%;
@@ -54,26 +56,7 @@
 	}
 
 </style>
-
-<script>
-$(function(){
-		$.ajax({
-			
-			url : "<c:url value='id_check' />",
-			method:"POST",
-			data : {m_userid:userid},
-			success:function(result) {
-				$("#userid_error").html(result)
-				$(".userid_label").css("display","inline-block")
-			},
-			error:function(){
-				alert("서버오류")
-			}
-		})
-	})
-})
-</script>	
-<form:form action="<c:url value='/join' />" 
+<form:form action="${rootPath}/member/join" 
 		method="POST" 
 		modelAttribute="memberVO"
 		autocomplete="off">
@@ -81,7 +64,7 @@ $(function(){
 	<fieldset>
 	<legend>회원가입</legend>
 	<label  class="in-label" for="m_userid">회원ID</label>
-	<form:input class="in-box" required
+	<form:input class="in-box" required="required"
 			placeholder="회원ID를 입력하세요"
 			id="m_userid" 
 			path="m_userid" /><br/>
@@ -92,7 +75,7 @@ $(function(){
 			path="m_password" /><br/>
 			
 	<label  class="in-label" for="m_re_password">비밀번호확인</label>
-	<form:password type="password" class="in-box"
+	<form:password class="in-box"
 			id="m_re_password" 
 			path="m_re_password" /><br/>
 	
@@ -107,6 +90,6 @@ $(function(){
 			path="m_tel" /><br/>
 	
 	<label class="in-label" for="btn-join"></label>
-	<button id="btn-join" type="button">회원가입</button>
+	<button id="btn-join-1" type="submit">회원가입</button>
 	</fieldset>
 </form:form>

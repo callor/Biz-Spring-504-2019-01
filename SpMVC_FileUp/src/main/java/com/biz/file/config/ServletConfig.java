@@ -3,6 +3,8 @@ package com.biz.file.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -28,7 +30,16 @@ public class ServletConfig implements WebMvcConfigurer{
 			.addResourceLocations("/resources/");
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 	}
-
+	
+	@Bean 
+	public MultipartResolver multipartResolver(){
+		CommonsMultipartResolver mr
+		= new CommonsMultipartResolver();
+		mr.setMaxUploadSize(1000000000);
+		mr.setMaxUploadSizePerFile(10000000);
+		return mr;
+	}
+	
 	/*
 	 * @Bean Annotation
 	 * 스프링의 내장된 클래스를 사용할 준비를 하라 하는 지시어
