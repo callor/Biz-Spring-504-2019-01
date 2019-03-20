@@ -40,8 +40,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
-	public String join(@ModelAttribute("memberVO") MemberVO memberVO) {
-		return "body/join_form";
+	public String join(
+			@ModelAttribute("memberVO") MemberVO memberVO,
+			Model model,String strId) {
+		model.addAttribute("BODY", "JOIN_FORM");
+		return "home";
 	}
 	
 	@RequestMapping(value="/join",method=RequestMethod.POST)

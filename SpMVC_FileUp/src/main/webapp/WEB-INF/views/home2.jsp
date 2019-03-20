@@ -118,10 +118,14 @@ $(function(){
 <%@ include file="/WEB-INF/views/include/main_menu.jspf" %>
 <section class="main">
 	<article id="body">
-		<c:if test="${BODY == 'JOIN_FORM'}" >
-			<%@ include file="/WEB-INF/views/body/join_form.jsp" %>
-		</c:if>
+	
 	</article>
+	<article>
+		<p>${LOGIN_INFO.m_userid}
+		<p>${LOGIN_INFO.m_password}
+		<p>${LOGIN_INFO.m_name}
+		<p>${LOGIN_INFO.m_tel}
+	</article>	
 </section>
 </body>
 </html>
