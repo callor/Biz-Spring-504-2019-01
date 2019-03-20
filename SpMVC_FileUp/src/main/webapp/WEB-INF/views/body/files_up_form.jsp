@@ -21,6 +21,33 @@
 	cursor: pointer;
 	background-color: #ccc;
 }
+
+#img-container {
+	display: flex;
+}
+
+#images {
+	flex : 0 0 auto;
+	margin : 5px auto;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	border:1px solid blue;
+}
+
+.img-box {
+	flex : 0 0  100px;
+	height: 100px;
+	margin:10px;
+	border-radius: 6px;
+}
+
+h2 {
+	text-align: center;
+}
+
 </style>
 
 <script
@@ -56,10 +83,26 @@
 				url : "<c:url value='/file/files' />",
 				method:"POST",
 				data:fData,
+				dataType:"JSON",
 				processData:false,
 				contentType:false,
 				success:function(result) {
-					alert(result)
+					// JSON형태로 수신한 문자열을 이용해서
+					// HTML 코드를 생성한 후 본문에 그려보자
+					if(result == null) {
+						$("h3").text("파일 업로드 오류")
+					} else {
+						for(let i = 0 ; i < result.length ; i++ ) {
+							 // 특정한 영역에 문자열이나 html코드를 추기하는
+							$('#images').append(
+									$('<img/>',{
+										src : "<c:url value='/files/' />" + result[i] ,
+										class : 'img-box'
+									})
+							)
+						} // for end
+						$('h3').text('파일 업로드 성공')
+					}
 				}
 				,error:function() {
 					alert('서버와 통신 오류')
@@ -72,13 +115,15 @@
 
 </head>
 <body>
-	<div>
-		<p>
-		<p>
-		<div class="drag_area">
-			<h3>업로드할 파일들을 드래그</h3>
-		</div>
-		<div id="image"></div>
+<h2>다중 파일 Drag and Drop</h2>
+<article>
+	<div class="drag_area">
+		<h3>업로드할 파일들을 드래그</h3>
 	</div>
+</article>
+<article id="img-container">
+	<div id="images">
+	</div>
+</article>
 </body>
 </html>

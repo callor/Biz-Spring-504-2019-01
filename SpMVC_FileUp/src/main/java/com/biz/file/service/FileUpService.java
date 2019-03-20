@@ -1,7 +1,7 @@
 package com.biz.file.service;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,18 +63,21 @@ public class FileUpService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return realPath ;
+		return saveFile ;
 	
 	}
 
 	public List<String> uploads(MultipartHttpServletRequest files) {
 		// TODO Auto-generated method stub
 		List<MultipartFile> fileList = files.getFiles("files");
+		List<String> fileNames = new ArrayList<String>();
 		
+		// fileNames에는 이름을 변경하여 서버에 업로드한
+		// 파일들의 이름리스트가 만들어진다.
 		for(MultipartFile file : fileList) {
-			this.upload(file);
+			fileNames.add(this.upload(file));
 		}
-		return null;
+		return fileNames;
 
 	}
 

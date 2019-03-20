@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	
+	<!-- logger가 log를 표시할때 어떻게 표시할 것인지 설정 하는 부분 -->
+	<appender name="consoleAppender" 
+			class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>
+				%d{HH:mm:ss:SSS} [%thread] %-5level %logger{5} - %msg%n
+			</pattern>			
+		</encoder>
+	</appender>
+	
+	<!-- 
+		level 등위
+		error, warn, info, debug, trace
+	 -->
+	<logger name="com.biz.file" level="debug">
+		<appender-ref ref="consoleAppender" />
+	</logger>
+
+	<root level="warn">
+		<appender-ref ref="consoleAppender" />
+	</root>
+
+</configuration>
