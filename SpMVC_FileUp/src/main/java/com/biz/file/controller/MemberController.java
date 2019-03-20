@@ -49,8 +49,10 @@ public class MemberController {
 	
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String join(
-			@ModelAttribute("memberVO") MemberVO memberVO,Model model) {
-		return "body/join_form";
+			@ModelAttribute("memberVO") MemberVO memberVO,
+			Model model) {
+		
+		return "redirect:/member/join";
 	}
 	
 	

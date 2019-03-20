@@ -121,6 +121,15 @@ $(function(){
 		<c:if test="${BODY == 'JOIN_FORM'}" >
 			<%@ include file="/WEB-INF/views/body/join_form.jsp" %>
 		</c:if>
+		<c:if test="${BODY == 'FILE_UP'}" >
+			<%@ include file="/WEB-INF/views/body/file_up_form.jsp" %>
+		</c:if>
+		<c:if test="${BODY == 'FILES_UP'}" >
+			<%@ include file="/WEB-INF/views/body/files_up_form.jsp" %>
+		</c:if>
+		<c:if test="${BODY == 'LOGIN_FORM'}" >
+			<%@ include file="/WEB-INF/views/body/login_form.jsp" %>
+		</c:if>
 	</article>
 </section>
 </body>

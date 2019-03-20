@@ -20,6 +20,11 @@ $(function(){
 					id="file" 
 					data-menu="file/file_up">파일올리기</a>
 
+			<li><a href="javascript:void(0)" 
+					class="a-menu"
+					id="file" 
+					data-menu="file/files_up">다중 파일올리기</a>
+
 			<c:if test="${empty LOGIN_INFO}">
 				<li><a href="javascript:void(0)"  
 					class="a-menu" 

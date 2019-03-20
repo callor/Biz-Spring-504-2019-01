@@ -2,6 +2,7 @@ package com.biz.file.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -9,6 +10,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service
 public class FileUpService {
@@ -63,6 +65,17 @@ public class FileUpService {
 		}
 		return realPath ;
 	
+	}
+
+	public List<String> uploads(MultipartHttpServletRequest files) {
+		// TODO Auto-generated method stub
+		List<MultipartFile> fileList = files.getFiles("files");
+		
+		for(MultipartFile file : fileList) {
+			this.upload(file);
+		}
+		return null;
+
 	}
 
 }

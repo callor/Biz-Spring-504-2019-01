@@ -47,10 +47,13 @@
 
 			// fData에 파일 정보를 추가
 			// file : Controller에서 사용할 변수 이름
-			fData.append('file', files[0]) // 1개의 파일만 추출
+			// fData.append('file', files[0]) // 1개의 파일만 추출
+			for(let i = 0 ; i < files.length; i++) {
+				fData.append('files',files[i])				
+			}
 
 			$.ajax({
-				url : "<c:url value='/file/file' />",
+				url : "<c:url value='/file/files' />",
 				method:"POST",
 				data:fData,
 				processData:false,
@@ -73,7 +76,7 @@
 		<p>
 		<p>
 		<div class="drag_area">
-			<h3>파일 업로드</h3>
+			<h3>업로드할 파일들을 드래그</h3>
 		</div>
 		<div id="image"></div>
 	</div>

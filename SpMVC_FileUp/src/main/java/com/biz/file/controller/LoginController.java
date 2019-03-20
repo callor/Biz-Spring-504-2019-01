@@ -12,6 +12,7 @@ import com.biz.file.model.MemberVO;
 
 @Controller
 @SessionAttributes({"login_info"})
+@RequestMapping("/login")
 public class LoginController {
 
 	/*
@@ -22,10 +23,13 @@ public class LoginController {
 		return new MemberVO();
 	}
 	
-	@RequestMapping(value="login",method=RequestMethod.GET)
+	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(@ModelAttribute("login_info") 
-							MemberVO memberVO) {
-		return "body/login_form";
+							MemberVO memberVO,
+							Model model, String strId) {
+		
+		model.addAttribute("BODY","LOGIN_FORM");
+		return "home";
 	}
 	
 	@RequestMapping(value="login",method=RequestMethod.POST)
