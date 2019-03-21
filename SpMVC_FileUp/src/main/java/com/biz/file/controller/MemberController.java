@@ -1,7 +1,10 @@
 package com.biz.file.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,6 +42,7 @@ public class MemberController {
 		return vo;
 	}
 	
+	// form을 열기 위한 method
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join(
 			@ModelAttribute("memberVO") MemberVO memberVO,
@@ -47,18 +51,18 @@ public class MemberController {
 		return "home";
 	}
 	
+	// form에서 데이터를 받기 위한 method
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String join(
-			@ModelAttribute("memberVO") MemberVO memberVO,
-			Model model) {
+			@ModelAttribute("memberVO") 
+			@Valid MemberVO memberVO,
+			Model model,
+			BindingResult result) {
+		
+		
 		
 		return "redirect:/member/join";
 	}
-	
-	
-	
-	
-	
 	
 	@RequestMapping(value="/join1",method=RequestMethod.GET)
 	public String join(Model model) {
