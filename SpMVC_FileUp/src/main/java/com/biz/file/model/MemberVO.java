@@ -1,6 +1,7 @@
 package com.biz.file.model;
 
-import javax.validation.constraints.Null;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -20,33 +21,39 @@ public class MemberVO {
 	 * VO 의 각 member변수들에 Constraint(제약조건)을 설정해서
 	 * validation에서 사용할수 있도록 설정
 	 * 
-	 * @Null : 반드시 입력해야하는 값이다
-	 * @NotNull : 값이 널이 아닌가?
-	 * @Size(min=x, max=y) : 문자열일 경우 x부터 y까지 범위의 개수
-	 * @Max : 숫자형일경우 지정한 값보다 작은 값만 허용
-	 * @Mix : 지정한 값보다 큰값만 허용
+	 * @NotNull : null 아닌 경우만 정상
+	 * @NotBlank : 문자열일 경우 공백이 아닐경우만 정상
+	 * @Null : null 인 경우만 정상
+	 * @Size(min=x, max=y) x 부터 y개수까지만 정상
+	 * @Max(x) : x 값 이하일 경우만 정상
+	 * @Min(y) : y 값 이상일 경우만 정상
 	 * 
-	 * @AssetTrue : boolean 형일겅우 참인가? , 조건이 참인가?
-	 * @AssetFalse : boolean 형일겅우 참인가?, 조건이 거짓인가?
+	 * @DecimalMax(x) : x 값 이하의 실수만 정상
+	 * @DecimalMin(y) : y 값 이상의 실수만 정상
+	 * @Digits(integer=x) : x 자릿수 이하의 정수
+	 * @Digits(integer=x, fraction=y) : 
+	 * 		x 자리숫의 정수와 y 자릿수 소수 이하의 숫자 
 	 * 
-	 * @DecialMax : 지정한 값 이하 실수인가
-	 * @DecailMix : 지정한 값 이상 실수인가
-	 * @Digits(integer) : 정수인가
 	 */
 	
 	// constraints m_userid의 개수를
 	// 문자열 3 부터 5개 범위까지만 입력하라
-	@Size(min=3, max = 15,message="UserID는 3부터 5까지")
+	@Size(min=3, max = 15,message="ID 는 3부터 5자리 까지")
+	@NotBlank(message="ID 는 공백이 올수 없습니다")
 	private String m_userid;
 	
 	// m_password는 null값이 올수 없다.
 	// 반드시 입력하라
-	@Null(message="비밀번호를 입력하세요")
+	@NotBlank(message="비밀번호를 입력하세요")
 	private String m_password;
 	
 	private String m_re_password;
 	
 	private String m_name;
+	
+	// 정규문법 검사하는 속성
+	@Pattern(regexp = "\\d{1,15}",
+			message="전화번호는 숫자 1부터 15자리까지만 가능")
 	private String m_tel;
 	
 	

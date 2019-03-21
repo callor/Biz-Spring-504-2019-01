@@ -58,7 +58,7 @@
 	}
 	
 	.in-box-error {
-		font-size:9px;
+		font-size:10px;
 		color:red;
 	}
 </style>
@@ -93,17 +93,18 @@
 	
 	*/
 	%>
-	<b><form:errors path="m_userid" class="in-box-error"/></b>
 	<form:input class="in-box"
 			placeholder="회원ID를 입력하세요"
 			id="m_userid" 
-			path="m_userid" /><br/>
+			path="m_userid" />
+	<form:errors path="m_userid" class="in-box-error"/><br/>
+			
 			
 	<label class="in-label" for="m_password">비밀번호</label>
-	<b><form:errors path="m_password"  class="in-box-error"/></b>
-	<form:password class="in-box"
+		<form:password class="in-box"
 			id="m_password" 
 			path="m_password" /><br/>
+		<form:errors path="m_password"  class="in-box-error"/>
 			
 	<label  class="in-label" for="m_re_password">비밀번호확인</label>
 	<form:password class="in-box"
@@ -111,10 +112,10 @@
 			path="m_re_password" /><br/>
 	
 	<label class="in-label" for="m_name">이름</label>
-	<b><form:errors path="m_name"  class="in-box-error"/></b>
 	<form:input type="text"  class="in-box"
 			id="m_name" 
-			path="m_name" /><br/>
+			path="m_name" />
+	<form:errors path="m_name"  class="in-box-error"/><br/>
 	
 	<label class="in-label" for="m_tel">전화번호</label>
 	<form:input type="text" class="in-box"
