@@ -2,6 +2,7 @@ package com.biz.file.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.biz.file.model.MemberVO;
+import com.biz.file.service.MemberService;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j
 /*
  * Controller에 RequestMapping을 설정하면
  * 페이지를 호출할 주소를 그룹으로 묶어서 관리할 수 있다.
@@ -26,6 +32,16 @@ import com.biz.file.model.MemberVO;
  */
 @SessionAttributes({"memberVO"})
 public class MemberController {
+	
+	@Autowired
+	MemberService mService;
+	/*
+	위의 Autowirte는 MemberService interface로 선언이 되고
+	MemberSerivceImp 클래스로 초기화가 된다.
+	public MemberService mService() {
+		return new MemberServiceImp();
+	}
+	*/
 	
 	/*
 	 * 이 컨트롤러 내에 있는 어떤 method에서
@@ -55,13 +71,23 @@ public class MemberController {
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String join(
 			@ModelAttribute("memberVO") 
-			@Valid MemberVO memberVO,
-			Model model,
-			BindingResult result) {
+			@Valid  
+			MemberVO memberVO,
+			BindingResult result,
+			Model model) {
 		
-		
-		
-		return "redirect:/member/join";
+		// vo에 설정된 contraint 조건에 위배된 값이 form으로 부터
+		// 전송되어 오면 hasErrors()는 true를 갖고
+		// 조건에 맞는 값이 오면 false를 갖게 된다.
+		if( result.hasErrors() ) {
+			log.debug("HasError");
+			model.addAttribute("BODY","JOIN_FORM");
+			return "home" ;
+		} else {
+			mService.insert(memberVO);
+			log.debug("No Error");
+			return "redirect:/member/join";
+		}
 	}
 	
 	@RequestMapping(value="/join1",method=RequestMethod.GET)

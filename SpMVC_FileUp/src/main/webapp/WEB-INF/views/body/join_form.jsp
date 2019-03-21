@@ -56,6 +56,11 @@
 	.userid_label {
 		display: none;
 	}
+	
+	.in-box-error {
+		font-size:9px;
+		color:red;
+	}
 </style>
 <%
 /*
@@ -89,7 +94,7 @@
 	*/
 	%>
 	<b><form:errors path="m_userid" class="in-box-error"/></b>
-	<form:input class="in-box" required="required"
+	<form:input class="in-box"
 			placeholder="회원ID를 입력하세요"
 			id="m_userid" 
 			path="m_userid" /><br/>

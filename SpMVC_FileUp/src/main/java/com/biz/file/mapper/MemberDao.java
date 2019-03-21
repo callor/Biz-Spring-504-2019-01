@@ -30,7 +30,6 @@ public interface MemberDao {
 }
 
 class MemberSQL {
-
 	public String member_insert_sql() {
 		
 		/*
@@ -58,5 +57,4 @@ class MemberSQL {
 		return sql.toString();
 				
 	}
-	
 }
