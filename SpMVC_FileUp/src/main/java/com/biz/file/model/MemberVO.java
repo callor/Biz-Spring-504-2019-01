@@ -1,5 +1,6 @@
 package com.biz.file.model;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -38,13 +39,14 @@ public class MemberVO {
 	
 	// constraints m_userid의 개수를
 	// 문자열 3 부터 5개 범위까지만 입력하라
-	@Size(min=3, max = 15,message="ID 는 3부터 5자리 까지")
-	@NotBlank(message="ID 는 공백이 올수 없습니다")
+	@Size(min=3, max=30,message="* ID 는 3부터 30자리 까지")
+	@NotBlank(message="* ID 는 공백이 올수 없습니다")
+	@Email(message="* ID 는 Email 형식 이어야 합니다.")
 	private String m_userid;
 	
 	// m_password는 null값이 올수 없다.
 	// 반드시 입력하라
-	@NotBlank(message="비밀번호를 입력하세요")
+	@NotBlank(message="* 비밀번호를 입력하세요")
 	private String m_password;
 	
 	private String m_re_password;
@@ -53,7 +55,7 @@ public class MemberVO {
 	
 	// 정규문법 검사하는 속성
 	@Pattern(regexp = "\\d{1,15}",
-			message="전화번호는 숫자 1부터 15자리까지만 가능")
+			message="* 전화번호는 숫자 1부터 15자리까지만 가능")
 	private String m_tel;
 	
 	

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.biz.file.mapper.MemberDao;
 import com.biz.file.model.MemberVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 /*
  * 구현체
  * 		Service interface를 implement 하여 
@@ -36,6 +38,7 @@ import com.biz.file.model.MemberVO;
  * 		List<MemberVO> memberList = new ArrayList<MemberVO>();
  * 
  */
+@Slf4j
 @Service
 public class MemberSerivceImp implements MemberService {
 	
@@ -65,6 +68,9 @@ public class MemberSerivceImp implements MemberService {
 		
 		// SHA 256 방식 암포화
 		String crypPass = encoder.encode(plainPass);
+		
+		log.debug("비밀번호: " + plainPass);
+		log.debug("암호 비밀번호: " + crypPass);
 		
 		memberVO.setM_password(crypPass);
 		int ret = mDao.insert(memberVO);

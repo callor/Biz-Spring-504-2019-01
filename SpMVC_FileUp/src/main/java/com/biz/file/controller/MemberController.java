@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.biz.file.model.MemberVO;
 import com.biz.file.service.MemberService;
@@ -74,7 +75,8 @@ public class MemberController {
 			@Valid  
 			MemberVO memberVO,
 			BindingResult result,
-			Model model) {
+			Model model,
+			SessionStatus session) {
 		
 		// vo에 설정된 contraint 조건에 위배된 값이 form으로 부터
 		// 전송되어 오면 hasErrors()는 true를 갖고
@@ -85,8 +87,16 @@ public class MemberController {
 			return "home" ;
 		} else {
 			mService.insert(memberVO);
+			
+			// 가입이 완료된 후 자동 로그인이 되지 않도록
+			// 회원가입 정책을 설정한다.
+			
+			// 가입이 완료된 후 memberVO를 세션으로부터
+			// 제거하라
+			session.setComplete();
 			log.debug("No Error");
 			return "redirect:/member/join";
+
 		}
 	}
 	

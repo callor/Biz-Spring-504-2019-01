@@ -32,7 +32,7 @@ public class AppInitConfig
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
 		return new Class[]{ 
-				ServletConfig.class,
+				AppServletConfig.class,
 				MybatisConfig.class 
 		};
 	}

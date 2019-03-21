@@ -25,7 +25,7 @@ $(function(){
 					id="file" 
 					data-menu="file/files_up">다중 파일올리기</a>
 
-			<c:if test="${empty LOGIN_INFO}">
+			<c:if test="${empty memberVO}">
 				<li><a href="javascript:void(0)"  
 					class="a-menu" 
 					id="login"
@@ -36,7 +36,7 @@ $(function(){
 					id="join" 
 					data-menu="member/join">회원가입</a></li>
 			</c:if>
-			<c:if test="${not empty LOGIN_INFO}">
+			<c:if test="${not empty memberVO}">
 				<li><a href="javascript:void(0)"
 					class="a-menu" 
 					id="a-logout"

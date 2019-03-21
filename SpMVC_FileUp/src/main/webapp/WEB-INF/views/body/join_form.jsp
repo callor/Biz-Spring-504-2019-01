@@ -28,6 +28,14 @@
 		padding:8px;
 	}
 	
+	.in-box-border {
+		padding:8px;
+		margin:3px;
+		display: inline-block;
+		width:70%;
+		border-top:1px solid #ccc;
+	}
+	
 	.in-box {
 		padding:8px;
 		margin:3px;
@@ -58,9 +66,12 @@
 	}
 	
 	.in-box-error {
-		font-size:10px;
+		display:inline-block;
+		margin-left:20px;
+		font-size:12px;
 		color:red;
 	}
+	
 </style>
 <%
 /*
@@ -82,7 +93,6 @@
 
 	<fieldset>
 	<legend>회원가입</legend>
-	<label  class="in-label" for="m_userid">회원ID</label>
 	<%
 	/*
 		form:input taglib의 input box는 HTML과 사용법이 다소 다르다
@@ -93,35 +103,47 @@
 	
 	*/
 	%>
-	<form:input class="in-box"
+	<label  class="in-label" for="m_userid">회원ID</label>
+	<div class="in-box-border">
+		<form:input class="in-box"
 			placeholder="회원ID를 입력하세요"
 			id="m_userid" 
-			path="m_userid" />
-	<form:errors path="m_userid" class="in-box-error"/><br/>
-			
+			path="m_userid" /><br/>
+		<form:errors path="m_userid" class="in-box-error"/>
+	</div>
 			
 	<label class="in-label" for="m_password">비밀번호</label>
-		<form:password class="in-box"
+	<div class="in-box-border">
+		<form:password  class="in-box"
 			id="m_password" 
 			path="m_password" /><br/>
 		<form:errors path="m_password"  class="in-box-error"/>
-			
+	</div>
+	
 	<label  class="in-label" for="m_re_password">비밀번호확인</label>
-	<form:password class="in-box"
+	<div class="in-box-border">
+		<form:password  class="in-box"
 			id="m_re_password" 
 			path="m_re_password" /><br/>
+		<form:errors path="m_re_password" />
+	</div>
 	
 	<label class="in-label" for="m_name">이름</label>
-	<form:input type="text"  class="in-box"
+	<div class="in-box-border">
+		<form:input type="text"  class="in-box"
 			id="m_name" 
-			path="m_name" />
-	<form:errors path="m_name"  class="in-box-error"/><br/>
+			path="m_name" /><br/>
+		<form:errors path="m_name"  class="in-box-error"/>
+	</div>
 	
 	<label class="in-label" for="m_tel">전화번호</label>
-	<form:input type="text" class="in-box"
+	<div class="in-box-border">
+		<form:input type="text" class="in-box"
 			id="m_tel" 
 			path="m_tel" /><br/>
-	
+		<form:errors path="m_tel" class="in-box-error"/>			
+	</div>
+		
 	<label class="in-label" for="btn-join"></label>
 	<button id="btn-join-1" type="submit">회원가입</button>
 	</fieldset>
