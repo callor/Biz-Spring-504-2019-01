@@ -17,6 +17,11 @@ $(function(){
 		<ul>
 			<li><a href="javascript:void(0)" 
 					class="a-menu"
+					id="bbs" 
+					data-menu="bbs/write">게시판</a>
+
+			<li><a href="javascript:void(0)" 
+					class="a-menu"
 					id="file" 
 					data-menu="file/file_up">파일올리기</a>
 
@@ -25,27 +30,33 @@ $(function(){
 					id="file" 
 					data-menu="file/files_up">다중 파일올리기</a>
 
-			<c:if test="${empty memberVO}">
-				<li><a href="javascript:void(0)"  
-					class="a-menu" 
-					id="login"
-					data-menu="login/login">로그인</a></li>
-					
-				<li><a href="javascript:void(0)"  
-					class="a-menu"
-					id="join" 
-					data-menu="member/join">회원가입</a></li>
-			</c:if>
-			<c:if test="${not empty memberVO}">
-				<li><a href="javascript:void(0)"
-					class="a-menu" 
-					id="a-logout"
-					data-menu="login/logout">로그아웃</a></li>
-				<li><a href="javascript:void(0)"  
-					class="a-menu"
-					id="mypage"
-					data-menu="member/mypage">MyPage</a></li>
-			</c:if>
+			<c:choose>
+				<c:when test="${ login_info != null && login_info.m_userid != null}">
+					<li><a href="javascript:void(0)"
+						class="a-menu" 
+						id="a-logout"
+						data-menu="login/logout">로그아웃</a></li>
+					<li><a href="javascript:void(0)"  
+						class="a-menu"
+						id="mypage">${login_info.m_userid}</a></li>
+					<li><a href="javascript:void(0)"  
+						class="a-menu"
+						id="mypage"
+						data-menu="member/mypage">MyPage</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="javascript:void(0)"  
+						class="a-menu" 
+						id="login"
+						data-menu="login/login">로그인</a></li>
+						
+					<li><a href="javascript:void(0)"  
+						class="a-menu"
+						id="join" 
+						data-menu="member/join">회원가입</a></li>
+				
+				</c:otherwise>
+			</c:choose>
 <style>
 	li div a {
 		display: block; 

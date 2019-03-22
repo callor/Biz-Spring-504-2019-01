@@ -130,6 +130,11 @@ $(function(){
 		<c:if test="${BODY == 'LOGIN_FORM'}" >
 			<%@ include file="/WEB-INF/views/body/login_form.jsp" %>
 		</c:if>
+		<c:if test="${BODY == 'BBS_WRITE'}" >
+			<%@ include file="/WEB-INF/views/body/board_form.jsp" %>
+		</c:if>
+
+
 	</article>
 </section>
 </body>

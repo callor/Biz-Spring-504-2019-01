@@ -12,11 +12,13 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.biz.file.model.MemberVO;
 import com.biz.file.service.LoginService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @SessionAttributes({"login_info"})
 @RequestMapping("/login")
 public class LoginController {
-
 	
 	@Autowired
 	LoginService lService;
@@ -27,17 +29,38 @@ public class LoginController {
 	 */
 	@ModelAttribute("login_info")
 	public MemberVO login_info() {
+		log.debug("NEW memberVO");
 		return new MemberVO();
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(@ModelAttribute("login_info") 
 							MemberVO memberVO,
-							Model model, String strId) {
+							Model model, 
+							SessionStatus session,String s) {
 		
+		log.debug(String.valueOf(session.isComplete()));
+		session.setComplete();
+		log.debug(String.valueOf(session.isComplete()));
 		model.addAttribute("BODY","LOGIN_FORM");
 		return "home";
 	}
+	
+	/*
+	 * @ModelAttribute만 사용하면 지정된 객체가 실제 이름이 된다.
+	 * 컨트롤러에서 form으로 데이터를 받는 용도로만 사용할때는
+	 * 아무런 문제가 없다.
+	 * 
+	 * 하지만, 지금 프로젝에서는 memberVO 객체를 
+	 * 컨트롤러와 view(jsp)에서 공유해서 사용하고 있다.
+	 * 
+	 * 이럴때는 반드시 이름을 강제로 지정해 주는 것이 좋다
+	 * @ModelAttribute("login_info") 식으로 작성
+	 * 
+	 * 이제 login() method에서 제어권이 다른곳으로 이동되는 순간
+	 * memberVO는 마치 이름이 login_info로 바뀌는 것과 같다.
+	 * 
+	 */
 	
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public String login(@ModelAttribute("login_info") 
@@ -59,7 +82,7 @@ public class LoginController {
 			// 안전하다.
 			session.setComplete();
 		}
-		return "body/login_ok";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="logout",method=RequestMethod.GET)
@@ -67,10 +90,12 @@ public class LoginController {
 			@ModelAttribute("login_info") MemberVO memberVO,
 			SessionStatus seStatus) {
 		
+		
+		log.debug("LOGOUT");
 		// session을 제거
 		// session완료, 만료되었다라고 표현
 		seStatus.setComplete();
-		return "redirect:login";
+		return "redirect:/";
 		
 	}
 	
