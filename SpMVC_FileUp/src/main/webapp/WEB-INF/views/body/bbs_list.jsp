@@ -54,7 +54,7 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${BBS_LIST}"  var="BBS" varStatus="i">
-				<tr>
+				<tr class="bbs_row" data-id="${BBS.id}">
 					<td>${i.count}</td>
 					<td>${BBS.b_userid}</td>
 					<td>${BBS.b_date}</td>
@@ -65,8 +65,6 @@
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-		
-
 </table>
 <hr />
 <button id="btn-write">글쓰기</button>
@@ -74,6 +72,14 @@
 	$(function(){
 		$("#btn-write").click(function(){
 			location.replace("<c:url value = '/bbs/write' />")
+		})
+		
+		$(".bbs_row").click(function(){
+			let id = $(this).attr("data-id")
+			location.replace("<c:url value = '/bbs/view' />" 
+						+ "?id=" 
+						+ id)
+			
 		})
 	})
 </script>

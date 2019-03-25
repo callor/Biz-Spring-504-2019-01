@@ -39,7 +39,7 @@ public class BoardSQL {
 					.SET("b_date=#{b_date}")
 					.SET("b_time=#{b_time}")
 					.SET("b_subject=#{b_subject}")
-					.SET("b_content=#{b_context}")
+					.SET("b_content=#{b_content}")
 					.SET("b_hit=#{b_hit}")
 					.WHERE("id = #{id}");
 

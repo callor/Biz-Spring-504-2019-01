@@ -136,6 +136,10 @@ $(function(){
 		<c:if test="${BODY == 'BBS_LIST'}" >
 			<%@ include file="/WEB-INF/views/body/bbs_list.jsp" %>
 		</c:if>
+		<c:if test="${BODY == 'BBS_VIEW'}" >
+			<%@ include file="/WEB-INF/views/body/bbs_view.jsp" %>
+		</c:if>
+
 
 
 	</article>

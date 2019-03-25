@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 
 import com.biz.file.model.BoardVO;
@@ -21,6 +22,9 @@ public interface BoardDao {
 	
 	@Select("SELECT * FROM tbl_board WHERE id = #{id}")
 	public BoardVO findByid(long id);
+	
+	@Update("UPDATE tbl_board SET b_hit = b_hit+1 WHERE id = #{id}")
+	public int boadHit(long id);
 	
 	@Select("SELELCT * FROM tbl_board WHERE b_userid = #{b_userid} ORDER BY b_date DESC, b_time DESC")
 	public List<BoardVO> findByUserId(String b_userid);

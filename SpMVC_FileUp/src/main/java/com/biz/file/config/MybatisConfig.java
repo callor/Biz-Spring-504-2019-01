@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 3. mapper
  */
 @Configuration
-@MapperScan("com.biz.file.mapper")
 @EnableTransactionManagement
+@MapperScan("com.biz.file.mapper")
 public class MybatisConfig {
 
 	/*
@@ -60,11 +60,11 @@ public class MybatisConfig {
 	 * @EnableTransactionManager Annotation이 활성화(사용가능)
 	 * 되려면 이 method가 선언되어 있어야 한다.
 	 */
+	@Bean
 	public DataSourceTransactionManager transactionManager() {
 		DataSourceTransactionManager 
-			ts = new DataSourceTransactionManager();
+			ts = new DataSourceTransactionManager(ds());
 		return ts;
 	}
-	
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.biz.file.model.BoardVO;
@@ -110,7 +111,13 @@ public class BBSController {
 			model.addAttribute("BODY","BBS_WRITE");
 			return "home";
 		} else {
-			int ret = bService.insert(boardVO);
+			
+			int ret = 0 ;
+			if(boardVO.getId() > 0) {
+				ret = bService.update(boardVO);
+			} else {
+				ret = bService.insert(boardVO);	
+			}
 			
 			/*
 			 * Model 에 addAttribute 된 변수는
@@ -125,5 +132,51 @@ public class BBSController {
 		
 		
 		}
+	}
+	
+	@RequestMapping(value="/view",method=RequestMethod.GET)
+	public String bbs_view(
+			@ModelAttribute("login_info") MemberVO memberVO, 
+			@RequestParam long id, Model model) {
+		
+		// 게시판보기에서 로그인 정보가 없으면
+		if(memberVO.getM_userid() == null) {
+			return "redirect:/login/login";
+		} else {
+			// 게시물 가져오기와 조회수 올리기
+			BoardVO bVO 
+				= bService.UpdateHit(id,memberVO.getM_userid());
+			
+			model.addAttribute("BBS",bVO);
+			model.addAttribute("BODY","BBS_VIEW");
+			return "home";
+			
+			/*
+			if(bVO.getB_userid().equalsIgnoreCase(memberVO.getM_userid()){
+				// 게시물 보이기
+			} else {
+				// 본인이 작성한
+			}
+			*/
+			
+		}
+	}
+	
+	@RequestMapping(value="/delete",method=RequestMethod.GET)
+	public String bbs_delete(@RequestParam long id) {
+		bService.delete(id);
+		return "redirect:/bbs/" ;
+	}
+	
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+	public String bbs_update(
+			@ModelAttribute("boardVO") BoardVO boardVO,
+			@RequestParam long id,Model model) {
+		
+		boardVO = bService.findById(id);
+		model.addAttribute("boardVO",boardVO);
+		model.addAttribute("BODY","BBS_WRITE");
+		return "home";
+		
 	}
 }

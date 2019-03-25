@@ -68,7 +68,8 @@ public class MemberController {
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join(
 			@ModelAttribute("memberVO") MemberVO memberVO,
-			Model model,String strId) {
+			Model model,SessionStatus status) {
+		status.setComplete();
 		model.addAttribute("BODY", "JOIN_FORM");
 		return "home";
 	}
