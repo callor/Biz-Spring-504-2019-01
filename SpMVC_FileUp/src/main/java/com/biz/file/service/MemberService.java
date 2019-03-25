@@ -2,6 +2,8 @@ package com.biz.file.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.biz.file.model.MemberVO;
 
 /*
@@ -21,5 +23,6 @@ public interface MemberService {
 	public int insert(MemberVO memberVO);
 	public int update(MemberVO memberVO);
 	public int delete(String m_userid);
+	public int save(@Valid MemberVO memberVO);
 
 }

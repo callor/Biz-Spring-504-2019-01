@@ -12,13 +12,17 @@ import com.biz.file.model.BoardVO;
 
 public interface BoardDao {
 
-	@Select(" SELECT * FROM tbl_board ")
+	// 게시판은 나중에 작성된 글(최신글)이 제일 먼저 출력된다.
+	// 그래서 날짜 시간을 역순(내림차순)으로 정렬한다.
+	// ORDER BY 기본값이 오름차순 정렬 생략하면 ASC가 생략 된것과 같다.
+	// 최신 글을 제일 먼저 보일려면 ORDER BY DESC 으로 설정 해야 한다.
+	@Select(" SELECT * FROM tbl_board ORDER BY b_date DESC, b_time DESC")
 	public List<BoardVO> selectAll();
 	
 	@Select("SELECT * FROM tbl_board WHERE id = #{id}")
 	public BoardVO findByid(long id);
 	
-	@Select("SELELCT * FROM tbl_board WHERE b_userid = #{b_userid}")
+	@Select("SELELCT * FROM tbl_board WHERE b_userid = #{b_userid} ORDER BY b_date DESC, b_time DESC")
 	public List<BoardVO> findByUserId(String b_userid);
 	
 	/*
@@ -35,7 +39,7 @@ public interface BoardDao {
 			statement=" SELECT ROUND(DBMS_RANDOM.VALUE(0,9999999999),0) FROM DUAL "
 			)
 	@InsertProvider(type=BoardSQL.class,method="board_insert_sql")
-	public int insert(BoardVO boardVo);
+	public int insert(BoardVO boardVO);
 	
 	@UpdateProvider(type=BoardSQL.class,method="board_update_sql")
 	public int update(BoardVO boardVO);

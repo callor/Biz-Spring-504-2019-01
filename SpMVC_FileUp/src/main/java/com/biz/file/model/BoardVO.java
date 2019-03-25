@@ -23,6 +23,7 @@ public class BoardVO {
 	private long id;
 	private String b_userid;
 	private String b_date;
+	private String b_time;
 	private String b_subject;
 	private String b_content;
 	private long b_hit;

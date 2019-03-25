@@ -128,10 +128,13 @@ $(function(){
 			<%@ include file="/WEB-INF/views/body/files_up_form.jsp" %>
 		</c:if>
 		<c:if test="${BODY == 'LOGIN_FORM'}" >
-			<%@ include file="/WEB-INF/views/body/login_form.jsp" %>
+			<%@ include file="/WEB-INF/views/body/login_form2.jsp" %>
 		</c:if>
 		<c:if test="${BODY == 'BBS_WRITE'}" >
-			<%@ include file="/WEB-INF/views/body/board_form.jsp" %>
+			<%@ include file="/WEB-INF/views/body/bbs_form.jsp" %>
+		</c:if>
+		<c:if test="${BODY == 'BBS_LIST'}" >
+			<%@ include file="/WEB-INF/views/body/bbs_list.jsp" %>
 		</c:if>
 
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.biz.file.model.BoardVO;
 
-public interface BoardService {
+public interface BBSService {
 
 	public List<BoardVO> selectAll();
 	public BoardVO findById(long id);

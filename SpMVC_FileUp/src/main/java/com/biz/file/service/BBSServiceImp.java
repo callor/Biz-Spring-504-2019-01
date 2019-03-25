@@ -9,7 +9,7 @@ import com.biz.file.mapper.BoardDao;
 import com.biz.file.model.BoardVO;
 
 @Service
-public class BoardServiceImp implements BoardService {
+public class BBSServiceImp implements BBSService {
 
 	
 	@Autowired
@@ -17,8 +17,10 @@ public class BoardServiceImp implements BoardService {
 	
 	@Override
 	public List<BoardVO> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<BoardVO> bbsList = bDao.selectAll();
+		return bbsList;
+
 	}
 
 	@Override
@@ -35,8 +37,9 @@ public class BoardServiceImp implements BoardService {
 
 	@Override
 	public int insert(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		int ret = bDao.insert(boardVO);
+		return ret;
 	}
 
 	@Override

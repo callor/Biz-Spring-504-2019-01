@@ -31,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
  * Session 정보 안에 포함시켜서
  * 서로다른 method에서 값을 참조할수 있도록 도와주는 지시어
  */
-@SessionAttributes({"memberVO"})
+@SessionAttributes({"memberVO","login_info"})
 public class MemberController {
 	
 	@Autowired
@@ -57,6 +57,11 @@ public class MemberController {
 		MemberVO vo = new MemberVO();
 		// vo.setM_userid("test");
 		return vo;
+	}
+	
+	@ModelAttribute("login_info")
+	public MemberVO newLoginInfo() {
+		return new MemberVO();
 	}
 	
 	// form을 열기 위한 method
@@ -86,14 +91,23 @@ public class MemberController {
 			model.addAttribute("BODY","JOIN_FORM");
 			return "home" ;
 		} else {
-			mService.insert(memberVO);
+			
+			// 새로운 회원이면 insert를 수행하고
+			// 기존 회원이면 update를 수행한다.
+			int ret = mService.save(memberVO);
+			
+			// mService.insert(memberVO);
 			
 			// 가입이 완료된 후 자동 로그인이 되지 않도록
 			// 회원가입 정책을 설정한다.
 			
 			// 가입이 완료된 후 memberVO를 세션으로부터
 			// 제거하라
-			session.setComplete();
+			if(ret < 2) {
+				// save를 수행한 후
+				// update가 아닌경우만 session을 제거하자
+				session.setComplete();	
+			}
 			log.debug("No Error");
 			return "redirect:/member/join";
 
@@ -116,6 +130,17 @@ public class MemberController {
 		return "body/join_form";
 	}
 	
-	
-	
+
+	@RequestMapping(value="/mypage",method=RequestMethod.GET)
+	public String my_page(
+			@ModelAttribute("login_info") MemberVO loginVO,
+			@ModelAttribute("memberVO") MemberVO memberVO, 
+			Model model) {
+		
+		model.addAttribute("ACTION","UPDATE");
+		model.addAttribute("memberVO",loginVO);
+		model.addAttribute("BODY", "JOIN_FORM");
+		return "home";
+
+	}
 }

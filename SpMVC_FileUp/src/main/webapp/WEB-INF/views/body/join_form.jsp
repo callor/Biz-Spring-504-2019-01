@@ -86,13 +86,25 @@
 
  */
 %>
-<form:form action="${rootPath}/member/join" 
-		method="POST" 
-		modelAttribute="memberVO"
+<form:form modelAttribute="memberVO"
+		action="${rootPath}/member/join"
 		autocomplete="off">
 
 	<fieldset>
-	<legend>회원가입</legend>
+	
+	
+	<c:choose>
+		<c:when test="${ACTION == 'UPDATE'}" >
+			<legend>회원정보 변경</legend>
+			<div class='message'>
+				* 회원정보를 변경하려면 비밀번호를 반드시 입력해 주세요
+			</div>
+		</c:when>
+		<c:otherwise>
+			<legend>회원가입</legend>	
+		</c:otherwise>
+	</c:choose>
+	
 	<%
 	/*
 		form:input taglib의 input box는 HTML과 사용법이 다소 다르다

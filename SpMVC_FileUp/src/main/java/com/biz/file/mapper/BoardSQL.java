@@ -11,6 +11,7 @@ public class BoardSQL {
 				.INTO_COLUMNS("id").INTO_VALUES("#{id}")
 				.INTO_COLUMNS("b_userid").INTO_VALUES("#{b_userid}")
 				.INTO_COLUMNS("b_date").INTO_VALUES("#{b_date}")
+				.INTO_COLUMNS("b_time").INTO_VALUES("#{b_time}")
 				.INTO_COLUMNS("b_subject").INTO_VALUES("#{b_subject}")
 				.INTO_COLUMNS("b_content").INTO_VALUES("#{b_content}")
 				.INTO_COLUMNS("b_hit").INTO_VALUES("#{b_hit}");
@@ -36,6 +37,7 @@ public class BoardSQL {
 					.UPDATE("tbl_board")
 					.SET("b_userid=#{b_userid}")
 					.SET("b_date=#{b_date}")
+					.SET("b_time=#{b_time}")
 					.SET("b_subject=#{b_subject}")
 					.SET("b_content=#{b_context}")
 					.SET("b_hit=#{b_hit}")

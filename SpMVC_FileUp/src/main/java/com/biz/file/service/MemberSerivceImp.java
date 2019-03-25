@@ -2,6 +2,8 @@ package com.biz.file.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -61,6 +63,37 @@ public class MemberSerivceImp implements MemberService {
 	}
 
 	@Override
+	public int save(@Valid MemberVO memberVO) {
+
+		int ret = 0;
+		
+		// insert를 수행할 것인가
+		// update를 수행할 것인가
+		MemberVO vo = mDao.findByUserId(memberVO.getM_userid());
+		if(vo == null) {
+			// mDao.insert(memberVO);
+			this.insert(memberVO);
+			ret = 1;
+		} else {
+			String rawString = memberVO.getM_password();
+			String encodeString = vo.getM_password();
+
+			// 비밀번호가 일치하지 않으면update가 되지 않도록 한다.
+			if(encoder.matches(rawString, encodeString)) {
+				this.update(memberVO);
+				ret = 2;
+			} else {
+				// update가 안되면 안되는 이유를 알려주는
+				// 코드 필요
+				ret = -1;
+			}
+		}
+		return ret ;
+	}
+
+	
+	
+	@Override
 	public int insert(MemberVO memberVO) {
 		
 		// 비밀번호를 암호화 시키자
@@ -75,12 +108,18 @@ public class MemberSerivceImp implements MemberService {
 		memberVO.setM_password(crypPass);
 		int ret = mDao.insert(memberVO);
 		return ret;
+	
 	}
 
 	@Override
 	public int update(MemberVO memberVO) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		String plainPass = memberVO.getM_password();
+		String cyptPass = encoder.encode(plainPass);
+		memberVO.setM_password(cyptPass);
+		int ret = mDao.update(memberVO);
+
+		return ret;
 	}
 
 	@Override
@@ -88,5 +127,6 @@ public class MemberSerivceImp implements MemberService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }

@@ -70,7 +70,19 @@ public class LoginController {
 		
 		MemberVO vo = lService.getMemberInfo(memberVO);
 		if(vo != null) {
-			memberVO = vo;
+			/* 로그인에 성공했을 경우
+			 * memberVO를 session에서 
+			 * login_info 이름으로 사용중이므로
+			 * 
+			 * memberVO에 vo를 담지 않고
+			 * memberVO의 다른이름인 login_info에 담아야 한다.
+			 * 
+			 * 그런데 login_info는 변수가 아니므로
+			 * model을 사용해서 다시 login_info 에 vo를 세팅한다
+			 */
+			model.addAttribute("login_info", vo);
+			log.debug(memberVO.toString());
+			
 		} else {
 			
 			// 로그인 method가 호출되면

@@ -29,13 +29,13 @@
 	}
 	
 	.in-box-border {
-		padding:8px;
 		display: inline-block;
 		width:70%;
 	}
 	
 	.in-box {
 		padding:8px;
+		margin:3px;
 		display: inline-block;
 		width:70%;
 		border:1px solid #ccc;
@@ -99,7 +99,7 @@
 	%>
 	<label  class="in-label" for="b_userid">회원ID</label>
 	<div class="in-box-border">
-		<form:input class="in-box"
+		<form:input class="in-box" readonly="true"
 			placeholder="회원ID를 입력하세요"
 			id="b_userid" 
 			path="b_userid" /><br/>
@@ -113,10 +113,19 @@
 			path="b_date" /><br/>
 		<form:errors path="b_date"  class="in-box-error"/>
 	</div>
+
+	<label class="in-label" for="b_time">작성시각</label>
+	<div class="in-box-border">
+		<form:input class="in-box"
+			id="b_time" 
+			path="b_time" /><br/>
+		<form:errors path="b_time"  class="in-box-error"/>
+	</div>
+
 	
 	<label  class="in-label" for="b_subject">제목</label>
 	<div class="in-box-border">
-		<form:password  class="in-box"
+		<form:input  class="in-box"
 			id="b_subject" 
 			path="b_subject" /><br/>
 		<form:errors path="b_subject" />
