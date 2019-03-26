@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.biz.file.model.BoardVO;
 import com.biz.file.model.MemberVO;
 import com.biz.file.service.BBSService;
+import com.biz.file.service.FileUpService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,6 +37,9 @@ public class BBSController {
 
 	@Autowired
 	BBSService bService;
+	
+	@Autowired
+	FileUpService fService;
 
 	@ModelAttribute("bbsVO")
 	public BoardVO newMember() {
@@ -98,8 +104,10 @@ public class BBSController {
 		if(memberVO == null) {
 			model.addAttribute("LOGIN_MSG","LOGIN_REQ");
 			return "redirect:/login/login";
+			
+			// memberVO = new MemberVO();
+			// memberVO.setM_userid("callor@callor.com");
 		}
-		
 		
 		// 1.7 이하일 경우
 		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
@@ -142,6 +150,7 @@ public class BBSController {
 			return "home";
 		} else {
 			
+			log.debug(boardVO.toString());
 			int ret = 0 ;
 			if(boardVO.getId() > 0) {
 				ret = bService.update(boardVO);
@@ -222,5 +231,15 @@ public class BBSController {
 		model.addAttribute("BODY","BBS_WRITE");
 		return "home";
 		
+	}
+	
+	
+	@ResponseBody
+	// /bbs/file
+	@RequestMapping(value="/file",method=RequestMethod.POST)
+	public String file(@RequestParam MultipartFile file) {
+		
+		String fileName = fService.upload(file);
+		return fileName;
 	}
 }

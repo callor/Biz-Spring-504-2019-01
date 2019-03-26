@@ -28,4 +28,6 @@ public class BoardVO {
 	private String b_content;
 	private long b_hit;
 	
+	private String b_image;
+	
 }

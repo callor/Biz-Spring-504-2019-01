@@ -23,6 +23,7 @@
 		<p>작성일자 : ${bbsVO.b_date}<p>
 		<p>작성시각 : ${bbsVO.b_time}<p>
 		<p>내용 : ${bbsVO.b_content}<p>
+		<p><img src="${pageContext.request.contextPath}/files/${bbsVO.b_image}">
 	</article>
 	<c:if test="${bbsVO.b_userid == login_info.m_userid}" >
 		<div class="bbs_box">

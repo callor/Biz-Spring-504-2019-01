@@ -45,6 +45,10 @@ public interface BoardDao {
 	@InsertProvider(type=BoardSQL.class,method="board_insert_sql")
 	public int insert(BoardVO boardVO);
 	
+	
+	
+	
+	
 	@UpdateProvider(type=BoardSQL.class,method="board_update_sql")
 	public int update(BoardVO boardVO);
 	

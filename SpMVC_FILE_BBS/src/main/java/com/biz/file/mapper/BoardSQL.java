@@ -14,6 +14,7 @@ public class BoardSQL {
 				.INTO_COLUMNS("b_time").INTO_VALUES("#{b_time}")
 				.INTO_COLUMNS("b_subject").INTO_VALUES("#{b_subject}")
 				.INTO_COLUMNS("b_content").INTO_VALUES("#{b_content}")
+				.INTO_COLUMNS("b_image").INTO_VALUES("#{b_image}")
 				.INTO_COLUMNS("b_hit").INTO_VALUES("#{b_hit}");
 
 		SQL sql1 = new SQL()
@@ -40,6 +41,7 @@ public class BoardSQL {
 					.SET("b_time=#{b_time}")
 					.SET("b_subject=#{b_subject}")
 					.SET("b_content=#{b_content}")
+					.SET("b_image=#{b_image}")
 					.SET("b_hit=#{b_hit}")
 					.WHERE("id = #{id}");
 

@@ -29,11 +29,8 @@
 	}
 	
 	.in-box-border {
-		padding:8px;
-		margin:3px;
 		display: inline-block;
 		width:70%;
-		border-top:1px solid #ccc;
 	}
 	
 	.in-box {

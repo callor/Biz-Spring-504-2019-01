@@ -69,6 +69,14 @@
 		color:red;
 	}
 	
+	.in-file-box {
+		border : 2px solid blue;	
+	}
+	
+	.in-file-box h3 {
+		text-align: center;
+	}
+	
 </style>
 <%
 /*
@@ -83,6 +91,59 @@
 
  */
 %>
+<script>
+	$(function() {
+
+		$("#drop-box").on("dragover", function(e) {
+			$('h3').text('파일을 내려 놓으세요')
+			return false // 코드진행을 중단.
+		})
+
+		// drop event가 발생을 하면
+		// 즉, 파일을 끌어서 drag_area box에 놓으면
+		// drop event가 발생을 하고
+		// 끌어 놓은 파일에 대한 정보가 e 매개 변수에 담기게 된다.
+		$('#drop-box').on('drop', function(e) {
+			$('h3').text('파일을 등록하는중')
+
+			let files = e.originalEvent.dataTransfer.files
+
+			// ajax로 전송하기 위해 formData 객체를 생성
+			let fData = new FormData();
+
+			// fData에 파일 정보를 추가
+			// file : Controller에서 사용할 변수 이름
+			fData.append('file', files[0]) // 1개의 파일만 추출
+
+			$.ajax({
+				url : "<c:url value='/bbs/file' />",
+				method:"POST",
+				data:fData,
+				processData:false,
+				contentType:false,
+				success:function(result) {
+					if(result == null) {
+						alert("파일 업로드 오류")
+					} else {
+						$("#image").html(
+							$("<img />",{
+								src : "<c:url value='/files/' />" + result,
+								class : 'img-box'
+							})	
+						)
+						$("#b_image").val(result)
+					}
+					$('.in-file-box h3').text('파일 업로드 성공')
+				}
+				,error:function() {
+					alert('서버와 통신 오류')
+				}
+			})
+			return false;
+		})
+	})
+</script>
+
 <form:form 
 	action="${rootPath}/bbs/write"	
 	modelAttribute="bbsVO">
@@ -141,7 +202,21 @@
 			path="b_content" rows="5" /><br/>
 		<form:errors path="b_content" class="in-box-error"/>			
 	</div>
-		
+	
+	<label class="in-label"></label>
+	<form:hidden path="b_image" id="b_image"/>
+	<div class="in-box-border in-file-box" id="drop-box">
+		<h3>파일을 끌어 놓으세요</h3>
+	</div>
+	
+	<label class="in-label"></label>
+	<div id="image" class="in-box-border">
+		<c:if test="${not empty bbsVO.b_image}">
+			<img src="${pageContext.request.contextPath}/files/${bbsVO.b_image}">		
+		</c:if>
+	</div>
+	<hr/>
+	
 	<label class="in-label" for="btn-join"></label>
 	<button id="btn-join-1" type="submit">저장</button>
 	</fieldset>
