@@ -83,8 +83,9 @@
 
  */
 %>
-<form:form action="${rootPath}/bbs/write"	
-	modelAttribute="boardVO">
+<form:form 
+	action="${rootPath}/bbs/write"	
+	modelAttribute="bbsVO">
 
 	<fieldset>
 	<legend>게시판 작성</legend>
@@ -99,7 +100,6 @@
 	*/
 	%>
 	
-	<form:hidden path="id" />
 	<label  class="in-label" for="b_userid">회원ID</label>
 	<div class="in-box-border">
 		<form:input class="in-box" readonly="true"

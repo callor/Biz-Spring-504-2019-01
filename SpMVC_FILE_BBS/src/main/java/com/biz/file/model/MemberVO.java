@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.ScriptAssert;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+
+@ScriptAssert(lang="javascript",
+				message="비밀번호와 비밀번호 확인이 일치하지 않습니다",
+				reportOn="m_re_password",
+				script="(_this.m_password == _this.m_re_password)" )
 public class MemberVO {
 	
 	/*
@@ -51,6 +58,7 @@ public class MemberVO {
 	
 	private String m_re_password;
 	
+	@NotBlank(message="* 사용자 이름을 입력하세요")
 	private String m_name;
 	
 	// 정규문법 검사하는 속성

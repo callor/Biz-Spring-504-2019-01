@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.biz.file.model.BoardVO;
 import com.biz.file.model.MemberVO;
@@ -25,7 +27,7 @@ import com.biz.file.service.BBSService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@SessionAttributes({"login_info"})
+@SessionAttributes({"bbsVO"})
 @Controller
 @RequestMapping("/bbs")
 public class BBSController {
@@ -33,11 +35,17 @@ public class BBSController {
 	@Autowired
 	BBSService bService;
 
-	@ModelAttribute("login_info")
-	public MemberVO newMember() {
-		return new MemberVO();
+	@ModelAttribute("bbsVO")
+	public BoardVO newMember() {
+		return new BoardVO();
 	}
 	
+	/**
+	 * 게시판 list 보기
+	 * @param model
+	 * @return
+	 * @since 2019-03-01
+	 */
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String bbs_list(Model model) {
 		
@@ -60,18 +68,38 @@ public class BBSController {
 	 */
 	@RequestMapping(value="/write",method=RequestMethod.GET)
 	public String bbs_write(
-			@ModelAttribute("login_info") MemberVO memberVO,
-				@ModelAttribute("boardVO") 
-				BoardVO boardVO,Model model) {
-		
+				@ModelAttribute("bbsVO") 
+				BoardVO boardVO,
+				HttpSession session, // login 정보를 추출하기 위한 
+				Model model) {
 		
 		// login이 되지 않은상태에서
 		// 게시판 글쓰기를 시도하면
 		// login 화면으로 redirect
-		log.debug(memberVO.toString());
-		if(memberVO.getM_userid() == null) {
+		// MemberVO memberVO = session.getAttribute("login_info");
+		
+		// Object obj = session.getAttribute("login_info");
+		// MemberVO memberVO = (MemberVO)obj;
+		MemberVO memberVO = (MemberVO)session.getAttribute("login_info");
+		
+		// session의 Attribute에 담긴 값은 Type 이 Object 형이다
+		// Object Type은 모든 클래스의 조상이다.
+		// 그래서 session의 Attribute에는 어떤 클래스, 객체든지
+		// 담아 놓을 수 있다.
+		// 단, 사용을 위해서 get을 실행한 후에는 반드시 
+		// cascading 해주어야 한다. 
+		
+		// log.debug(memberVO.toString());
+		// if(memberVO.getM_userid() == null) {
+		//	return "redirect:/login/login";
+		// }
+		
+		// HttpSession은 session 정보가 없으면 Object 자체가 null 이된다.
+		if(memberVO == null) {
+			model.addAttribute("LOGIN_MSG","LOGIN_REQ");
 			return "redirect:/login/login";
 		}
+		
 		
 		// 1.7 이하일 경우
 		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
@@ -93,6 +121,7 @@ public class BBSController {
 		
 		boardVO.setB_date(today1);
 		boardVO.setB_time(nt1);
+		
 		boardVO.setB_userid(memberVO.getM_userid());
 		
 		model.addAttribute("BODY","BBS_WRITE");
@@ -101,11 +130,12 @@ public class BBSController {
 	}
 	
 	@RequestMapping(value="/write",method=RequestMethod.POST)
-	public String bbs_write(@ModelAttribute("boardVO") 
+	public String bbs_write(@ModelAttribute("bbsVO") 
 						@Valid
 						BoardVO boardVO,
 						BindingResult result,
-						Model model) {
+						Model model,
+						SessionStatus sStatus) {
 		
 		if(result.hasErrors()) {
 			model.addAttribute("BODY","BBS_WRITE");
@@ -127,27 +157,38 @@ public class BBSController {
 			 * 값을 버리고 간다.
 			 * 
 			 */
+			sStatus.setComplete();
 			model.addAttribute("BODY", "BBS_LIST");
 			return "redirect:/bbs/";
-		
 		
 		}
 	}
 	
 	@RequestMapping(value="/view",method=RequestMethod.GET)
 	public String bbs_view(
-			@ModelAttribute("login_info") MemberVO memberVO, 
-			@RequestParam long id, Model model) {
+			@ModelAttribute("bbsVO") BoardVO boardVO, 
+			Model model,
+			HttpSession session) {
+		
+		MemberVO memberVO 
+		= (MemberVO)session.getAttribute("login_info");
 		
 		// 게시판보기에서 로그인 정보가 없으면
-		if(memberVO.getM_userid() == null) {
+		if(memberVO == null) {
+			model.addAttribute("LOGIN_MSG","LOGIN_REQ");
 			return "redirect:/login/login";
 		} else {
-			// 게시물 가져오기와 조회수 올리기
-			BoardVO bVO 
-				= bService.UpdateHit(id,memberVO.getM_userid());
 			
-			model.addAttribute("BBS",bVO);
+			long id = boardVO.getId();
+			log.debug("BOARD ID : " + id);
+			
+			// 게시물 가져오기와 조회수 올리기
+			boardVO 
+			= bService.UpdateHit(id,memberVO.getM_userid());
+			
+			log.debug(boardVO.toString());
+			
+			model.addAttribute("bbsVO",boardVO);
 			model.addAttribute("BODY","BBS_VIEW");
 			return "home";
 			
@@ -170,11 +211,14 @@ public class BBSController {
 	
 	@RequestMapping(value="/update",method=RequestMethod.GET)
 	public String bbs_update(
-			@ModelAttribute("boardVO") BoardVO boardVO,
-			@RequestParam long id,Model model) {
+			@ModelAttribute("bbsVO") BoardVO boardVO,
+			Model model) {
 		
+		long id = boardVO.getId();
+		log.debug("BOARD ID: " + id);
 		boardVO = bService.findById(id);
-		model.addAttribute("boardVO",boardVO);
+		
+		model.addAttribute("bbsVO",boardVO);
 		model.addAttribute("BODY","BBS_WRITE");
 		return "home";
 		

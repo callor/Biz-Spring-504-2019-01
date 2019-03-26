@@ -1,11 +1,14 @@
 package com.biz.file.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -14,9 +17,17 @@ import com.biz.file.service.LoginService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * JAVA DOCS : 개발이 완료되고 문서화를 시킬때
+ * 문서화 Tools을 활용할 수 있도록 작성하는 주석
+ * 
+ * @author : callor@callor.com
+ * @since : 2019-03-01
+ * @see : 이 컨트롤러는 사용자 로그인, 로그아웃을 처리하기 위한 파일
+ */
 @Slf4j
 @Controller
-@SessionAttributes({"login_info"})
+@SessionAttributes({"memberVO"})
 @RequestMapping("/login")
 public class LoginController {
 	
@@ -27,23 +38,34 @@ public class LoginController {
 	 * @ModelAttribute로 login_info 를 선언하고
 	 * login_info 초기화 method
 	 */
-	@ModelAttribute("login_info")
+	@ModelAttribute("memberVO")
 	public MemberVO login_info() {
 		log.debug("NEW memberVO");
 		return new MemberVO();
 	}
-	
+
+	/**
+	 * 
+	 * @param memberVO
+	 * @param model
+	 * @param session
+	 * @param s
+	 * @return
+	 * @see 로그인 폼을 실행하는 method
+	 */
 	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String login(@ModelAttribute("login_info") 
-							MemberVO memberVO,
-							Model model, 
-							SessionStatus session,String s) {
+	public String login(
+			@RequestParam(required=false) String LOGIN_MSG,
+			@ModelAttribute 
+			MemberVO memberVO,
+			Model model) {
 		
-		log.debug(String.valueOf(session.isComplete()));
-		session.setComplete();
-		log.debug(String.valueOf(session.isComplete()));
+		log.debug("LOGIN:" + memberVO.toString());
+		log.debug("LOGIN MSG:" + LOGIN_MSG);
+		model.addAttribute("LOGIN_MSG", LOGIN_MSG);
 		model.addAttribute("BODY","LOGIN_FORM");
 		return "home";
+	
 	}
 	
 	/*
@@ -63,24 +85,20 @@ public class LoginController {
 	 */
 	
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String login(@ModelAttribute("login_info") 
+	public String login(@ModelAttribute 
 							MemberVO memberVO, 
 							Model model,
-							SessionStatus session) {
+							HttpSession session) {
 		
+		// 만약 정상적인 로그인이면 vo에는 member정보가 있고
+		// 그렇지 않으면 null 있다.
 		MemberVO vo = lService.getMemberInfo(memberVO);
 		if(vo != null) {
-			/* 로그인에 성공했을 경우
-			 * memberVO를 session에서 
-			 * login_info 이름으로 사용중이므로
-			 * 
-			 * memberVO에 vo를 담지 않고
-			 * memberVO의 다른이름인 login_info에 담아야 한다.
-			 * 
-			 * 그런데 login_info는 변수가 아니므로
-			 * model을 사용해서 다시 login_info 에 vo를 세팅한다
+			/*
+			 * 기존에 sessionAttribute에 담았던 login_info를
+			 * HttpSession으로 분리
 			 */
-			model.addAttribute("login_info", vo);
+			session.setAttribute("login_info", vo);
 			log.debug(memberVO.toString());
 			
 		} else {
@@ -92,21 +110,26 @@ public class LoginController {
 			// 그래서 
 			// 로그인에 실패 했으면 세션정보를 반드시 지워줘야
 			// 안전하다.
-			session.setComplete();
+			session.removeAttribute("login_info");
+		
 		}
 		return "redirect:/";
+	
 	}
 	
 	@RequestMapping(value="logout",method=RequestMethod.GET)
 	public String logout(
-			@ModelAttribute("login_info") MemberVO memberVO,
-			SessionStatus seStatus) {
-		
+			@ModelAttribute MemberVO memberVO,
+			HttpSession session,
+			SessionStatus status) {
 		
 		log.debug("LOGOUT");
+
 		// session을 제거
 		// session완료, 만료되었다라고 표현
-		seStatus.setComplete();
+		session.removeAttribute("login_info");
+		status.setComplete();
+		
 		return "redirect:/";
 		
 	}

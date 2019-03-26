@@ -42,7 +42,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class MemberSerivceImp implements MemberService {
+public class MemberServiceImp implements MemberService {
 	
 	@Autowired
 	MemberDao mDao;

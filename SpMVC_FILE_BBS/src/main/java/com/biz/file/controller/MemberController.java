@@ -1,5 +1,6 @@
 package com.biz.file.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,12 @@ import lombok.extern.slf4j.Slf4j;
  * @SessionAttributes는 @ModelAttribute로 선언된 객체를
  * Session 정보 안에 포함시켜서
  * 서로다른 method에서 값을 참조할수 있도록 도와주는 지시어
+ * 
+ * memberVO를 sessionAttribute에 추가하므로써
+ * member 정보의 update를 쉽게 처리 할 수 있다.
+ * 
  */
-@SessionAttributes({"memberVO","login_info"})
+@SessionAttributes({"memberVO"})
 public class MemberController {
 	
 	@Autowired
@@ -53,25 +58,22 @@ public class MemberController {
 	 */
 	@ModelAttribute("memberVO")
 	public MemberVO newMemberVO() {
-		// return new MemberVO();
 		MemberVO vo = new MemberVO();
-		// vo.setM_userid("test");
 		return vo;
 	}
-	
-	@ModelAttribute("login_info")
-	public MemberVO newLoginInfo() {
-		return new MemberVO();
-	}
+
 	
 	// form을 열기 위한 method
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join(
 			@ModelAttribute("memberVO") MemberVO memberVO,
-			Model model,SessionStatus status) {
-		status.setComplete();
+			Model model,
+			SessionStatus session) {
+
+		session.setComplete();
 		model.addAttribute("BODY", "JOIN_FORM");
 		return "home";
+	
 	}
 	
 	// form에서 데이터를 받기 위한 method
@@ -104,11 +106,7 @@ public class MemberController {
 			
 			// 가입이 완료된 후 memberVO를 세션으로부터
 			// 제거하라
-			if(ret < 2) {
-				// save를 수행한 후
-				// update가 아닌경우만 session을 제거하자
-				session.setComplete();	
-			}
+			session.setComplete();	
 			log.debug("No Error");
 			return "redirect:/member/join";
 
@@ -134,12 +132,14 @@ public class MemberController {
 
 	@RequestMapping(value="/mypage",method=RequestMethod.GET)
 	public String my_page(
-			@ModelAttribute("login_info") MemberVO loginVO,
 			@ModelAttribute("memberVO") MemberVO memberVO, 
-			Model model) {
+			Model model,
+			HttpSession session) {
+		
+		model.addAttribute("memberVO",
+				(MemberVO)session.getAttribute("login_info"));
 		
 		model.addAttribute("ACTION","UPDATE");
-		model.addAttribute("memberVO",loginVO);
 		model.addAttribute("BODY", "JOIN_FORM");
 		return "home";
 

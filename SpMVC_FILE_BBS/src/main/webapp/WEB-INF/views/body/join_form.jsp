@@ -89,10 +89,7 @@
 <form:form modelAttribute="memberVO"
 		action="${rootPath}/member/join"
 		autocomplete="off">
-
 	<fieldset>
-	
-	
 	<c:choose>
 		<c:when test="${ACTION == 'UPDATE'}" >
 			<legend>회원정보 변경</legend>
@@ -137,7 +134,7 @@
 		<form:password  class="in-box"
 			id="m_re_password" 
 			path="m_re_password" /><br/>
-		<form:errors path="m_re_password" />
+		<form:errors path="m_re_password" class="in-box-error"/>
 	</div>
 	
 	<label class="in-label" for="m_name">이름</label>

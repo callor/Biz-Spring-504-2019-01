@@ -78,11 +78,22 @@
 	background: #2ecc71;
 }
 
+h4 {
+	background-color: red;
+	color:yellow;
+	font-style: bold;
+	padding-top:10px;
+	padding-bottom: 10px;
+	border-radius: 25px;
+}
 
 </style>
 <body class="login_body">
 	<form class="login_form" method="POST">
 		<h2>로그인</h2>
+		<c:if test="${LOGIN_MSG == 'LOGIN_REQ' }">
+			<h4>로그인을 해야 사용할수 있습니다</h4>
+		</c:if>
 		<input type="text" name="m_userid" placeholder=""사용자 ID">
 		<input type="password" name="m_password" placeholder=""비밀번호">
 		<button>로그인</button>
