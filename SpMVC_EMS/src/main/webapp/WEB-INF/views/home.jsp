@@ -76,7 +76,7 @@ $(function(){
 							<td>${mail.s_time}</td>
 							<td>${mail.from_email}</td>
 							<td>${mail.to_email}</td>
-							
+							<td>${mail.s_subject}</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

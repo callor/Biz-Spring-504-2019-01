@@ -34,6 +34,7 @@ public class EmailController {
 	public String home(Model model) {
 		
 		List<MailVO> mList = mService.selectAll();
+		model.addAttribute("MAILS",mList);
 		return "home";
 	}
 	
@@ -47,6 +48,7 @@ public class EmailController {
 
 	}
 	
+	@RequestMapping(value="mail",method=RequestMethod.POST)
 	public String mail(@ModelAttribute("mailVO")
 						MailVO mailVO,
 						BindingResult result,
