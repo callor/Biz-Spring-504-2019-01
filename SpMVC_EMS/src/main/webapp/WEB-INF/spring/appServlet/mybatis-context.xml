@@ -28,7 +28,7 @@
 	</bean>
 	
 	<mybatis-spring:scan 
-			base-package="com.biz.memo.mapper"/>
+			base-package="com.biz.email.mapper"/>
 
 </beans>
 
