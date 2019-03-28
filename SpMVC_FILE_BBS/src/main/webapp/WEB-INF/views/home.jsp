@@ -133,6 +133,9 @@ $(function(){
 		<c:if test="${BODY == 'BBS_WRITE'}" >
 			<%@ include file="/WEB-INF/views/body/bbs_form.jsp" %>
 		</c:if>
+		<c:if test="${BODY == 'BBS_TAG_WRITE'}" >
+			<%@ include file="/WEB-INF/views/body/bbs_tag_form.jsp" %>
+		</c:if>
 		<c:if test="${BODY == 'BBS_LIST'}" >
 			<%@ include file="/WEB-INF/views/body/bbs_list.jsp" %>
 		</c:if>
