@@ -33,7 +33,8 @@ public class AppInitConfig
 		// TODO Auto-generated method stub
 		return new Class[]{ 
 				AppServletConfig.class,
-				MybatisConfig.class 
+				MybatisConfig.class,
+				JavaMailConfig.class
 		};
 	}
 
