@@ -73,7 +73,11 @@ $(function(){
 </header>	
 <section>
 	<article>
-		<form:form modelAttribute="mailVO" id="mail_form">
+		<form:form 
+				action="save"
+				enctype="multipart/form-data"
+				modelAttribute="mailVO" 
+				id="mail_form">
 			<fieldset>
 				<legend>Email 작성</legend>
 				<div>
@@ -92,14 +96,15 @@ $(function(){
 					<label for="s_content"></label>
 					<form:textarea rows="10" id="s_content" path="s_content"/>
 				</div>
+				
+				
 				<div>
 					<label for="files"></label>
 					<input type="file" name="files" id="files" multiple="multiple">
 				</div>
 			<div>
 				<label for="mail_save"></label>
-				<button type="submit" id="mail_save" class="btn blue">메일 저장</button>
-				<button type="button"  id="mail_send" class="btn green">메일 보내기</button>
+				<button type="submit" id="mail_save" class="btn blue">메일 보내기</button>
 				<button type="button"  id="mail_list" class="btn orange">목록으로</button>
 			</div>
 

@@ -47,6 +47,8 @@ $(function(){
 		<p>제목 : ${mail.s_subject}
 		<p>내용 : ${mail.s_content}
 		<p>첨부파일</p>
+		<p><img src="<c:url value='/files/' />${mail.s_file1}" >
+		<p><img src="<c:url value='/files/' />${mail.s_file2}" >
 		<p><button type="button" id="btn_update">편집</button>
 		<button type="button" id="btn_delete">삭제</button>			
 	</article>
