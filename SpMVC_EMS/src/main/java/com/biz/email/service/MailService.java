@@ -21,4 +21,22 @@ public class MailService {
 	public List<MailVO> selectAll() {
 		return mDao.selectAll();
 	}
+
+	public MailVO findById(long id) {
+		// TODO Auto-generated method stub
+		return mDao.findById(id);
+	}
+
+	public int delete(long id) {
+		// TODO Auto-generated method stub
+		
+		return mDao.delete(id);
+		
+	}
+
+	public int update(MailVO mailVO) {
+		// TODO Auto-generated method stub
+		
+		return mDao.update(mailVO);
+	}
 }

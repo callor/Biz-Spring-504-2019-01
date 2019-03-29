@@ -44,6 +44,11 @@ $(function(){
 		location.href = "mail"
 	})
 	
+	$(".email_row").click(function(){
+		let id = $(this).attr("data-id")
+		location.href = "view?id=" + id
+	})
+	
 })
 
 
@@ -71,7 +76,7 @@ $(function(){
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${MAILS}" var ="mail">
-						<tr>
+						<tr class="email_row" data-id="${mail.id}">
 							<td>${mail.s_date}</td>
 							<td>${mail.s_time}</td>
 							<td>${mail.from_email}</td>
@@ -80,7 +85,6 @@ $(function(){
 						</tr>
 					</c:forEach>
 				</c:otherwise>
-			
 			</c:choose>
 		</table>
 		<hr/>
