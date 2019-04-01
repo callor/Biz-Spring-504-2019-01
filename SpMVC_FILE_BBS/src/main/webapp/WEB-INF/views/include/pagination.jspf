@@ -5,10 +5,32 @@
 <link href="<c:url value='/css/pagination.css' />" rel="stylesheet">
 <article class="page-box">
 	<ul class="pagination">
-		<li><a href="${rootPath}/get_page?page_no=1" class="page-link">Previous</a></li>
-		<li><a href="${rootPath}/get_page?page_no=2" class="page-link">1</a>
-		<li><a href="${rootPath}/get_page?page_no=3" class="page-link">2</a>
-		<li><a href="${rootPath}/get_page?page_no=4" class="page-link">3</a>		
-		<li><a href="${rootPath}/get_page?page_no=5" class="page-link">Next</a></li>
+
+		<li>
+		<a href="${rootPath}/get_page?page_no=${PAGE.firstPageNo}">처음</a>
+		</li>
+
+		<c:if test="${PAGE.currentPageNo != 1}">
+			<li>
+			<a href="${rootPath}/get_page?page_no=${PAGE.prePageNo}">이전</a>
+			</li>
+		</c:if>
+		<c:forEach var="pageNo" begin="${PAGE.startUpPageNo}"
+					end="${PAGE.endPageNo}">
+			<li>
+			<a href="${rootPath}/get_page?page_no=${pageNo}" 
+				class="page-link">${pageNo}</a>
+			</li>
+		</c:forEach>
+		<c:if test="${PAGE.currentPageNo != PAGE.finalPageNo}">
+			<li>
+			<a href="${rootPath}/get_page?page_no=${PAGE.nextPageNo}">이후</a>
+			</li>
+		</c:if>
+		<li>
+		<a href="${rootPath}/get_page?page_no=${PAGE.finalPageNo}">끝</a>
+		</li>
+
+
 	</ul>
 </article>

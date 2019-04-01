@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.biz.file.model.PageVO;
 import com.biz.file.service.PageService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class PageController {
 	
@@ -17,9 +20,14 @@ public class PageController {
 	PageService pService;
 	
 	@RequestMapping(value="get_page",method=RequestMethod.GET)
-	public String getPage(@RequestParam("page_no")
+	public String getPage(
+					@RequestParam(name="page_no",
+					required=false,
+					defaultValue="0")
 					long page_no,	
 					Model model ) {
+		
+			log.debug("PageNO"+page_no);
 		
 		PageVO pageVO = pService.page_select(page_no);
 		model.addAttribute("BODY","BBS_LIST");

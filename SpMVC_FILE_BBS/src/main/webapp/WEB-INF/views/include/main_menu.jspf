@@ -20,7 +20,7 @@ $(function(){
 			<li><a href="javascript:void(0)" 
 					class="a-menu"
 					id="bbs" 
-					data-menu="bbs/">게시판</a>
+					data-menu="get_page/">게시판</a>
 
 			<li><a href="javascript:void(0)" 
 					class="a-menu"

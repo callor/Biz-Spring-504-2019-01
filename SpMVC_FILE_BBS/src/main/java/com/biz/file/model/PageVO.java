@@ -14,12 +14,13 @@ import lombok.ToString;
 public class PageVO {
 
 	long listPerPage ; // 페이지당 리스트 개수
-	long firPageNo ; // 첫번째 페이지 번호
+	long firstPageNo ; // 첫번째 페이지 번호
 	long prePageNo ; // 이전페이지 번호
 	long startUpPageNo ; // 시작페이지 번호
 	long currentPageNo ;  
 	long endPageNo ;  // 끝페이지
 	long nextPageNo ; // 다음페이지
+	long finalPageNo;
 	long totalCount ; // 전체리스트 개수
 	long pageCount ; // 한번에 보여질 페이지 수
 	

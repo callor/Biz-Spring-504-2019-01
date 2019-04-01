@@ -25,8 +25,11 @@ public class PageService {
 	public List<BoardVO> pagiList(PageVO pageVO){
 
 		long c = pDao.getCount();
-		long sRow = pageVO.getCurrentPageNo();
-		long eRow = pageVO.getCurrentPageNo() + pageVO.getListPerPage();
+		long sRow 
+			= pageVO.getCurrentPageNo() 
+				* pageVO.getListPerPage();
+		
+		long eRow = sRow + pageVO.getListPerPage() - 1;
 		
 		log.debug("COUNT" + c);
 		
@@ -55,8 +58,10 @@ public class PageService {
 		// +1 : 데이터의 개수가 정확히 나눗셈하여 떨어지지 않을 경우
 		// 끝에 한페이지가 채워지지 않은 데이터가 있으는 것이므로
 		// 페이지 수를 1개 늘려놓는다.
-		long totalPage = (long)(totalCount / listPerPage) + 1;
-		long currPage = listPerPage * page_no;
+		long totalPage = (long)(totalCount / listPerPage);
+		long currPage = page_no ; // listPerPage * page_no;
+		
+		log.debug("TotalPage:" + totalPage);
 		
 		PageVO pageVO = new PageVO();
 		pageVO.setTotalCount(totalCount);
@@ -67,6 +72,9 @@ public class PageService {
 		long finalPage 
 		= (totalCount + (listPerPage -1)) / listPerPage; 
 		
+		log.debug("finalPage:" + finalPage);
+		log.debug("currentPage:" + currPage);
+		
 		boolean isNowFirst 
 			= currPage == 1 ? true: false;
 		
@@ -76,11 +84,11 @@ public class PageService {
 		long startPage 
 			= ((currPage - 1) / listPerPage) * listPerPage + 1;
 		
-		long endPage = startPage * listPerPage - 1;
+		long endPage = startPage + listPerPage - 1;
 		
 		if(endPage > finalPage) endPage = finalPage;
 		
-		pageVO.setFirPageNo(1);
+		pageVO.setFirstPageNo(1);
 		if(isNowFirst) pageVO.setPrePageNo(1);
 		else pageVO.setPrePageNo((currPage -1) < 1 ? 1 : currPage - 1);
 		
@@ -90,7 +98,11 @@ public class PageService {
 		if(isNowFinal) pageVO.setNextPageNo(finalPage);
 		else pageVO.setNextPageNo(((currPage + 1) > finalPage ? finalPage : (currPage + 1)));
 
-		pageVO.setFirPageNo(finalPage);
+		pageVO.setFinalPageNo(finalPage);
+		
+		log.debug("Start:" + pageVO.getStartUpPageNo());
+		log.debug("End:" + pageVO.getEndPageNo());
+		log.debug("Next:" + pageVO.getNextPageNo());
 		
 		return pageVO;
 	}

@@ -17,9 +17,22 @@
 	
 }
 
-
 .page-item:first-child  .page-link {
 	margin-left: 0;
 	border-top-left-radius: .25rem;
+	border-bottom-left-radius: .25rem;
+}
+
+.page-item:last-child .page-link {
+	margin-left: 0;
+	border-top-right-radius: .25rem;
 	border-bottom-right-radius: .25rem;
+}
+
+
+.page-item.active .page-link{
+	z-index:1;
+	color:#fff;
+	background-color: #007bff;
+	border-color:#007bff;
 }
