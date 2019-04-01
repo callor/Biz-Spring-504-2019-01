@@ -41,10 +41,11 @@ public class SaveService {
 		
 		// 2개만 저장을 하고 싶다.
 		try {
-			String fileName1 = fileUp(fileList.get(0));
-			String fileName2 = fileUp(fileList.get(1));
 			// 실제 저장된 파일 이름을 vo에 담기
+			String fileName1 = fileUp(fileList.get(0));
 			mailVO.setS_file1(fileName1);
+			
+			String fileName2 = fileUp(fileList.get(1));
 			mailVO.setS_file2(fileName2);
 
 		} catch (Exception e) {

@@ -66,7 +66,11 @@
 		</c:otherwise>
 	</c:choose>
 </table>
+
 <hr />
+<%@ include file="/WEB-INF/views/include/pagination.jspf" %>
+<hr />
+
 <button id="btn-drag">글쓰기(drag)</button>
 <button id="btn-tag">글쓰기(tag)</button>
 <script>

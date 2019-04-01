@@ -17,7 +17,7 @@ public interface PageDao {
 			" WHERE b_date > '0000-00-00' ) M " + 
 			" WHERE R BETWEEN #{start} AND #{end} " )
 	public List<BoardVO> selectPage(
-							@Param("start") int start, 
-							@Param("end") int end);
+							@Param("start") long start, 
+							@Param("end") long end);
 	
 }

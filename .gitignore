@@ -19,3 +19,4 @@ hs_err_pid*
 Servers/
 NaverClient.*
 RaffleController.*
+mail-context.xml

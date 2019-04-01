@@ -32,7 +32,10 @@ public class AppServletConfig implements WebMvcConfigurer{
 			.addResourceLocations("/resources/");
 
 		registry.addResourceHandler("/files/**")
-		.addResourceLocations("/files/");
+			.addResourceLocations("/files/");
+
+		registry.addResourceHandler("/css/**")
+			.addResourceLocations("/css/");
 		
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 

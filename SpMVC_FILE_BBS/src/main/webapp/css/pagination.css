@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.page-box {
+	display: flex;
+	padding:20px;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+.pagination {
+	display: flex;
+	padding-left: 0;
+	list-style: none;
+	border-radius: .25rem;
+	margin: 0px auto;
+	
+}
+
+
+.page-item:first-child  .page-link {
+	margin-left: 0;
+	border-top-left-radius: .25rem;
+	border-bottom-right-radius: .25rem;
+}

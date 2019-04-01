@@ -60,8 +60,8 @@ public class BBSController {
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String bbs_list(Model model) {
 		
-		// List<BoardVO> bbsList = bService.selectAll();
-		List<BoardVO> bbsList = pService.pagiList(1, 10);
+		List<BoardVO> bbsList = bService.selectAll();
+		// List<BoardVO> bbsList = pService.pagiList(1, 10);
 		
 		model.addAttribute("BBS_LIST",bbsList);
 		model.addAttribute("BODY", "BBS_LIST");
