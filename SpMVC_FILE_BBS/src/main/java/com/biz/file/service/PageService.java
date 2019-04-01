@@ -36,7 +36,7 @@ public class PageService {
 		log.debug("sRow" + sRow);
 		log.debug("eRow" + eRow);
 		
-		List<BoardVO> bbsList = pDao.selectPage(sRow, eRow);
+		List<BoardVO> bbsList = pDao.selectPage2(sRow, eRow);
 		return bbsList;
 		
 	}

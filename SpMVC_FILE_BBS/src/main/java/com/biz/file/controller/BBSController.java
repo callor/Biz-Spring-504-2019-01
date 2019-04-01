@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @SessionAttributes({"bbsVO"})
 @Controller
-@RequestMapping("/bbs/")
+@RequestMapping("/bbs")
 public class BBSController {
 
 	@Autowired

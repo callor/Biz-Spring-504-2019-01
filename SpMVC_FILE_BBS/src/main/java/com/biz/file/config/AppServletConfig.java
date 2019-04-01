@@ -7,10 +7,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.biz.file.interceptor.LoginInterceptor;
+
+import lombok.extern.slf4j.Slf4j;
 
 /*
  * serlvet-context.xml의 하는일을 대신
@@ -22,8 +27,23 @@ import org.springframework.web.servlet.view.JstlView;
 		"com.biz.file.controller",
 		"com.biz.file.service"
 		})
+@Slf4j
 public class AppServletConfig implements WebMvcConfigurer{
 	
+	@Bean
+	LoginInterceptor loginInterceptor() {
+		return new LoginInterceptor();
+	}
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// TODO Auto-generated method stub
+		// WebMvcConfigurer.super.addInterceptors(registry);
+		log.debug("ADD INTERCEPTER");
+		registry.addInterceptor(loginInterceptor())
+				.addPathPatterns("/bbs/**");
+	}
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// TODO Auto-generated method stub
