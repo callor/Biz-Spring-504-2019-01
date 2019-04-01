@@ -26,10 +26,10 @@ public class PageService {
 
 		long c = pDao.getCount();
 		long sRow 
-			= pageVO.getCurrentPageNo() 
+			= (pageVO.getCurrentPageNo()-1)
 				* pageVO.getListPerPage();
 		
-		long eRow = sRow + pageVO.getListPerPage() - 1;
+		long eRow = sRow + pageVO.getListPerPage();
 		
 		log.debug("COUNT" + c);
 		

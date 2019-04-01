@@ -27,7 +27,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// login 정보가 없으면
 		if (memberVO == null) {
 			session.removeAttribute("login_info");
-			response.sendRedirect("/login?LOGIN_MSG=LOGIN_REQ");
+			response.sendRedirect("/file/login/login?LOGIN_MSG=LOGIN_REQ");
 			return false;
 		}
 		
