@@ -38,6 +38,22 @@ public class BBsService {
 		return bbsList;
 		
 	}
+
+	public int insert(BBsVO bbsVO) {
+
+		BBsDao bDao = sqlSession.getMapper(BBsDao.class);
+		int ret = bDao.insert(bbsVO);
+		
+		return ret;
+	}
+
+	public BBsVO findById(long id) {
+
+		BBsDao bDao = sqlSession.getMapper(BBsDao.class);
+		BBsVO bbsVO = bDao.findById(id);
+		return bbsVO;
+	
+	}
 	
 
 }

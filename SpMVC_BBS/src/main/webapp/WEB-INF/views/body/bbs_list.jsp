@@ -69,24 +69,24 @@
 
 <hr />
 <hr />
-
 <button id="btn-drag">글쓰기(drag)</button>
 <button id="btn-tag">글쓰기(tag)</button>
+<hr/>
 <script>
 	$(function(){
 		$("#btn-drag").click(function(){
-			location.replace("<c:url value = '/bbs/drag' />")
+			location.href = "<c:url value = '/write' />"
 		})
 
 		$("#btn-tag").click(function(){
-			location.replace("<c:url value = '/bbs/tag' />")
+			location.href = "<c:url value = '/bbs/tag' />"
 		})
 		
 		$(".bbs_row").click(function(){
 			let id = $(this).attr("data-id")
-			location.replace("<c:url value = '/bbs/view' />" 
+			location.href = "<c:url value = '/view' />" 
 						+ "?id=" 
-						+ id)
+						+ id
 			
 		})
 	})

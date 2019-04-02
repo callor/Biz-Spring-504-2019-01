@@ -46,7 +46,7 @@ $(function(){
 				<a href="javascript:void(0)" 
 					class="a-menu"
 					id="bbs" 
-					data-menu="get_page/">게시판</a>
+					data-menu="/">게시판</a>
 			</li>
 			<c:choose>
 				<c:when test="${ login_info != null && login_info.m_userid != null}">

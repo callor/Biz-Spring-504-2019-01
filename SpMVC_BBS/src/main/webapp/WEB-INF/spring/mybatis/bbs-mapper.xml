@@ -18,6 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<select id="findById" resultType="bbsVO">
+		SELECT * FROM tbl_board WHERE id= #{id}
+	</select>
+	
 	<insert id="insert" parameterType="bbsVO">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
 			SELECT ROUND(DBMS_RANDOM.VALUE(0,9999999999),0) 

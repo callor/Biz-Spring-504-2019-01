@@ -13,4 +13,8 @@ public interface BBsDao {
 	public List<BBsVO> pageSelect(@Param("sRow") long sRow, 
 									@Param("eRow") long eRow);
 
+	public int insert(BBsVO bbsVO);
+
+	public BBsVO findById(long id);
+
 }

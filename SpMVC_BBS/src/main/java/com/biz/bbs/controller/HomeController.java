@@ -25,7 +25,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		
 //		List<BBsVO> bbsList = bService.selecAll();
-		List<BBsVO> bbsList = bService.pageList(3);
+		List<BBsVO> bbsList = bService.pageList(1);
 		model.addAttribute("BBS_LIST", bbsList);
 		model.addAttribute("BODY", "BBS_LIST");
 		return "home";
