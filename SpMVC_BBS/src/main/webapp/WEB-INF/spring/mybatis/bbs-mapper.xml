@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 		M.* FROM (
     	SELECT ROW_NUMBER() OVER (ORDER BY B_DATE DESC, B_TIME DESC) R, 
-    	B_DATE,B_TIME,B_SUBJECT, B_CONTENT
+    	ID,B_USERID,B_DATE,B_TIME,B_SUBJECT, B_CONTENT
     	FROM tbl_board) M
 		WHERE M.R BETWEEN #{sRow} AND #{eRow}
 	
@@ -32,4 +32,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{id},#{b_userid}, 	#{b_date},		#{b_time},
 					#{b_subject},	#{b_content})
 	</insert>
+	<delete id="delete">
+		DELETE FROM tbl_board WHERE id=#{id}
+	</delete>
+	
+	<update id="update">
+		UPDATE tbl_board
+			SET b_userid = #{b_userid},
+				b_date = #{b_date},
+				b_time = #{b_time},
+				b_subject = #{b_subject},
+				b_content = #{b_content}
+			WHERE id= #{id}
+	</update>
+	
+	
+	
 </mapper>

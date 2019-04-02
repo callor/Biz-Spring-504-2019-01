@@ -17,4 +17,8 @@ public interface BBsDao {
 
 	public BBsVO findById(long id);
 
+	public int delete(long id);
+
+	public int update(BBsVO bbsVO);
+
 }

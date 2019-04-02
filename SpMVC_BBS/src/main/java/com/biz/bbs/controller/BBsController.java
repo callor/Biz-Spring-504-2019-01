@@ -66,16 +66,44 @@ public class BBsController {
 	}
 	
 	@RequestMapping(value="view",method=RequestMethod.GET)
-	public String bbs_view(@RequestParam long id,Model model) {
+	public String bbs_view(@ModelAttribute("bbsVO") BBsVO bbsVO,
+							Model model) {
 		
+		long id = bbsVO.getId();
 		// id를 기준으로 1개의 게시판 정보 조회
-		BBsVO bbsVO = bService.findById(id);
-		
-		model.addAttribute("BBS",bbsVO);
+		bbsVO = bService.findById(id);
+		model.addAttribute("bbsVO",bbsVO);
 		model.addAttribute("BODY","BBS_VIEW");
 		return "home";
 		
 	}
 	
+	@RequestMapping(value="delete",method=RequestMethod.GET)
+	public String bbs_delete(@RequestParam long id) {
+		int ret = bService.delete(id);
+		return "redirect:/";
+	}
 	
+	@RequestMapping(value="update",method=RequestMethod.GET)
+	public String bbs_update(@ModelAttribute("bbsVO") BBsVO bbsVO,
+							Model model) {
+		
+		long id = bbsVO.getId();
+		bbsVO = bService.findById(id);
+		model.addAttribute("bbsVO",bbsVO);
+		model.addAttribute("BODY", "BBS_WRITE");
+		return "home";
+		
+	}
+	
+	@RequestMapping(value="update",method=RequestMethod.POST)
+	public String bbs_update(@ModelAttribute("bbsVO") BBsVO bbsVO,
+					SessionStatus session) {
+		
+		int ret = bService.update(bbsVO);
+		session.setComplete();
+		
+		return "redirect:/";
+		
+	}
 }

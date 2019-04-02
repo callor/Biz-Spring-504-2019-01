@@ -41,6 +41,13 @@ public class BBsService {
 
 	public int insert(BBsVO bbsVO) {
 
+		//textarea에 입력할때 Enter를 추가해서 줄바꿈을 했을 경우
+		// 줄바꿈 특수문자를 br tag로 변경하는 코드
+		String s_content = bbsVO
+						.getB_content()
+						.replaceAll("\r\n|\r|\n|\n\r", "<br />");
+		// bbsVO.setB_content(s_content);
+
 		BBsDao bDao = sqlSession.getMapper(BBsDao.class);
 		int ret = bDao.insert(bbsVO);
 		
@@ -53,6 +60,20 @@ public class BBsService {
 		BBsVO bbsVO = bDao.findById(id);
 		return bbsVO;
 	
+	}
+
+	public int delete(long id) {
+
+		BBsDao bDao = sqlSession.getMapper(BBsDao.class);
+		int ret = bDao.delete(id);
+		return 0;
+	}
+
+	public int update(BBsVO bbsVO) {
+		// 
+		BBsDao bDao = sqlSession.getMapper(BBsDao.class);
+		int ret = bDao.update(bbsVO);
+		return ret;
 	}
 	
 
