@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biz.bbs.mapper.BBsDao">
+	<select id="selectAll" resultType="bbsVO">
+		SELECT * FROM tbl_board
+	</select>
+	
+	<select id="pageSelect" resultType="bbsVO">
+		SELECT 
+		M.* FROM (
+    	SELECT ROW_NUMBER() OVER (ORDER BY B_DATE DESC, B_TIME DESC) R, 
+    	B_DATE,B_TIME,B_SUBJECT, B_CONTENT
+    	FROM tbl_board) M
+		WHERE M.R BETWEEN #{sRow} AND #{eRow}
+	
+	</select>
+	
+	<insert id="insert" parameterType="bbsVO">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT ROUND(DBMS_RANDOM.VALUE(0,9999999999),0) 
+			FROM DUAL
+		</selectKey>
+		INSERT INTO 
+			tbl_board(id, b_userid, b_date,b_time,b_subject,b_content)
+		VALUES(#{id},#{b_userid}, 	#{b_date},		#{b_time},
+					#{b_subject},	#{b_content})
+	</insert>
+</mapper>
