@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biz.iolist.mapper.DeptDao">
+
+	<select id="selectAll" resultType="deptVO">
+		SELECT * FROM tbl_dept
+	</select>
+	
+	<select id="findByDCode" resultType="deptVO">
+		SELECT * FROM tbl_dept WHERE d_code = #{d_code}
+	</select>
+	<!-- 
+		private String d_code;
+		private String d_name;
+		private String d_ceo;
+		private String d_tel;
+		private String d_addr;
+	 -->
+	<insert id="insert" parameterType="deptVO">
+		INSERT INTO tbl_dept(d_code,d_name,d_ceo,d_tel,d_addr)
+		VALUES(#{d_code},#{d_name},#{d_ceo},#{d_tel},#{d_addr})
+	</insert>
+	<update id="update" parameterType="deptVO">
+		UPDATE tbl_dept
+		SET d_name = #{d_name},
+			d_ceo = #{d_ceo},
+			d_tel = #{d_tel},
+			d_addr = #{d_addr}
+		WHERE d_code = #{d_code}
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_dept WHERE d_code = #{d_code}
+	</delete>
+	
+</mapper>

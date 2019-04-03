@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="iolist"/>
+		<property name="password" value="1234"/>
+	</bean>
+
+	<!-- 
+		xml방식의 mybatis 설정은
+		configLocation과
+		mapperLocations 속성이 필요하다
+		
+		config..는 옵션사항으로 없어 무관하지만
+		mapper..는 반드시 있어야 한다.
+	 -->
+	<bean id="sqlSessionFactory" 
+			class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="configLocation" 
+				value="/WEB-INF/spring/mybatis/mybatis-config.xml"/>
+				
+		<property name="mapperLocations" 
+				value="/WEB-INF/spring/mybatis/mapper/*-mapper.xml" />			
+	
+	</bean>
+	<bean id="sqlSession" 
+			class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+</beans>

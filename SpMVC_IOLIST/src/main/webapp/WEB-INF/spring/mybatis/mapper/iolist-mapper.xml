@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biz.iolist.mapper.IolistDao">
+
+	<select id="selectAll" resultType="iolistVO">
+		SELECT * FROM tbl_iolist
+	</select>
+	
+	<select id="findById" resultType="iolistVO">
+		SELECT * FROM tbl_iolist WHERE io_id = #{io_id}
+	</select>
+	<!-- 
+		private long io_id,
+		private String io_date,
+		private String io_pcode,
+		private String io_dcode,
+		private String io_inout,
+		private String io_tax,
+		private int io_quan,
+		private int io_price,
+		private int io_total,
+		private int io_tax_total,
+	 -->
+	<insert id="insert" parameterType="iolistVO">
+		INSERT INTO tbl_iolist(
+			io_id,io_date,io_pcode,io_dcode,
+			io_inout,io_tax,io_quan,io_price,io_total,io_tax_total)
+		VALUES(	#{io_id},#{io_date},#{io_pcode},#{io_dcode},
+			#{io_inout},#{io_tax},#{io_quan},#{io_price},#{io_total},#{io_tax_total})
+	</insert>
+	<update id="update" parameterType="iolistVO">
+		UPDATE tbl_iolist
+		SET	io_date = #{io_date},
+			io_pcode = #{io_pcode},
+			io_dcode = #{io_dcode},
+			io_inout = #{io_inout},
+			io_tax = #{io_tax},
+			io_quan = #{io_quan},
+			io_price = #{io_price},
+			io_total = #{io_total},
+			io_tax_total = #{io_tax_total}
+		WHERE io_id = #{io_id}
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_iolist WHERE io_id = #{io_id}
+	</delete>	
+	
+</mapper>
