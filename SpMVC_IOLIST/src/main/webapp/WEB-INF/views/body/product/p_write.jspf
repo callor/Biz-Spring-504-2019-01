@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" 
 		prefix="form" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link href="${rootPath}/css/write.css" rel="stylesheet">
 
 <form:form 
 	modelAttribute="productVO">
@@ -12,7 +11,8 @@
 	<fieldset>
 	<legend>상품정보 등록</legend>
 	<div class="in-box-border">
-		<form:input class="in-box" readonly="true"
+		<label for="p_code">상품코드</label>
+		<form:input class="in-box"
 			placeholder="상품코드"
 			id="p_code" 
 			path="p_code" /><br/>
@@ -20,6 +20,7 @@
 	</div>
 			
 	<div class="in-box-border">
+		<label for="p_name">상품이름</label>
 		<form:input class="in-box"
 			placeholder="상품이름"
 			id="p_name" 
@@ -28,14 +29,28 @@
 	</div>
 
 	<div class="in-box-border">
-		<form:input class="in-box"
-			placeholder="과세"
-			id="p_tax" 
-			path="p_tax" /><br/>
+		<label for="p_tax">과세</label>
+		<div class="in-box">
+			<form:radiobutton
+				value="1"
+				label="과세"
+				id="p_tax" 
+				path="p_tax"/>
+			<form:radiobutton 
+				value="0"
+				label="면세"
+				id="p_tax" 
+				path="p_tax"/>
+		</div>
 		<form:errors path="p_tax"  class="in-box-error"/>
 	</div>
+
+	
+
+
 	
 	<div class="in-box-border">
+		<label for="p_iprice">매입단가</label>
 		<form:input  class="in-box"
 			placeholder="매입단가"
 			id="p_iprice" 
@@ -43,6 +58,7 @@
 		<form:errors path="p_iprice" />
 	</div>
 	<div class="in-box-border">
+		<label for="p_oprice">매출단가</label>
 		<form:input  class="in-box"
 			placeholder="매출단가"
 			id="p_oprice" 

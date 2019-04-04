@@ -17,7 +17,16 @@
 			<td colspan=20>자료가 없습니다.</td>
 		</c:when>
 		<c:otherwise>
-		
+			<c:forEach items="${LIST}" var="vo" varStatus="i">
+				<tr>
+					<td>${i.count}</td>
+					<td>${vo.p_code}</td>
+					<td>${vo.p_name}</td>
+					<td>${vo.p_tax}</td>
+					<td>${vo.p_iprice}</td>
+					<td>${vo.p_oprice}</td>
+				</tr>
+			</c:forEach>
 		</c:otherwise>
 	</c:choose>
 </tr>

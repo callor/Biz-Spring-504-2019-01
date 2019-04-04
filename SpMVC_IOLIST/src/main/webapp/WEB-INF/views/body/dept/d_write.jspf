@@ -4,15 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" 
 		prefix="form" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link href="${rootPath}/css/write.css" rel="stylesheet">
-
 <form:form 
 	modelAttribute="deptVO">
 
 	<fieldset>
 	<legend>거래처정보 등록</legend>
 	<div class="in-box-border">
-		<form:input class="in-box" readonly="true"
+		<form:input class="in-box"
 			placeholder="거래처코드"
 			id="d_code" 
 			path="d_code" /><br/>

@@ -11,26 +11,33 @@ legend {
 	color: #3d65ff;
 }
 
-.in-label {
+/* label과 input box를 감싸고 있는 div  */
+.in-box-border {
+	display:flex;
+	padding:4px;
+}
+
+
+.in-box-border label {
 	display: inline-block;
 	width: 20%;
-	float: left;
 	text-align: right;
 	margin-right: 5px;
 	padding: 8px;
 }
 
-.in-box-border {
-	display: inline-block;
-	width: 80%;
-	margin:0 auto;
+
+.in-box label {
+	width:50px;
+	padding:0px;
+	margin:0px;
 }
 
 .in-box {
 	padding: 8px;
-	margin: 0 auto;
+	margin:3px;
 	display: inline-block;
-	width: 100%;
+	width: 70%;
 	border: 1px solid #ccc;
 }
 

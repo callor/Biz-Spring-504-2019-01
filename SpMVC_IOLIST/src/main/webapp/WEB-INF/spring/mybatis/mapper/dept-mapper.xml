@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.biz.iolist.mapper.DeptDao">
 
 	<select id="selectAll" resultType="deptVO">
-		SELECT * FROM tbl_dept
+		SELECT * FROM tbl_dept ORDER BY d_code
 	</select>
 	
 	<select id="findByDCode" resultType="deptVO">

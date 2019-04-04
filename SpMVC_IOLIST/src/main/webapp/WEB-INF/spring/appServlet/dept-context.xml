@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		old version Spring에서 Service 클래스를 등록하는 방법
+		= Service bean을 생성하는 방법
+		@Service Annotation을 사용하지 않고 xml을 사용해서
+		Service bean을 등록하는 방법
+		이때 Controller에서 Autowired할때
+		객체의 이름은 반드시 id값과 일치하도록 해주자.
+		DeptService deptService 형식으로 사용
+	 -->
+	<bean id="deptService" 
+			class="com.biz.iolist.service.DeptService">
+	</bean>
+
+</beans>

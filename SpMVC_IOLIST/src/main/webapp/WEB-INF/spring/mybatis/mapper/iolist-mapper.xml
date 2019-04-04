@@ -25,15 +25,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		private int io_tax_total,
 	 -->
 	<insert id="insert" parameterType="iolistVO">
+		<selectKey keyProperty="io_id" resultType="long" order="BEFORE">
+			SELECT ROUND(DBMS_RANDOM.VALUE(0,9999999999),0) 
+			FROM DUAL
+		</selectKey>
+		
 		INSERT INTO tbl_iolist(
-			io_id,io_date,io_pcode,io_dcode,
+			io_id,io_date,io_time,io_pcode,io_dcode,
 			io_inout,io_tax,io_quan,io_price,io_total,io_tax_total)
-		VALUES(	#{io_id},#{io_date},#{io_pcode},#{io_dcode},
+		VALUES(	#{io_id},#{io_date},#{io_time},#{io_pcode},#{io_dcode},
 			#{io_inout},#{io_tax},#{io_quan},#{io_price},#{io_total},#{io_tax_total})
 	</insert>
 	<update id="update" parameterType="iolistVO">
 		UPDATE tbl_iolist
 		SET	io_date = #{io_date},
+			io_time = #{io_time},
 			io_pcode = #{io_pcode},
 			io_dcode = #{io_dcode},
 			io_inout = #{io_inout},
