@@ -1,4 +1,4 @@
-package com.biz.iolist;
+package com.biz.iolist.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

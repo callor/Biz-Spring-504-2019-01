@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 
+		prefix="form" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<link href="${rootPath}/css/write.css" rel="stylesheet">
+
+<form:form 
+	modelAttribute="deptVO">
+
+	<fieldset>
+	<legend>거래처정보 등록</legend>
+	<div class="in-box-border">
+		<form:input class="in-box" readonly="true"
+			placeholder="거래처코드"
+			id="d_code" 
+			path="d_code" /><br/>
+		<form:errors path="d_code" class="in-box-error"/>
+	</div>
+			
+	<div class="in-box-border">
+		<form:input class="in-box"
+			placeholder="거래처명"
+			id="d_name" 
+			path="d_name" /><br/>
+		<form:errors path="d_name"  class="in-box-error"/>
+	</div>
+
+	<div class="in-box-border">
+		<form:input class="in-box"
+			placeholder="대표자명"
+			id="d_ceo" 
+			path="d_ceo" /><br/>
+		<form:errors path="d_ceo"  class="in-box-error"/>
+	</div>
+	
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="대표전화"
+			id="d_tel" 
+			path="d_tel" /><br/>
+		<form:errors path="d_tel" />
+	</div>
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="주소"
+			id="d_addr" 
+			path="d_addr" /><br/>
+		<form:errors path="d_addr" />
+	</div>
+
+
+	<hr/>
+	<button id="btn-write" type="submit">저장</button>
+	</fieldset>
+</form:form>

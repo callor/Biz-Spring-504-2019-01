@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<table>
+<tr>
+		<th>거래일자</th>
+		<th>상품코드</th>
+		<th>거래처코드</th>
+		<th>구분</th>
+		<th>수량</th>
+		<th>과세</th>
+		<th>단가</th>
+		<th>공급대가</th>
+		<th>합계</th>
+</tr>
+<tr>
+	<c:choose>
+		<c:when test="${empty LIST}">
+			<td colspan=20>자료가 없습니다.</td>
+		</c:when>
+		<c:otherwise>
+		
+		</c:otherwise>
+	</c:choose>
+</tr>
+</table>
+<hr/>
+<a href="<c:url value='/iolist/write' />" >매입매출정보 등록</a>
+

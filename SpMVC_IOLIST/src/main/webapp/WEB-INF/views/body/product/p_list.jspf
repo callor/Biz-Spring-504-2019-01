@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<table>
+<tr>
+		<th>NO</th>
+		<th>상품코드</th>
+		<th>상품이름</th>
+		<th>과세</th>
+		<th>매입단가</th>
+		<th>매출단가</th>
+
+</tr>
+<tr>
+	<c:choose>
+		<c:when test="${empty LIST}">
+			<td colspan=20>자료가 없습니다.</td>
+		</c:when>
+		<c:otherwise>
+		
+		</c:otherwise>
+	</c:choose>
+</tr>
+</table>
+<hr/>
+<a href="<c:url value='/product/write' />" >상품정보 등록</a>

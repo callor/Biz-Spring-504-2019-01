@@ -46,7 +46,7 @@ $(function(){
 				<a href="javascript:void(0)" 
 					class="a-menu"
 					id="bbs" 
-					data-menu="/">매입매출장</a>
+					data-menu="iolist/list">매입매출장</a>
 			</li>
 			<li class="dropdown">
 				<a href="javascript:void(0)" 

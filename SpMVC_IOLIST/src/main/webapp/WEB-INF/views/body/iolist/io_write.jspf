@@ -1,0 +1,93 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 
+		prefix="form" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<link href="${rootPath}/css/write.css" rel="stylesheet">
+
+<form:form 
+	modelAttribute="iolistVO">
+
+	<fieldset>
+	<legend>매입매출 등록</legend>
+	<div class="in-box-border">
+		<form:input class="in-box" readonly="true"
+			placeholder="거래일자"
+			id="io_date" 
+			path="io_date" /><br/>
+		<form:errors path="io_date" class="in-box-error"/>
+	</div>
+			
+	<div class="in-box-border">
+		<form:input class="in-box"
+			placeholder="상품코드"
+			id="io_pcode" 
+			path="io_pcode" /><br/>
+		<form:errors path="io_pcode"  class="in-box-error"/>
+	</div>
+
+	<div class="in-box-border">
+		<form:input class="in-box"
+			placeholder="거래처코드"
+			id="io_dcode" 
+			path="io_dcode" /><br/>
+		<form:errors path="io_dcode"  class="in-box-error"/>
+	</div>
+	
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="구분"
+			id="io_inout" 
+			path="io_inout" /><br/>
+		<form:errors path="io_inout" />
+	</div>
+	
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="수량"
+			id="io_quan" 
+			path="io_quan" /><br/>
+		<form:errors path="io_quan" />
+	</div>
+
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="과세"
+			id="io_tax" 
+			path="io_tax" /><br/>
+		<form:errors path="io_tax" />
+	</div>
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="공급단가"
+			id="io_price" 
+			path="io_price" /><br/>
+		<form:errors path="io_price" />
+	</div>
+
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="공급가액"
+			id="io_total" 
+			path="io_total" /><br/>
+		<form:errors path="io_total" />
+	</div>
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="합계"
+			id="io_total" 
+			path="io_total" /><br/>
+		<form:errors path="io_total" />
+	</div>
+	
+	
+	
+	
+	
+
+
+	<hr/>
+	<button id="btn-write" type="submit">저장</button>
+	</fieldset>
+</form:form>

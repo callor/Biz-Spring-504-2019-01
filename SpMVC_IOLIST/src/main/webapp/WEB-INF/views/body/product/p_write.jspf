@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 
+		prefix="form" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<link href="${rootPath}/css/write.css" rel="stylesheet">
+
+<form:form 
+	modelAttribute="productVO">
+
+	<fieldset>
+	<legend>상품정보 등록</legend>
+	<div class="in-box-border">
+		<form:input class="in-box" readonly="true"
+			placeholder="상품코드"
+			id="p_code" 
+			path="p_code" /><br/>
+		<form:errors path="p_code" class="in-box-error"/>
+	</div>
+			
+	<div class="in-box-border">
+		<form:input class="in-box"
+			placeholder="상품이름"
+			id="p_name" 
+			path="p_name" /><br/>
+		<form:errors path="p_name"  class="in-box-error"/>
+	</div>
+
+	<div class="in-box-border">
+		<form:input class="in-box"
+			placeholder="과세"
+			id="p_tax" 
+			path="p_tax" /><br/>
+		<form:errors path="p_tax"  class="in-box-error"/>
+	</div>
+	
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="매입단가"
+			id="p_iprice" 
+			path="p_iprice" /><br/>
+		<form:errors path="p_iprice" />
+	</div>
+	<div class="in-box-border">
+		<form:input  class="in-box"
+			placeholder="매출단가"
+			id="p_oprice" 
+			path="p_oprice" /><br/>
+		<form:errors path="p_oprice" />
+	</div>
+
+	<hr/>
+	<button id="btn-write" type="submit">저장</button>
+	</fieldset>
+</form:form>

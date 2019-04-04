@@ -120,11 +120,28 @@ $(function(){
 	<article id="body">
 	<c:choose>
 		<c:when test="${BODY == 'IO_LIST'}">
-		
+			<h3>매입매출 리스트</h3>
+			<%@ include file="/WEB-INF/views/body/iolist/io_list.jspf" %>
 		</c:when>
+		<c:when test="${BODY == 'P_LIST'}">
+			<h3>상품정보 리스트</h3>
+			<%@ include file="/WEB-INF/views/body/product/p_list.jspf" %>
+		</c:when>
+		<c:when test="${BODY == 'D_LIST'}">
+			<h3>거래처정보 리스트</h3>
+			<%@ include file="/WEB-INF/views/body/dept/d_list.jspf" %>
+		</c:when>
+
 		<c:when test="${BODY == 'IO_WRITE'}">
-		
+			<%@ include file="/WEB-INF/views/body/iolist/io_write.jspf" %>
 		</c:when>
+		<c:when test="${BODY == 'P_WRITE'}">
+			<%@ include file="/WEB-INF/views/body/product/p_write.jspf" %>
+		</c:when>
+		<c:when test="${BODY == 'D_WRITE'}">
+			<%@ include file="/WEB-INF/views/body/dept/d_write.jspf" %>
+		</c:when>
+		
 		<c:otherwise>
 			<%@ include file="/WEB-INF/views/body/dumy_view.jsp" %>
 		</c:otherwise>

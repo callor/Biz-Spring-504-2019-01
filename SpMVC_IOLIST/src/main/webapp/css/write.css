@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+fieldset {
+	width: 70%;
+	margin: 20px auto; /* 가로방향 중앙정렬 */
+}
+
+legend {
+	font-size: 12pt;
+	font-weight: bold;
+	color: #3d65ff;
+}
+
+.in-label {
+	display: inline-block;
+	width: 20%;
+	float: left;
+	text-align: right;
+	margin-right: 5px;
+	padding: 8px;
+}
+
+.in-box-border {
+	display: inline-block;
+	width: 80%;
+	margin:0 auto;
+}
+
+.in-box {
+	padding: 8px;
+	margin: 0 auto;
+	display: inline-block;
+	width: 100%;
+	border: 1px solid #ccc;
+}
+
+.in-box:hover {
+	background-color: #ddd;
+	border: 1px solid blue;
+}
+
+input:invalid {
+	background-color: #ffdddd;
+	border: 2px solid red;
+}
+
+/* span 설정 */
+#userid_error {
+	width: 70%;
+	color: red;
+	font-weight: bold;
+}
+
+.userid_label {
+	display: none;
+}
+
+.in-box-error {
+	display: inline-block;
+	margin-left: 20px;
+	font-size: 12px;
+	color: red;
+}
+
+.in-file-box {
+	border: 2px solid blue;
+}
+
+.in-file-box h3 {
+	text-align: center;
+}
