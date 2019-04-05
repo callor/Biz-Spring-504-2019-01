@@ -45,6 +45,16 @@ public class DeptController {
 		return "home";
 		
 	}
+
+	@RequestMapping(value="/search",method=RequestMethod.GET)
+	public String search(@RequestParam("d_name") String d_name,
+						Model model) {
+		
+		List<DeptVO> deptList = deptService.findByDName(d_name);
+		model.addAttribute("LIST", deptList);
+		return "body/dept/d_search_list";
+		
+	}
 	
 	@RequestMapping(value="/write",method=RequestMethod.GET)
 	public String write(

@@ -13,6 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM tbl_dept WHERE d_code = #{d_code}
 	</select>
 	
+	<select id="findByDName" resultType="deptVO">
+		SELECT * FROM tbl_dept 
+		WHERE d_name LIKE '%' || #{d_name} || '%'
+	</select>
+	
 	<select id="getDCode" resultType="String">
 		SELECT M.D_CODE FROM
 			(SELECT ROW_NUMBER() OVER (ORDER BY D_CODE DESC) R, d_code

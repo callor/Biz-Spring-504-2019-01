@@ -9,8 +9,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM tbl_product
 	</select>
 	<select id="findByPCode" resultType="productVO">
-		SELECT * FROM tbl_product WHERE p_code = #{p_code}
+		SELECT * FROM tbl_product WHERE p_code = RPAD(#{p_code},13,' ')
 	</select>
+	
+	<!-- 
+		mybatis oracle 방식의 like 문법
+	 -->
+	<select id="findByPName" resultType="productVO">
+		SELECT * FROM tbl_product 
+		WHERE p_name like '%' || #{p_name} || '%'
+	</select>
+	<!-- 
+		MySQL
+		WHERE p_name like '%' + #{p_name} + '%'
+	 -->
+	
+	
 	<!-- 
 		private String p_code;
 		private String p_name;
@@ -29,13 +43,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			p_tax = #{p_tax},
 			p_iprice = #{p_iprice},
 			p_oprice = #{p_oprice}
-		WHERE p_code = #{p_code}
+		WHERE p_code = RPAD(#{p_code},13,' ')
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM tbl_product WHERE p_code = #{p_code}
-	
+		DELETE FROM tbl_product 
+		WHERE p_code = RPAD(#{p_code},13,' ')
 	</delete>
-	
-	
 </mapper>

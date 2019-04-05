@@ -41,6 +41,8 @@ public class IolistController {
 		
 		vo.setIo_date(fdate.format(lt));
 		vo.setIo_time(ftime.format(lt));
+		vo.setIo_inout("1");
+		vo.setIo_tax("1");
 		
 		return vo;
 	}
@@ -73,7 +75,6 @@ public class IolistController {
 		
 		int ret = iService.insert(iolistVO);
 		if(ret > 0) {
-			
 			return "redirect:/iolist/list";
 		} else {
 			model.addAttribute("BODY","IO_WRTIE");
@@ -96,17 +97,14 @@ public class IolistController {
 		return "home";
 	}
 	
+	@RequestMapping(value="update",method=RequestMethod.POST)
 	public String update(@ModelAttribute("iolistVO")
 						IolistVO iolistVO,
 						Model model,
 						SessionStatus session) {
 		
 		int ret = iService.update(iolistVO);
-		
+		session.setComplete();
 		return "redirect:/iolist/list";
 	}
-	
-
-
-	
 }

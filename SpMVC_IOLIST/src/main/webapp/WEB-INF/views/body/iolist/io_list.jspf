@@ -13,24 +13,24 @@ $(function(){
 <table>
 <tr>
 		<th>NO</th>
-		<th>거래일자</th>
-		<th>거래시각</th>
+		<th nowrap>거래일자</th>
+		<th nowrap>거래시각</th>
 		
-		<th>구분</th>
-		
-		<th>C</th>
-		<th>상품이름</th>
+		<th nowrap>구분</th>
 		
 		<th>C</th>
-		<th>거래처</th>
-		<th>대표</th>
-		<th>전화</th>
+		<th nowrap>상품이름</th>
 		
-		<th>수량</th>
-		<th>과세</th>
-		<th>단가</th>
-		<th>공급대가</th>
-		<th>합계</th>
+		<th>C</th>
+		<th nowrap>거래처</th>
+		<th nowrap>대표</th>
+		<th nowrap>전화</th>
+		
+		<th nowrap>수량</th>
+		<th nowrap>과세</th>
+		<th nowrap>단가</th>
+		<th nowrap>공급대가</th>
+		<th nowrap>합계</th>
 </tr>
 <tr>
 	<c:choose>
@@ -41,24 +41,25 @@ $(function(){
 			<c:forEach items="${LIST}" var="vo" varStatus="i">
 				<tr class="item-row" data-id="${vo.io_id}">
 					<td>${i.count}</td>
-					<td>${vo.io_date}</td>
-					<td>${vo.io_time}</td>
+					<td nowrap>${vo.io_date}</td>
+					<td nowrap>${vo.io_time}</td>
 					
 					<td>${vo.io_inout}</td>
 					
-					<td>${vo.io_pcode}</td>
-					<td>${vo.p_name}</td>
+					<td nowrap>${vo.io_pcode}</td>
+					<td nowrap>${vo.p_name}</td>
 					
-					<td>${vo.io_dcode}</td>
-					<td>${vo.d_name}</td>
-					<td>${vo.d_ceo}</td>
-					<td>${vo.d_tel}</td>
+					<td nowrap>${vo.io_dcode}</td>
+					<td nowrap>${vo.d_name}</td>
+					<td nowrap>${vo.d_ceo}</td>
+					<td nowrap>${vo.d_tel}</td>
 					
 					<td>${vo.io_quan}</td>
 					<td>${vo.io_tax}</td>
 					
-					<td>${vo.io_total}</td>
-					<td>${vo.io_tax_total}</td>
+					<td nowrap>${vo.io_price}</td>
+					<td nowrap>${vo.io_total}</td>
+					<td nowrap>${vo.io_tax_total}</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>매입매출 관리 시스템</title>
-<link href="${rootPath}/css/list.css?ver=1" rel="stylesheet">  
+<link href="${rootPath}/css/list.css?ver=2" rel="stylesheet">  
 <link href="${rootPath}/css/write.css?ver=3" rel="stylesheet">
 <style>
 
@@ -87,6 +87,10 @@ li a:hover {
 	margin:0px;
 }
 
+.main {
+	overflow: auto;
+}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -101,7 +105,7 @@ $(function(){
 	$(window).scroll(function(e){
 		// 아랫방향으로 스크롤 하면
 		// header tag scroll 이라는 클래스를 적용시키고
-		if( $(window).scrollTop() > 150) {
+		if( $(window).scrollTop() > 10) {
 			$("header").addClass("scroll")
 			
 		// 위쪽방향으로 스크롤하면

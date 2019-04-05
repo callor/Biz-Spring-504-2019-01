@@ -40,6 +40,17 @@ public class ProductController {
 		model.addAttribute("BODY","P_LIST");
 		return "home";
 	}
+	
+	@RequestMapping(value="/search",method=RequestMethod.GET)
+	public String search(@RequestParam("p_name") String p_name,
+							Model model) {
+		
+		List<ProductVO> proList = pService.findByPName(p_name);
+		model.addAttribute("LIST", proList);
+		return "body/product/p_search_list";
+	}
+	
+	
 
 	@RequestMapping(value="/write",method=RequestMethod.GET)
 	public String write(

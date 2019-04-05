@@ -71,6 +71,11 @@ public class DeptService {
 		int ret = dDao().insert(deptVO);
 		return ret;
 	}
+
+	public List<DeptVO> findByDName(String d_name) {
+		List<DeptVO> dList = dDao().findByDName(d_name);
+		return dList;
+	}
 }
 
 

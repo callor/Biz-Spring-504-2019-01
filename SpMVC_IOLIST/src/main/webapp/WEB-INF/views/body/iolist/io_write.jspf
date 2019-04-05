@@ -4,8 +4,12 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" 
 		prefix="form" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<%@ include file="/WEB-INF/views/body/modal-box.jspf" %>
 <script>
 $(function(){
+
+	var io_quan
+	var io_price
 	
 	$.get("${rootPath}/product/get_p_name?p_code=${iolistVO.io_pcode}", 
 		function(result) {	$("#p_name").text(result) }		
@@ -14,7 +18,74 @@ $(function(){
 			function(result) {	$("#d_name").text(result) }		
 	)
 	
+	
+	$("#io_pcode").keydown(function(key){
+		if(key.keyCode == 13){ // 글자를 입력하는 중에 Enter를 누르면
+			$("#myModal").css("display","block")
+			
+			let io_pcode = $(this).val()
+			$.get("${rootPath}/product/search?p_name=" + io_pcode,
+					function(result){
+				$("#modal-body").html(result)
+			})
+		}
+	})
+
+	$("#io_dcode").keydown(function(key){
+		if(key.keyCode == 13){ // 글자를 입력하는 중에 Enter를 누르면
+			$("#myModal").css("display","block")
+			let io_dcode = $(this).val()
+			$.get("${rootPath}/dept/search?d_name=" + io_dcode,
+					function(result){
+				$("#modal-body").html(result)
+			})
+		}
+	})
+
+	
+	
+	$("#io_quan").keydown(function(key){
+		// if(key.keyCode == 13) {
+			io_quan = parseInt($(this).val())
+			io_price = parseInt($("#io_price").val())
+			total()
+
+		// }
+	})
+	$("#io_price").keydown(function(key){
+		// if(key.keyCode == 13) {
+			io_quan = parseInt($("#io_quan").val())
+			io_price = parseInt($(this).val())
+			total()
+
+		// }
+	})
+	
+	function total() {
+		
+		let sum = io_quan * io_price
+		$("#io_total").val(sum)
+		
+		let io_tax_total = 0
+
+		let io_tax = $("input[name='io_tax']:checked").val()
+		
+		if(io_tax == '1') {
+			io_tax_total = Math.round(sum * 1.1) // 반올림
+		} else {
+			io_tax_total = sum
+		}
+		
+		$("#io_tax_total").val(io_tax_total)
+
+	} // end total
+	
+	$("#btn-write").click(function(){
+		$('form').submit()
+	})
 })
+
+
 </script>
 <form:form 
 	modelAttribute="iolistVO">
@@ -95,12 +166,12 @@ $(function(){
 			<form:radiobutton
 				value="1"
 				label="과세"
-				id="io_tax" 
+				id="io_tax_on" 
 				path="io_tax"/>
 			<form:radiobutton 
 				value="0"
 				label="면세"
-				id="io_tax" 
+				id="io_tax_off" 
 				path="io_tax"/>
 		</div>
 		<form:errors path="io_tax"  class="in-box-error"/>
@@ -132,14 +203,8 @@ $(function(){
 			path="io_tax_total" /><br/>
 		<form:errors path="io_total" />
 	</div>
-	
-	
-	
-	
-	
-
 
 	<hr/>
-	<button id="btn-write" type="submit">저장</button>
+	<button id="btn-write" type="button">저장</button>
 	</fieldset>
 </form:form>

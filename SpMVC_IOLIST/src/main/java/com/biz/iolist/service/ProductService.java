@@ -38,4 +38,10 @@ public class ProductService {
 		return ret;
 	}
 
+	public List<ProductVO> findByPName(String p_name) {
+
+		List<ProductVO> proList = pDao().findByPName(p_name);
+		return proList;
+	}
+
 }

@@ -26,6 +26,11 @@
 	.dropdown:hover .dropdown-content {
 		display: block;
 	}
+	
+	.logo {
+		text-decoration: none;
+		font-style: italic;
+	}
 </style>
 
 <script>
@@ -40,7 +45,7 @@ $(function(){
 </script>
 <header>
 	<nav>
-		<h1><a href="${rootPath}/" class="logo"><img src="${rootPath}/images/logo.png" width=200px;></a></h1>
+		<h1><a href="${rootPath}/" class="logo">Biz Pos</a></h1>
 		<ul>
 			<li>
 				<a href="javascript:void(0)" 

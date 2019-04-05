@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         		ON I.io_pcode = P.p_code
     		LEFT JOIN tbl_dept D
         		ON I.io_dcode = D.d_code
+        ORDER BY I.io_date DESC, I.io_time DESC
 	</select>
 	<!-- 
 		private long io_id,

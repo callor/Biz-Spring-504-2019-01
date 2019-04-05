@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" /> 
-<a href="<c:url value='/dept/write' />" >거래처정보 등록</a>
 <hr/>
 <table>
 <tr>
@@ -20,13 +19,13 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${LIST}" var="vo" varStatus="i">
-				<tr>
+				<tr class="d_select">
 					<td>${i.count}</td>
-					<td nowrap>${vo.d_code}</td>
-					<td nowrap>${vo.d_name}</td>
-					<td nowrap>${vo.d_ceo}</td>
-					<td nowrap>${vo.d_tel}</td>
-					<td nowrap>${vo.d_addr}</td>
+					<td>${vo.d_code}</td>
+					<td>${vo.d_name}</td>
+					<td>${vo.d_ceo}</td>
+					<td>${vo.d_tel}</td>
+					<td>${vo.d_addr}</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
@@ -34,6 +33,23 @@
 </tr>
 </table>
 <hr/>
+<script>
+$(function(){
+	$(".d_select").click(function(){
+		
+		let tds = $(this).children()
+		
+		let d_code  = tds.eq(1).text()
+		let d_name = tds.eq(2).text()
+		
+		$("#io_dcode").val(d_code)
+		$("#d_name").text(d_name)
+		
+		$("#myModal").css("display","none")
+	})
+})
+
+</script>
 
 
 
