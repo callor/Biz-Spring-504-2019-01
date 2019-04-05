@@ -4,6 +4,18 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" 
 		prefix="form" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script>
+$(function(){
+	
+	$.get("${rootPath}/product/get_p_name?p_code=${iolistVO.io_pcode}", 
+		function(result) {	$("#p_name").text(result) }		
+	)
+	$.get("${rootPath}/dept/get_d_name?d_code=${iolistVO.io_dcode}", 
+			function(result) {	$("#d_name").text(result) }		
+	)
+	
+})
+</script>
 <form:form 
 	modelAttribute="iolistVO">
 
@@ -26,25 +38,7 @@
 			path="io_time" /><br/>
 		<form:errors path="io_time" class="in-box-error"/>
 	</div>
-			
-	<div class="in-box-border">
-		<label for="io_pcode">상품코드</label>
-		<form:input class="in-box"
-			placeholder="상품코드"
-			id="io_pcode" 
-			path="io_pcode" /><br/>
-		<form:errors path="io_pcode"  class="in-box-error"/>
-	</div>
 
-	<div class="in-box-border">
-		<label for="io_dcode">거래처코드</label>
-		<form:input class="in-box"
-			placeholder="거래처코드"
-			id="io_dcode" 
-			path="io_dcode" /><br/>
-		<form:errors path="io_dcode"  class="in-box-error"/>
-	</div>
-	
 	<div class="in-box-border">
 		<label for="io_inout">매입/매출</label>
 		<div class="in-box">
@@ -61,6 +55,29 @@
 		</div>
 		<form:errors path="io_inout"  class="in-box-error"/>
 	</div>		
+
+	<div class="in-box-border">
+		<label for="io_pcode">상품코드</label>
+		<form:input class="in-box code"
+			placeholder="상품코드"
+			id="io_pcode" 
+			path="io_pcode" />
+			<span class="name-box" id="p_name"></span>
+			<br/>
+		<form:errors path="io_pcode"  class="in-box-error"/>
+	</div>
+
+	<div class="in-box-border">
+		<label for="io_dcode">거래처코드</label>
+		<form:input class="in-box code"
+			placeholder="거래처코드"
+			id="io_dcode" 
+			path="io_dcode" />
+			<span class="name-box" id="d_name"></span>
+			<br/>
+		<form:errors path="io_dcode"  class="in-box-error"/>
+	</div>
+	
 	
 	
 	<div class="in-box-border">

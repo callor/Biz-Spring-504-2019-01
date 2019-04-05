@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" /> 
+<a href="<c:url value='/dept/write' />" >거래처정보 등록</a>
+<hr/>
 <table>
 <tr>
 		<th>NO</th>
-		<th>거래처코드</th>
+		<th>CODE</th>
 		<th>거래처명</th>
 		<th>대표자명</th>
 		<th>대표전화</th>
@@ -32,7 +34,7 @@
 </tr>
 </table>
 <hr/>
-<a href="<c:url value='/dept/write' />" >거래처정보 등록</a>
+
 
 
 

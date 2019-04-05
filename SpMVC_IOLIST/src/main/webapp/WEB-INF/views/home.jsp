@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>매입매출 관리 시스템</title>
 <link href="${rootPath}/css/list.css?ver=1" rel="stylesheet">  
-<link href="${rootPath}/css/write.css?ver=1" rel="stylesheet">
+<link href="${rootPath}/css/write.css?ver=3" rel="stylesheet">
 <style>
 
 * {

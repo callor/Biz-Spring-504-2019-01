@@ -12,6 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findByDCode" resultType="deptVO">
 		SELECT * FROM tbl_dept WHERE d_code = #{d_code}
 	</select>
+	
+	<select id="getDCode" resultType="String">
+		SELECT M.D_CODE FROM
+			(SELECT ROW_NUMBER() OVER (ORDER BY D_CODE DESC) R, d_code
+				FROM tbl_dept) M
+		WHERE M.R = 1
+	</select>
+	
 	<!-- 
 		private String d_code;
 		private String d_name;

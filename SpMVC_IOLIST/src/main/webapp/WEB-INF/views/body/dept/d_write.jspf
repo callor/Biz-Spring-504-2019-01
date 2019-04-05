@@ -4,16 +4,27 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" 
 		prefix="form" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script>
+$(function(){
+	$("#btn_new").click(function(){
+		$.get("${rootPath}/dept/get_new_code",function(result){
+			$("#d_code").val(result)
+		})
+	})
+})
+</script>
 <form:form 
 	modelAttribute="deptVO">
 
 	<fieldset>
 	<legend>거래처정보 등록</legend>
 	<div class="in-box-border">
-		<form:input class="in-box"
+		<form:input class="in-box code"
 			placeholder="거래처코드"
 			id="d_code" 
-			path="d_code" /><br/>
+			path="d_code" />
+			<button id="btn_new" type="button">코드 새로작성</button>	
+		<br/>
 		<form:errors path="d_code" class="in-box-error"/>
 	</div>
 			

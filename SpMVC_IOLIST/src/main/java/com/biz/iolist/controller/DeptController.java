@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -30,6 +32,7 @@ public class DeptController {
 	@ModelAttribute("deptVO")
 	public DeptVO newDeptVO() {
 		DeptVO deptVO = new DeptVO();
+		deptVO.setD_code(deptService.getDCode());
 		return deptVO;
 	}
 	
@@ -80,4 +83,19 @@ public class DeptController {
 		// return "home";
 	
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="get_new_code",method=RequestMethod.GET)
+	public String getNewCode() {
+		return deptService.getDCode();
+	}
+
+	@ResponseBody
+	@RequestMapping(value="get_d_name",method=RequestMethod.GET,
+					produces="text/plan;charset=utf8")
+	public String getDName(@RequestParam("d_code") String d_code) {
+		return deptService.getDName(d_code);
+	}
+
+
 }

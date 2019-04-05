@@ -15,10 +15,19 @@ public class ProductService {
 	@Autowired
 	SqlSession session;
 	
+	private ProductDao pDao() {
+		return session.getMapper(ProductDao.class);
+	}
+	
 	public List<ProductVO> selectAll(){
 		ProductDao pDao = session.getMapper(ProductDao.class);
 		List<ProductVO> proList = pDao.selectAll();
 		return proList;
+	}
+	
+	public String getPName(String p_code) {
+		ProductVO vo = pDao().findByPCode(p_code);
+		return vo.getP_name();
 	}
 	
 	public int insert(ProductVO productVO) {

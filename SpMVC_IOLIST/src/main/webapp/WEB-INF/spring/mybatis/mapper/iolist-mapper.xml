@@ -12,6 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findById" resultType="iolistVO">
 		SELECT * FROM tbl_iolist WHERE io_id = #{io_id}
 	</select>
+	
+	<select id="iolistJoin" resultType="iolistDto">
+		SELECT * FROM tbl_iolist I
+    		LEFT JOIN tbl_product P
+        		ON I.io_pcode = P.p_code
+    		LEFT JOIN tbl_dept D
+        		ON I.io_dcode = D.d_code
+	</select>
 	<!-- 
 		private long io_id,
 		private String io_date,

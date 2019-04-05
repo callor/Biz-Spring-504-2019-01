@@ -41,9 +41,21 @@ legend {
 	border: 1px solid #ccc;
 }
 
+.in-box.code {
+	width:30%;
+}
+
 .in-box:hover {
 	background-color: #ddd;
 	border: 1px solid blue;
+}
+
+.name-box {
+	border : 1px solid #ccc;
+	text-align: left;
+	margin-left: 5px;
+	padding:8px;
+	content: 이름이 표시됩니다;
 }
 
 input:invalid {

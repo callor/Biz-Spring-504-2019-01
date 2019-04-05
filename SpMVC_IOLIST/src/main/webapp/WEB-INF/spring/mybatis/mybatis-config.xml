@@ -10,7 +10,10 @@
 	</settings>
 	<typeAliases>
 		<typeAlias alias="iolistVO" type="com.biz.iolist.model.IolistVO"/>
+		<typeAlias type="com.biz.iolist.model.IolistDto" alias="iolistDto"/>
+		
 		<typeAlias type="com.biz.iolist.model.ProductVO" alias="productVO"/>
 		<typeAlias type="com.biz.iolist.model.DeptVO" alias="deptVO"/>
+		
 	</typeAliases>
 </configuration>	

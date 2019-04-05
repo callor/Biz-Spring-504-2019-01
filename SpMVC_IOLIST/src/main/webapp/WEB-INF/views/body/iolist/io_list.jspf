@@ -12,11 +12,20 @@ $(function(){
 </script>    
 <table>
 <tr>
+		<th>NO</th>
 		<th>거래일자</th>
 		<th>거래시각</th>
-		<th>상품코드</th>
-		<th>거래처코드</th>
+		
 		<th>구분</th>
+		
+		<th>C</th>
+		<th>상품이름</th>
+		
+		<th>C</th>
+		<th>거래처</th>
+		<th>대표</th>
+		<th>전화</th>
+		
 		<th>수량</th>
 		<th>과세</th>
 		<th>단가</th>
@@ -34,11 +43,20 @@ $(function(){
 					<td>${i.count}</td>
 					<td>${vo.io_date}</td>
 					<td>${vo.io_time}</td>
-					<td>${vo.io_pcode}</td>
-					<td>${vo.io_dcode}</td>
+					
 					<td>${vo.io_inout}</td>
-					<td>${vo.io_tax}</td>
+					
+					<td>${vo.io_pcode}</td>
+					<td>${vo.p_name}</td>
+					
+					<td>${vo.io_dcode}</td>
+					<td>${vo.d_name}</td>
+					<td>${vo.d_ceo}</td>
+					<td>${vo.d_tel}</td>
+					
 					<td>${vo.io_quan}</td>
+					<td>${vo.io_tax}</td>
+					
 					<td>${vo.io_total}</td>
 					<td>${vo.io_tax_total}</td>
 				</tr>
