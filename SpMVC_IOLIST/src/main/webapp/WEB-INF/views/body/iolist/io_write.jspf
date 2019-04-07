@@ -133,7 +133,7 @@ $(function(){
 			placeholder="상품코드"
 			id="io_pcode" 
 			path="io_pcode" />
-			<span class="name-box" id="p_name"></span>
+			<span class="name-box" id="p_name">상품이름이 표시됩니다</span>
 			<br/>
 		<form:errors path="io_pcode"  class="in-box-error"/>
 	</div>
@@ -144,7 +144,7 @@ $(function(){
 			placeholder="거래처코드"
 			id="io_dcode" 
 			path="io_dcode" />
-			<span class="name-box" id="d_name"></span>
+			<span class="name-box" id="d_name">거래처명이 표시됩니다</span>
 			<br/>
 		<form:errors path="io_dcode"  class="in-box-error"/>
 	</div>
