@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		junit에서 HomeController 인식하도록 Bean으로 등록
+		이 설정은 실제 서버가 작동될때와는 무관하고.
+		Tomcat이 구동되지 않고
+		junit을 사용해서 Controller를 테스트 하기 위한 설정 
+	-->
+	<bean id="homeController"
+		class="com.biz.jtest.controller.HomeController" />
+
+</beans>
