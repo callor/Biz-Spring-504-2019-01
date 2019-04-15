@@ -24,6 +24,7 @@ public class ProductService {
 		List<ProductVO> proList = pDao.selectAll();
 		return proList;
 	}
+
 	
 	public String getPName(String p_code) {
 		ProductVO vo = pDao().findByPCode(p_code);

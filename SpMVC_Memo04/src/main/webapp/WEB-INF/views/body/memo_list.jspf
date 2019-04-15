@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<script>
+$(function(){
+	$(".fa-trash").click(function(){
+		let id = $(this).attr("data-id")
+		if(confirm("메모를 정말 삭제할까요?")) {
+			location.replace("${rootPath}/delete?id=" + id)
+		}
+	})
+})
+</script>
+<c:if test="${empty MEMOS}">
+	<h3>메모가 없습니다</h3>
+</c:if>
+<c:if test="${not empty MEMOS}">
+	<c:forEach var="memoVO" items="${MEMOS}">
+		<div class="w3-card-4">
+			<div class="w3-container w3-blue">${memoVO.m_subject}</div>
+			<div class="w3-container">${memoVO.m_memo}</div>
+			<div class="w3-container">
+				<i class="fa fa-trash" data-id="${memoVO.id}"></i>
+			</div>
+			<p>
+		</div>
+	</c:forEach>
+</c:if>
+

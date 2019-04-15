@@ -6,28 +6,29 @@
 <article class="page-box">
 	<ul class="pagination">
 
-		<li>
+		<li class="page-item">
 		<a href="${rootPath}/get_page?page_no=${PAGE.firstPageNo}">처음</a>
 		</li>
 
 		<c:if test="${PAGE.currentPageNo != 1}">
-			<li>
+			<li class="page-item">
 			<a href="${rootPath}/get_page?page_no=${PAGE.prePageNo}">이전</a>
 			</li>
 		</c:if>
 		<c:forEach var="pageNo" begin="${PAGE.startUpPageNo}"
 					end="${PAGE.endPageNo}">
-			<li>
+			<li class="page-item 
+					<c:if test='${pageNo == PAGE.currentPageNo}'>active</c:if>">
 			<a href="${rootPath}/get_page?page_no=${pageNo}" 
 				class="page-link">${pageNo}</a>
 			</li>
 		</c:forEach>
 		<c:if test="${PAGE.currentPageNo != PAGE.finalPageNo}">
-			<li>
+			<li class="page-item">
 			<a href="${rootPath}/get_page?page_no=${PAGE.nextPageNo}">이후</a>
 			</li>
 		</c:if>
-		<li>
+		<li class="page-item">
 		<a href="${rootPath}/get_page?page_no=${PAGE.finalPageNo}">끝</a>
 		</li>
 
