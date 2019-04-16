@@ -8,6 +8,15 @@
 	<bean id="memoController" 
 		class="com.biz.memo.controller.MemoController" /> 
 		
+	<!-- 
+		일반적인 MVC 환경에서는 
+		Service를 테스트할때 Controller를 통해서 서비스를
+		테스트 하지만
+		Test환경에서는 Service를 직접 테스트 하기도한다.
+		
+		Service를 별도로 Test하기 위해서 
+		bean으로 등록
+	 -->
 	<bean id="memoService"
 		class="com.biz.memo.service.MemoService" />
 

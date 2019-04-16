@@ -1,5 +1,12 @@
 package com.biz.memo.controller;
 
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -9,25 +16,36 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.biz.memo.mapper.MemoVO;
+import com.biz.memo.service.MemoService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"/WEB-INF/spring/testServlet/*-context.xml"})
 public class MemoControllerTest {
 
-	@Autowired
+	@InjectMocks
 	MemoController mController;
+	
+	@Mock
+	MemoService mService;
 	
 	private MockMvc mockMvc;
 	
 	@Before
 	public void setUp() throws Exception{
+		
+		// @InjectMocks와 @Mock 연동된
+		// Controller와 Service 가져와서 테스트 하겠다.
+		MockitoAnnotations.initMocks(this);
+		
 		mockMvc = MockMvcBuilders
 					.standaloneSetup(mController)
 					.build();
@@ -86,6 +104,50 @@ public class MemoControllerTest {
 	}
 
 
+	@Test
+	public void testAdd() throws Exception{
+		
+		// Controller를 test 하기
+		mockMvc.perform(get("/memo/add"))
+			.andExpect(status().isOk())
+			.andDo(print());
+		
+		// Controller의 memo/add가 호출되었을때
+		// Service의 add method가 잘 실행되었는지 보기
+		
+		verify(mService,times(5)).add();
+	}
 	
+	@Test
+	public void testGetName() throws Exception {
+		
+		
+		MemoVO vo = new MemoVO();
+		
+		// vo의 getSubject() 메서드가 호출되면
+		//		메모쓰기 라는 문자열을 리턴하라
+		when(vo.getSubject()).thenReturn("메모쓰기");
+				
+		// vo의 getMemo() 메서드가 호출되면
+		//		오늘의 메모 라는 문자열을 리턴하라
+		when(vo.getMemo()).thenReturn("오늘의 메모");
+		
+		// 값을 검증하라
+		assertTrue("메모쓰기".equals(vo.getSubject()));
+		assertTrue("오늘의 메모".equals(vo.getMemo()));
+
+		// 값을 저장하는(setter) 메서드가 1번씩만 실행 되었나?
+		verify(vo,times(1)).setSubject("메모쓰기");
+		verify(vo,times(1)).setMemo("오늘의 메모");
+		
+		// 메모쓰기가 1번 이상 setting 되었나
+		// verify(vo,atLeastOnce()).setSubject("메모쓰기");
+		
+		// 임의의 문자열이 1번이상 setting 되었나
+		// verify(vo,atLeastOnce())
+		// 		.setSubject(any(String.class));
+		
+		
+	}
 	
 }
