@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="homeController" 
+		class="com.biz.memo.controller.HomeController"/>
+	<bean id="memoController" 
+		class="com.biz.memo.controller.MemoController" /> 
+		
+	<bean id="memoService"
+		class="com.biz.memo.service.MemoService" />
+
+</beans>
