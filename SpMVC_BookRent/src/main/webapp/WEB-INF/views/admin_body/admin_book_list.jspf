@@ -9,7 +9,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>도서정보관리(관리자)</h3>
+<script>
+$(function(){
+	
+	$(".boo-tr").click(function(){
+		let id = $(this).attr("data-id")
+		
+	})
+	
+	$.contextMenu({
+		selector : '.book-tr',		// $("...")
+		callback : function(key) {
+			var id = $(this).attr("data-id")
+			
+			if(key == "edit"){
+				location.href = "${rootPath}/admin/book/update?book_seq=" + id
+			}
+			if(key == "delete") {
+				if(confirm(id + "번 도서정보를 삭제 할까요?")) {
+					location.replace("${rootPath}/admin/book/delete/" + id)
+				}
+			}
+		},
+		items: {
+			"edit" : {name:"수정",icon:"edit"},
+			"delete" : {name: "삭제",icon:"delete"}
+		}
+	})
+	
+})
+
+</script>
 <table>
 	<tr>
 		<th>일련번호</th>
@@ -28,7 +58,7 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach var="vo" items="${LIST}">
-				<tr>
+				<tr class="book-tr" data-id="${vo.book_seq}">
 					<td>${vo.book_seq}</td>
 					<td>${vo.book_isbn}</td>
 					<td>${vo.book_title}</td>

@@ -13,10 +13,21 @@
 <script>
 $(function(){
 	$(".btn-delete").click(function(){
+		
+		// $(this) : 현재 클릭된 tag의 모든 것
 		let id = $(this).attr("data-id")
 		if(confirm( id + " 회원을 삭제할까요")) {
 			location.replace("${rootPath}/admin/user/delete?id=" + id)
 		}
+	})
+	
+	$(".user-tr").click(function(){
+		let id = $(this).attr("data-id")
+		
+		// userVO객체를 활용해서 id값을 받기 위해서
+		// ?id 대신 ?user_seq 로 설정한다.
+		location.href = "${rootPath}/admin/user/update?user_seq=" + id 
+	
 	})
 })
 

@@ -23,4 +23,25 @@ public class UserSQL {
 		return sql.toString();
 	}
 
+	public String user_update_sql() {
+
+		SQL sql = new SQL().UPDATE("tbl_user")
+				.SET("USER_NAME = #{user_name,jdbcType=VARCHAR}")
+				.SET("USER_BIRTH = #{user_birth,jdbcType=VARCHAR}")
+				.SET("USER_SEX = #{user_sex,jdbcType=VARCHAR}")
+				.SET("USER_PHONE = #{user_phone,jdbcType=VARCHAR}")
+				.SET("USER_EMAIL = #{user_email,jdbcType=VARCHAR}")
+				.SET("USER_IMAGE = #{user_image,jdbcType=VARCHAR}")
+				.SET("USER_REG_DATE = #{user_reg_date,jdbcType=VARCHAR}")
+				.SET("USER_OUT_DATE = #{user_out_date,jdbcType=VARCHAR}")
+				.SET("USER_OUT_YN = #{user_out_yn,jdbcType=VARCHAR}")
+				.SET("USER_RENT_COUNT = #{user_rent_count,jdbcType=INTEGER}")
+				.SET("USER_RENT_TOTAL = #{user_rent_total,jdbcType=INTEGER}")
+				.WHERE("USER_SEQ = #{user_seq}");
+
+		return sql.toString();
+	}
+
+	
+	
 }

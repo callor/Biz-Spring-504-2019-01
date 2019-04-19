@@ -1,20 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<form method="POST">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-	<input type="text" name="user_seq" value="0" placeholder="일련번호"/>
-	<input type="text" name="user_name"  placeholder="이름"/>
-	<input type="text" name="user_birth"  placeholder="생년월일"/>
-	<input type="text" name="user_sex" value="M" placeholder="성별(M/F)"/>
-	<input type="text" name="user_phone"  placeholder="전화번호"/>
-	<input type="text" name="user_email"  placeholder="E-mail"/>
-	<input type="text" name="user_image"  placeholder="사진"/>
-	<input type="text" name="user_reg_date"  placeholder="가입일"/>
-	<input type="text" name="user_out_date"  placeholder="탈퇴일"/>
-	<input type="text" name="user_out_yn"  value="N" placeholder="탈퇴여부(Y/N)"/>
-	<input type="text" name="user_rent_count"  value="0"  placeholder="총대여회수"/>
-	<input type="text" name="user_rent_total"  value="0"  placeholder="총대여금액"/>
+<f:form modelAttribute="userVO">
+
+	<f:input path="user_name"  placeholder="이름"/>
+	<f:input path="user_birth"  placeholder="생년월일"/>
+	
+	<f:radiobutton path="user_sex" value="F" label="여"/>
+	<f:radiobutton path="user_sex" value="M"  label="남" />
+	
+	<f:input path="user_phone"  placeholder="전화번호"/>
+	<f:input path="user_email"  placeholder="E-mail"/>
+	<f:input path="user_image"  placeholder="사진"/>
+	<f:input path="user_reg_date"  placeholder="가입일"/>
+	<f:input path="user_out_date"  placeholder="탈퇴일"/>
+	
+	<f:radiobutton path="user_out_yn" value="Y" label="탈퇴"/>
+	<f:radiobutton path="user_out_yn" value="N" label="가입"/>
 	<button>저장</button>
 
-</form>
+</f:form>

@@ -10,6 +10,12 @@
 <meta charset="UTF-8">
 <title>책나라 관리자 화면</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- jquery를 사용해서 만든 3rd party 라이브러리 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+
 <link href="${rootPath}/css/list.css?ver=1" rel="stylesheet">
 <style>
 
@@ -88,15 +94,21 @@
 					<c:if test="${BODY=='USER_LIST' }" >
 						<h3>회원정보 관리</h3>
 						<div>
-						<%@include file="/WEB-INF/views/admin_body/admin_user_write.jspf" %>
+							<%@include file="/WEB-INF/views/admin_body/admin_user_write.jspf" %>
 						</div>
 						<div>
-						<%@include file="/WEB-INF/views/admin_body/admin_user_list.jspf" %>
+							<%@include file="/WEB-INF/views/admin_body/admin_user_list.jspf" %>
 						</div>
 					</c:if>
 				</c:when>
 				<c:when test="${BODY == 'BOOK_LIST'}" >
-					<%@include file="/WEB-INF/views/admin_body/admin_book_list.jspf" %>
+					<h3>도서정보 관리</h3>
+					<div>
+						<%@include file="/WEB-INF/views/admin_body/admin_book_write.jspf" %>
+					</div>
+					<div>
+						<%@include file="/WEB-INF/views/admin_body/admin_book_list.jspf" %>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<h3>아직 구현되지 않은 기능입니다.</h3>

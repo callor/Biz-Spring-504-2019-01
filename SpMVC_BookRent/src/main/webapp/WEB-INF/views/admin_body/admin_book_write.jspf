@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+
+<f:form modelAttribute="bookVO">
+
+	<f:input path="book_isbn" placeholder="ISBN" />
+	<f:input path="book_title"  placeholder="title" />
+	<f:input path="book_author"  placeholder="author" />
+	<f:input path="book_price"  placeholder="price(숫자)" />
+	<f:textarea path="book_description"  placeholder="desc" />
+	<f:input path="book_image"  placeholder="image" />
+	<f:input path="book_link"  placeholder="link" />
+
+	<f:radiobutton path="book_rent_yn" value="Y" label="대여가능"/>
+	<f:radiobutton path="book_rent_yn" value="N" label="대여금지"/>
+
+	<button>저장</button>
+
+</f:form>
