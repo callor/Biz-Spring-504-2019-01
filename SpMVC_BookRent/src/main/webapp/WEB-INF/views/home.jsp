@@ -10,6 +10,7 @@
 <title>책나라 도서관</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="${rootPath}/css/list.css?ver=1" rel="stylesheet">
 <style>
 * {
 	box-sizing: border-box;
@@ -70,20 +71,23 @@ body {
 	display: flex;
 	flex-flow: row;
 	flex-wrap: nowrap;
-	
 	width:100%;
+	overflow-x : auto;
 	
-	padding: 15px 15px 2000px;
+	padding: 15px 15px 20px;
 	border:1px solid blue;
 }
 
 .body-box {
 	border:1px solid red;
-	flex : 1 1 auto;
-	overflow: auto;
+	flex : 1 0 30%;
 	padding:10px;
 	margin: 16px 8px 16px 16px;
 }
+
+
+
+
 </style>
 <script>
 $(function(){
@@ -109,6 +113,7 @@ $(function(){
 	<a href="#">책나라 도서관</a>
 	<a href="#">로그인</a>
 	<a href="${rootPath }/admin/">관리자</a>
+	<a href="${rootPath }/user/s_list/성춘향">임시</a>
 </nav>
 
 <section id="main-container">

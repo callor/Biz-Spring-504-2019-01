@@ -27,5 +27,10 @@ public interface UserDao {
 	@Delete("DELETE FROM tbl_user WHERE user_seq = #{user_seq}")
 	public void delete(@Param("user_seq") long id);
 
+	@Select("SELECT * FROM tbl_user "
+			+ " WHERE user_name like '%' || #{s_string} || '%' " 
+			+ 	" OR user_phone like '%' || #{s_string} || '%' ")
+	public List<UserVO> getSearchList(@Param("s_string") String s_string) ;
+	
 
 }

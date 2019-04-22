@@ -12,6 +12,9 @@ import com.biz.rent.model.BookVO;
 
 public interface BookDao {
 
+	/*
+	 * 기본 CRUD 구성하는 mehtod
+	 */
 	@Select("SELECT * FROM tbl_book")
 	public List<BookVO> selectAll();
 
@@ -26,5 +29,15 @@ public interface BookDao {
 	
 	@Delete("DELETE FROM tbl_book WHERE book_seq = #{book_seq}")
 	public int delete(long book_seq);
+	
+	/*
+	 * 도서정보 검색
+	 */
+	@Select("SELECT * FROM tbl_book WHERE book_title like '%' || #{s_string} || '%'  ")
+	public List<BookVO> getSearchList(String s_string) ;
+
+	@Select("SELECT * FROM tbl_book WHERE book_isbn = #{s_string}")
+	public List<BookVO> getSearchListByIsbn(String s_string);
+	
 	
 }

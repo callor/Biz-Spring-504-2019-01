@@ -15,14 +15,24 @@
 			id="rent_return_date" 
 			class="w3-input w3-border"/>
 
-	
+	<div>
 	<label for="rent_book_seq">도서정보</label>
 	<f:input path="rent_book_seq" class="w3-input w3-border" />
-	<span id="book_name"></span>
+	<div id="book_title"></div>
+	</div>
 	
+	<div>
+	<label for="rent_book_price">대여가격</label>
+	<f:input path="rent_book_price" class="w3-input w3-border" />
+	</div>
+	
+	<div>
 	<label for="rent_user_seq">회원정보</label>
 	<f:input path="rent_user_seq" class="w3-input w3-border"/>
-	<span id="user_name"></span>
-	<button type="button" id="btn_rent">확인</button>
+	<div id="user_name"></div>
+	</div>
+	
+	<button type="button" id="btn_rent">장바구니넣기</button>
+	
 
 </f:form>
