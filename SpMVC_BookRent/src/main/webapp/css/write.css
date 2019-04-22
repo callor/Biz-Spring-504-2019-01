@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+fieldset {
+	width: 70%;
+	margin: 20px auto; /* 가로방향 중앙정렬 */
+}
+
+legend {
+	font-size: 12pt;
+	font-weight: bold;
+	color: #3d65ff;
+}
+
+/* label과 input box를 감싸고 있는 div  */
+.in-box-border {
+	display:flex;
+	padding:4px;
+}
+
+
+.in-box-border label {
+	display: inline-block;
+	width: 20%;
+	text-align: right;
+	margin-right: 5px;
+	padding: 8px;
+}
+
+
+.in-box label {
+	width:50px;
+	padding:0px;
+	margin:0px;
+}
+
+.in-box {
+	padding: 8px;
+	margin:3px;
+	display: inline-block;
+	width: 70%;
+	border: 1px solid #ccc;
+}
+
+.in-box.code {
+	width:30%;
+	padding:0px;
+	margin:0px;
+}
+
+.in-box:hover {
+	background-color: #ddd;
+	border: 1px solid blue;
+}
+
+.name-box {
+	border : 1px solid #ccc;
+	text-align: left;
+	margin-left: 5px;
+	padding:8px 0px;
+}
+
+input:invalid {
+	background-color: #ffdddd;
+	border: 2px solid red;
+}
+
+/* span 설정 */
+#userid_error {
+	width: 70%;
+	color: red;
+	font-weight: bold;
+}
+
+.userid_label {
+	display: none;
+}
+
+.in-box-error {
+	display: inline-block;
+	margin-left: 20px;
+	font-size: 12px;
+	color: red;
+}
+
+.in-file-box {
+	border: 2px solid blue;
+}
+
+.in-file-box h3 {
+	text-align: center;
+}

@@ -1,7 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<form>
-	<input type="date" name="date" id="date">
-	<button type="submit" id="btn_rent">검색</button>
-</form>

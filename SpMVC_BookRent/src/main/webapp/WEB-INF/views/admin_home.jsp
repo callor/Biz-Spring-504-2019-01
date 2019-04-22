@@ -82,7 +82,7 @@
 	<article id="admin-body">
 		<aside>
 			<ul>
-				<li><a href="${rootPath}/">판매관리</a></li>			
+				<li><a href="${rootPath}/">도서대여</a></li>			
 				<li><a href="${rootPath}/admin/user">회원관리</a></li>
 				<li><a href="${rootPath}/admin/book">도서관리</a></li>
 				<li><a href="">대여관리</a></li>

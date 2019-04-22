@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>책나라 도서관</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 * {
 	box-sizing: border-box;
@@ -80,7 +81,7 @@ body {
 	border:1px solid red;
 	flex : 1 1 auto;
 	overflow: auto;
-	
+	padding:10px;
 	margin: 16px 8px 16px 16px;
 }
 </style>
@@ -113,15 +114,15 @@ $(function(){
 <section id="main-container">
 	<article id="user" class="body-box">
 		<p>회원정보
-		<%@ include file="/WEB-INF/views/body/user_body.jspf" %>
+		<%@ include file="/WEB-INF/views/rent_body/user/user_body.jspf" %>
 	</article>
 	<article id="rent" class="body-box">
 		<p>대여정보
-		<%@ include file="/WEB-INF/views/body/rent_body.jspf" %>
+		<%@ include file="/WEB-INF/views/rent_body/rent/rent_body.jspf" %>
 	</article>
 	<article id="book" class="body-box">
 		<p>도서정보
-		<%@ include file="/WEB-INF/views/body/book_body.jspf" %>
+		<%@ include file="/WEB-INF/views/rent_body/book/book_body.jspf" %>
 	</article>
 </section>
 
