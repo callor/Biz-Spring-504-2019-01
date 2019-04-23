@@ -1,7 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="f"%>    
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="f"%>
+<script>
+$(function(){
+	$("#btn_rent").click(function() {
+		// 순수한 text 데이터만 있는 form을 통째로 서버에 전송할수 있도록
+		// 변경하는 방식
+		var fData = $("form").serialize() 	
+		
+		$.post("${rootPath}/rent/cart",fData,function(result){
+			// alert(result)
+			$("#cart-box").html(result)
+		})
+	})
+})
+
+</script>
+  
 <f:form modelAttribute="rentVO">
 	<label for="rent_date">대여날짜</label>
 	<f:input type="date"
@@ -33,6 +49,8 @@
 	</div>
 	
 	<button type="button" id="btn_rent">장바구니넣기</button>
-	
-
 </f:form>
+<hr/>
+<div id="cart-box">
+
+</div>
