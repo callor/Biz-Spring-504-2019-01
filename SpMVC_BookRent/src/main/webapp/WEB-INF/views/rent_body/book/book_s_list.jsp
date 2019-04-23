@@ -28,7 +28,7 @@ $(function(){
 		<c:otherwise>
 			<c:forEach var="book" items="${BOOKS}">
 				<tr>
-					<td class="b_select" 
+					<td class="b_select b_title" 
 						data-seq="${book.book_seq}"
 						data-price="${book.book_price}">
 						${book.book_title}

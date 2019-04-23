@@ -26,6 +26,15 @@ td,th {
 	padding: 8px 8px;
 	vertical-align: top;
 	white-space: nowrap; /* table에 내용을 줄바꿈하지말라, 한줄로 모두 표시 */
+	
+	max-width: 200px; /* 최대 넓이를 200px 로 제한 */
+	overflow: hidden; /* 최대 넓이를 넘어가는 친구들은 감춰라 */
+	text-overflow: ellipsis; /* 대신 말줄임표(...)를 표시 해라 */
+
+}
+
+td:hover,th:hover {
+	overflow: visible;	
 }
 
 td:first-child, th:first-child {
