@@ -13,6 +13,8 @@ import lombok.ToString;
 @ToString
 public class CartVO {
 
+	private int cart_seq;
+	
 	private String cart_date;
 	private String cart_return_date;
 	private long cart_book_seq;

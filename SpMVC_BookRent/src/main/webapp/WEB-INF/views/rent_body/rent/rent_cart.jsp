@@ -17,12 +17,30 @@ $(function(){
 	})
 	
 	$(".cart_item_delete").click(function(){
+		let seq = $(this).attr("data-seq")
+		$.get("${rootPath}/rent/cart_seq_delete/" + seq,function(result){
+			$("#cart-box").html(result)
+		}) 
+		
+		
+		/*
 		let index = $(this).attr("data-index")
-		$.get("${rootPath}/rent/cart_item_delete/" + index,function(){
+		$.get("${rootPath}/rent/cart_item_delete/" + index,function(result){
 			$("#cart-box").html(result)
 		})
+		*/
 	})
-
+	
+	$("#btn_check_out").click(function(){
+		$.get("${rootPath}/check_out",function(result){
+			if(result == 'CHECK_OK') {
+				$("#cart-box").html("")
+				alert("결제 완료!!")
+			} else {
+				alert(result)
+			}
+		})
+	})
 })
 
 </script>    
@@ -71,7 +89,9 @@ $(function(){
 					<td>${i.count}</td>
 					<td class="b_title">${item.cart_book_title}</td>
 					<td>${item.cart_book_price}</td>
-					<th class="cart_item_delete" data-index="${i.index}">x</th>	
+					<th class="cart_item_delete" 
+						data-index="${i.index}"
+						data-seq="${item.cart_seq}">x</th>	
 				</tr>		
 			</c:forEach>	
 		</c:otherwise>
