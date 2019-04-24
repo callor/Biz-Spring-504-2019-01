@@ -1,7 +1,9 @@
 package com.biz.rent.config;
 
 import javax.lang.model.util.AbstractAnnotationValueVisitor6;
+import javax.servlet.Filter;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /*
@@ -11,6 +13,22 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  */
 public class AppInitConfig 
 		extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	/*
+	 * 한글 encoding 처리
+	 */
+	@Override
+	protected Filter[] getServletFilters() {
+
+		CharacterEncodingFilter encKor
+		= new CharacterEncodingFilter();
+
+		encKor.setEncoding("UTF-8");
+		encKor.setForceEncoding(true);
+		
+		return new Filter[] { encKor } ;
+		
+	}
 
 	/*
 	 * root-context.xml을 대신할 method
@@ -28,7 +46,10 @@ public class AppInitConfig
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] { AppServletConfig.class };
+		return new Class[] { 
+				AppServletConfig.class,
+				MybatisConfig.class
+				};
 	}
 
 	

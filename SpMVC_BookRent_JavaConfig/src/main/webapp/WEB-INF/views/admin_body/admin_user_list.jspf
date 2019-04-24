@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+$(function(){
+	$(".btn-delete").click(function(){
+		
+		// $(this) : 현재 클릭된 tag의 모든 것
+		let id = $(this).attr("data-id")
+		if(confirm( id + " 회원을 삭제할까요")) {
+			location.replace("${rootPath}/admin/user/delete?id=" + id)
+		}
+	})
+	
+	$(".user-tr").click(function(){
+		let id = $(this).attr("data-id")
+		
+		// userVO객체를 활용해서 id값을 받기 위해서
+		// ?id 대신 ?user_seq 로 설정한다.
+		location.href = "${rootPath}/admin/user/update?user_seq=" + id 
+	
+	})
+})
+
+</script>
+<table>
+	<tr>
+		<th>일련번호</th>
+		<th>이름</th>
+		<th>생년월일</th>
+		<th>성별</th>
+		<th>연락처</th>
+		<th>메일주소</th>
+		<th>사진 링크</th>
+		<th>등록일</th>
+		<th>탈퇴일</th>
+		<th>탈퇴여부</th>
+		<th>대여 도서권수</th>
+		<th>총 대여금액 합계</th>
+		<th>삭제</th>
+	</tr>
+	<c:choose>
+		<c:when test="${empty LIST}">
+			<tr><td colspan="12">데이터가 없습니다</td></tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="vo" items="${LIST}">
+				<tr class="user-tr" data-id="${vo.user_seq}">
+					<td>${vo.user_seq}</td>
+					<td>${vo.user_name}</td>
+					<td>${vo.user_birth}</td>
+					<td>${vo.user_sex}</td>
+					<td>${vo.user_phone}</td>
+					<td>${vo.user_email}</td>
+					<td>${vo.user_image}</td>
+					<td>${vo.user_reg_date}</td>
+					<td>${vo.user_out_date}</td>
+					<td>
+						<c:if test="${vo.user_out_yn == 'Y'}">탈퇴</c:if>
+						<c:if test="${vo.user_out_yn == 'N'}">회원</c:if>
+					</td>
+					<td>${vo.user_rent_count}</td>
+					<td>${vo.user_rent_total}</td>
+					<td><button class="btn-delete" data-id="${vo.user_seq}">삭제</button></td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+</table>
+</body>
+</html>

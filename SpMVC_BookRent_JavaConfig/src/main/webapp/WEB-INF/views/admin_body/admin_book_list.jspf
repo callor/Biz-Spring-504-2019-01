@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+$(function(){
+	
+	$(".boo-tr").click(function(){
+		let id = $(this).attr("data-id")
+		
+	})
+	
+	$.contextMenu({
+		selector : '.book-tr',		// $("...")
+		callback : function(key) {
+			var id = $(this).attr("data-id")
+			
+			if(key == "edit"){
+				location.href = "${rootPath}/admin/book/update?book_seq=" + id
+			}
+			if(key == "delete") {
+				if(confirm(id + "번 도서정보를 삭제 할까요?")) {
+					location.replace("${rootPath}/admin/book/delete/" + id)
+				}
+			}
+		},
+		items: {
+			"edit" : {name:"수정",icon:"edit"},
+			"delete" : {name: "삭제",icon:"delete"}
+		}
+	})
+	
+})
+
+</script>
+<table>
+	<tr>
+		<th>일련번호</th>
+		<th>ISBN</th>
+		<th>제목</th>
+		<th>저자</th>
+		<th>가격</th>
+		<th>설명</th>
+		<th>사진링크</th>
+		<th>관련링크</th>
+		<th>대여가능여부</th>
+	</tr>
+	<c:choose>
+		<c:when test="${empty LIST}" >
+			<tr><td colspan="9">데이터가 없습니다</td></tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="vo" items="${LIST}">
+				<tr class="book-tr" data-id="${vo.book_seq}">
+					<td>${vo.book_seq}</td>
+					<td>${vo.book_isbn}</td>
+					<td>${vo.book_title}</td>
+					<td>${vo.book_author}</td>
+					<td>${vo.book_price}</td>
+					<td>${vo.book_description}</td>
+					<td>${vo.book_image}</td>
+					<td>${vo.book_link}</td>
+					<td>
+						<c:if test="${vo.book_rent_yn == 'Y'}">대여가능</c:if>
+						<c:if test="${vo.book_rent_yn == 'N'}">대여중단</c:if>
+					</td>
+				</tr>			
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+</table>
+</body>
+</html>
